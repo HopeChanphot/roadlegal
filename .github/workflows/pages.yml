@@ -24,6 +24,7 @@ jobs:
           python-version: "3.12"
       - name: Export static demo data
         run: python scripts/export_static_demo.py
+      - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
           path: web
