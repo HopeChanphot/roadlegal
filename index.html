@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>RoadLegal</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="topbar" aria-label="RoadLegal controls">
+        <div class="brand">
+          <div class="mark" aria-hidden="true">RL</div>
+          <div>
+            <h1>RoadLegal</h1>
+            <p>Offline-first traffic-law companion for BIMSTEC roads</p>
+          </div>
+        </div>
+        <div class="toolbar">
+          <label>
+            <span>Country / law area</span>
+            <select id="jurisdictionSelect"></select>
+          </label>
+          <label>
+            <span>Language</span>
+            <select id="languageSelect">
+              <option>English</option>
+              <option>Hindi</option>
+              <option>Bangla</option>
+              <option>Nepali</option>
+              <option>Sinhala</option>
+              <option>Thai</option>
+              <option>Burmese</option>
+              <option>Dzongkha</option>
+            </select>
+          </label>
+          <button class="icon-button" id="geoButton" title="Use device location" aria-label="Use device location">
+            <span aria-hidden="true">◎</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="status-strip" aria-label="System status">
+        <div>
+          <span class="status-label">Mode</span>
+          <strong id="modeText">Loading</strong>
+        </div>
+        <div>
+          <span class="status-label">Index</span>
+          <strong id="indexText">0 passages</strong>
+        </div>
+        <div>
+          <span class="status-label">Local model</span>
+          <strong id="modelText">Checking</strong>
+        </div>
+      </section>
+
+      <section class="workspace">
+        <section class="chat-panel" aria-label="RoadLegal chat">
+          <div class="chat-header">
+            <div>
+              <h2>Ask RoadLegal</h2>
+              <p>Answers are grounded in local sources and marked when a fine schedule needs review.</p>
+            </div>
+            <button class="ghost-button" id="clearChatButton">Clear</button>
+          </div>
+          <div class="quick-grid" aria-label="Common questions">
+            <button data-prompt="What is the fine for overspeeding in India for a car?">Speed fine</button>
+            <button data-prompt="Do motorcycle passengers need helmets?">Helmet rule</button>
+            <button data-prompt="What happens for drunk driving?">Drink driving</button>
+            <button data-prompt="Give me a cross-border checklist for India to Bangladesh.">Border checklist</button>
+          </div>
+          <div id="messages" class="messages" aria-live="polite"></div>
+          <form id="chatForm" class="composer">
+            <textarea id="messageInput" rows="2" placeholder="Ask about fines, documents, helmet rules, speed limits, or safety advice..."></textarea>
+            <button class="send-button" type="submit" aria-label="Send question">→</button>
+          </form>
+        </section>
+
+        <aside class="side-panel" aria-label="RoadLegal tools">
+          <section class="tool-card">
+            <div class="tool-heading">
+              <h2 id="countryTitle">Country Mode</h2>
+              <span id="coveragePill" class="pill">starter</span>
+            </div>
+            <div id="countryBox" class="country-box"></div>
+          </section>
+
+          <section class="tool-card">
+            <div class="tool-heading">
+              <h2>Challan Calculator</h2>
+              <span class="pill">offline</span>
+            </div>
+            <label>
+              <span>Offence</span>
+              <select id="offenceSelect"></select>
+            </label>
+            <label>
+              <span>Vehicle</span>
+              <select id="vehicleSelect">
+                <option value="light_motor_vehicle">Light motor vehicle</option>
+                <option value="two_wheeler">Two wheeler</option>
+                <option value="heavy_vehicle">Heavy vehicle</option>
+                <option value="any">Any</option>
+              </select>
+            </label>
+            <button id="calculateButton" class="primary-button">Calculate</button>
+            <div id="fineResult" class="result-box">Select an offence to estimate the penalty.</div>
+          </section>
+
+          <section class="tool-card">
+            <div class="tool-heading">
+              <h2>Quiz</h2>
+              <span id="scorePill" class="pill">0 pts</span>
+            </div>
+            <div id="quizBox" class="quiz-box">Loading quiz...</div>
+          </section>
+
+          <section class="tool-card">
+            <div class="tool-heading">
+              <h2>Directory</h2>
+              <span class="pill">starter</span>
+            </div>
+            <div id="directoryBox" class="directory-box"></div>
+          </section>
+
+          <section class="tool-card">
+            <div class="tool-heading">
+              <h2>Feedback</h2>
+              <span class="pill">local log</span>
+            </div>
+            <form id="feedbackForm" class="feedback-form">
+              <textarea id="feedbackInput" rows="3" placeholder="Report unclear or outdated legal information..."></textarea>
+              <button class="ghost-button" type="submit">Submit feedback</button>
+            </form>
+          </section>
+        </aside>
+      </section>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>
