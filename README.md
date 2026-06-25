@@ -10,6 +10,12 @@ The current build is a runnable MVP designed for demo and extension:
 - Local model detection for the installed `llama-cli` / `llama-server` and any `.gguf` model placed in `models/`.
 - Extractive RAG fallback when no runnable GGUF model is present.
 
+## Detailed Documentation
+
+- [Development, Technical, and Support Guide](docs/DEVELOPMENT_TECHNICAL_SUPPORT_GUIDE.md)
+- [Hackathon Submission Notes](docs/HACKATHON_SUBMISSION.md)
+- [Support](SUPPORT.md)
+
 ## Quick Start
 
 ```powershell
