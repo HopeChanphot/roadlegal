@@ -1,0 +1,372 @@
+{
+  "aliases": {
+    "india": "india_national",
+    "delhi": "delhi",
+    "new_delhi": "delhi",
+    "bangladesh": "bangladesh_national",
+    "nepal": "nepal_national",
+    "bhutan": "bhutan_national",
+    "sri_lanka": "sri_lanka_national",
+    "thailand": "thailand_national",
+    "myanmar": "myanmar_national"
+  },
+  "jurisdictions": {
+    "india_national": {
+      "name": "India",
+      "country": "India",
+      "offences": {
+        "overspeeding": {
+          "label": "Overspeeding",
+          "legal_basis": "Motor Vehicles Act, 1988, section 183 as amended; state compounding rules may vary.",
+          "source": "https://www.indiacode.nic.in/bitstream/123456789/9460/1/a1988-59.pdf",
+          "vehicles": {
+            "two_wheeler": {
+              "currency": "Rs ",
+              "fine_min": 1000,
+              "fine_max": 2000,
+              "caveats": ["Commercial and heavy vehicles can attract higher penalties; state compounding notices may change the collected amount."]
+            },
+            "light_motor_vehicle": {
+              "currency": "Rs ",
+              "fine_min": 1000,
+              "fine_max": 2000,
+              "caveats": ["The final challan can depend on measured speed, road class, state rules, and repeat-offence history."]
+            },
+            "heavy_vehicle": {
+              "currency": "Rs ",
+              "fine_min": 2000,
+              "fine_max": 4000,
+              "caveats": ["Heavy/passenger/goods vehicles may face higher penalties and permit consequences."]
+            }
+          }
+        },
+        "no_helmet": {
+          "label": "Riding without protective headgear",
+          "legal_basis": "Motor Vehicles Act, 1988, sections 129 and 194D as amended.",
+          "source": "https://www.indiacode.nic.in/bitstream/123456789/9460/1/a1988-59.pdf",
+          "vehicles": {
+            "two_wheeler": {
+              "currency": "Rs ",
+              "fine_min": 1000,
+              "fine_max": 1000,
+              "consequences": ["Possible licence disqualification under the amended penalty provision."]
+            },
+            "any": {
+              "amount_display": "Applies mainly to two-wheeler riders/passengers.",
+              "status": "not_applicable"
+            }
+          }
+        },
+        "no_seatbelt": {
+          "label": "Seat belt violation",
+          "legal_basis": "Motor Vehicles Act, 1988, section 194B as amended; vehicle safety rules also apply.",
+          "source": "https://www.indiacode.nic.in/bitstream/123456789/9460/1/a1988-59.pdf",
+          "vehicles": {
+            "light_motor_vehicle": {
+              "currency": "Rs ",
+              "fine_min": 1000,
+              "fine_max": 1000
+            },
+            "any": {
+              "currency": "Rs ",
+              "fine_min": 1000,
+              "fine_max": 1000
+            }
+          }
+        },
+        "drink_driving": {
+          "label": "Driving under influence of alcohol or drugs",
+          "legal_basis": "Motor Vehicles Act, 1988, section 185 as amended.",
+          "source": "https://www.indiacode.nic.in/bitstream/123456789/9460/1/a1988-59.pdf",
+          "vehicles": {
+            "any": {
+              "currency": "Rs ",
+              "fine_min": 10000,
+              "fine_max": 10000,
+              "consequences": ["Possible imprisonment", "Repeat offence can attract higher punishment", "Court appearance may be required"]
+            }
+          }
+        },
+        "no_license": {
+          "label": "Driving without valid licence",
+          "legal_basis": "Motor Vehicles Act, 1988, section 181 as amended.",
+          "source": "https://www.indiacode.nic.in/bitstream/123456789/9460/1/a1988-59.pdf",
+          "vehicles": {
+            "any": {
+              "currency": "Rs ",
+              "fine_min": 5000,
+              "fine_max": 5000,
+              "consequences": ["Vehicle owner may also face liability if they permitted unlicensed driving."]
+            }
+          }
+        },
+        "mobile_phone": {
+          "label": "Dangerous driving or mobile phone use while driving",
+          "legal_basis": "Motor Vehicles Act, 1988, section 184 as amended; local enforcement notices may specify phone-use challans.",
+          "source": "https://www.indiacode.nic.in/bitstream/123456789/9460/1/a1988-59.pdf",
+          "vehicles": {
+            "any": {
+              "currency": "Rs ",
+              "fine_min": 1000,
+              "fine_max": 5000,
+              "consequences": ["Repeat offence can increase penalties or lead to licence action."]
+            }
+          }
+        },
+        "no_insurance": {
+          "label": "Driving uninsured vehicle",
+          "legal_basis": "Motor Vehicles Act, 1988, section 196 as amended.",
+          "source": "https://www.indiacode.nic.in/bitstream/123456789/9460/1/a1988-59.pdf",
+          "vehicles": {
+            "any": {
+              "currency": "Rs ",
+              "fine_min": 2000,
+              "fine_max": 4000,
+              "consequences": ["Possible imprisonment for repeat offences."]
+            }
+          }
+        }
+      }
+    },
+    "delhi": {
+      "name": "Delhi, India",
+      "country": "India",
+      "offences": {
+        "overspeeding": {
+          "label": "Overspeeding",
+          "legal_basis": "Motor Vehicles Act national baseline plus Delhi traffic police compounding/enforcement practice.",
+          "source": "https://traffic.delhipolice.gov.in/",
+          "vehicles": {
+            "light_motor_vehicle": {
+              "currency": "Rs ",
+              "fine_min": 2000,
+              "fine_max": 2000,
+              "caveats": ["Use the current Delhi Traffic Police notice or e-challan portal for the final collected amount."]
+            },
+            "two_wheeler": {
+              "currency": "Rs ",
+              "fine_min": 2000,
+              "fine_max": 2000,
+              "caveats": ["The national light vehicle range may be compounded locally at a fixed rate."]
+            },
+            "heavy_vehicle": {
+              "currency": "Rs ",
+              "fine_min": 4000,
+              "fine_max": 4000
+            }
+          }
+        },
+        "no_helmet": {
+          "label": "Helmet violation",
+          "legal_basis": "Motor Vehicles Act, sections 129 and 194D; Delhi local enforcement.",
+          "source": "https://traffic.delhipolice.gov.in/",
+          "vehicles": {
+            "two_wheeler": {
+              "currency": "Rs ",
+              "fine_min": 1000,
+              "fine_max": 1000,
+              "consequences": ["Possible licence disqualification."]
+            }
+          }
+        }
+      }
+    },
+    "bangladesh_national": {
+      "name": "Bangladesh",
+      "country": "Bangladesh",
+      "offences": {
+        "overspeeding": {
+          "label": "Overspeeding",
+          "legal_basis": "Road Transport Act, 2018; exact schedule must be verified from the latest BRTA/legal text.",
+          "source": "http://bdlaws.minlaw.gov.bd/act-1262.html",
+          "vehicles": {
+            "any": {
+              "amount_display": "Amount requires latest official BRTA schedule verification.",
+              "status": "needs_review",
+              "caveats": ["Starter record included for coverage; do not treat as a final challan amount until reviewed."]
+            }
+          }
+        },
+        "no_license": {
+          "label": "Driving without valid licence",
+          "legal_basis": "Road Transport Act, 2018; driver licensing provisions.",
+          "source": "http://bdlaws.minlaw.gov.bd/act-1262.html",
+          "vehicles": {
+            "any": {
+              "amount_display": "Penalty depends on the current Act/rules and offence facts.",
+              "status": "needs_review"
+            }
+          }
+        }
+      }
+    },
+    "nepal_national": {
+      "name": "Nepal",
+      "country": "Nepal",
+      "offences": {
+        "overspeeding": {
+          "label": "Overspeeding",
+          "legal_basis": "Motor Vehicles and Transport Management Act, 2049 and traffic rules/notices.",
+          "source": "https://lawcommission.gov.np/en/wp-content/uploads/2021/01/Motor-Vehicles-and-Transport-Management-Act-2049-1993.pdf",
+          "vehicles": {
+            "any": {
+              "amount_display": "Amount requires latest traffic police schedule verification.",
+              "status": "needs_review"
+            }
+          }
+        }
+      }
+    },
+    "bhutan_national": {
+      "name": "Bhutan",
+      "country": "Bhutan",
+      "offences": {
+        "overspeeding": {
+          "label": "Overspeeding",
+          "legal_basis": "Road Safety and Transport Act, 1999 and current RSTA rules.",
+          "source": "https://www.rsta.gov.bt/",
+          "vehicles": {
+            "any": {
+              "amount_display": "Amount requires latest RSTA schedule verification.",
+              "status": "needs_review"
+            }
+          }
+        }
+      }
+    },
+    "sri_lanka_national": {
+      "name": "Sri Lanka",
+      "country": "Sri Lanka",
+      "offences": {
+        "overspeeding": {
+          "label": "Overspeeding",
+          "legal_basis": "Motor Traffic Act and current penalty regulations.",
+          "source": "https://www.lawnet.gov.lk/motor-traffic-2/",
+          "vehicles": {
+            "any": {
+              "amount_display": "Amount requires latest police/court fine schedule verification.",
+              "status": "needs_review"
+            }
+          }
+        }
+      }
+    },
+    "thailand_national": {
+      "name": "Thailand",
+      "country": "Thailand",
+      "offences": {
+        "overspeeding": {
+          "label": "Overspeeding",
+          "legal_basis": "Land Traffic Act B.E. 2522 and current Royal Thai Police/regulatory fine schedule. Posted signs and road class control the legal speed.",
+          "source": "https://www.ilo.org/dyn/natlex/docs/ELECTRONIC/71258/76700/F155209158/THA71258%20Eng.pdf",
+          "vehicles": {
+            "light_motor_vehicle": {
+              "amount_display": "Fine amount needs latest Royal Thai Police schedule verification.",
+              "status": "needs_review",
+              "caveats": ["Use the posted speed sign, road type, and current police comparison-fine notice before showing a final challan amount."]
+            },
+            "two_wheeler": {
+              "amount_display": "Fine amount needs latest Royal Thai Police schedule verification.",
+              "status": "needs_review",
+              "caveats": ["Motorcycles may have different access and speed rules on expressways/motorways."]
+            },
+            "heavy_vehicle": {
+              "amount_display": "Fine amount needs latest Royal Thai Police schedule verification.",
+              "status": "needs_review",
+              "caveats": ["Heavy vehicles, buses, trailers, and trucks can have lower speed limits than private cars."]
+            },
+            "any": {
+              "amount_display": "Fine amount needs latest Royal Thai Police schedule verification.",
+              "status": "needs_review"
+            }
+          }
+        },
+        "no_helmet": {
+          "label": "Motorcycle helmet violation",
+          "legal_basis": "Thailand Land Traffic Act / traffic regulations require motorcycle riders and passengers to use protective helmets; verify the latest police fine notice.",
+          "source": "https://www.ilo.org/dyn/natlex/docs/ELECTRONIC/71258/76700/F155209158/THA71258%20Eng.pdf",
+          "vehicles": {
+            "two_wheeler": {
+              "amount_display": "Fine amount needs latest Royal Thai Police schedule verification.",
+              "status": "needs_review",
+              "consequences": ["Police may stop the rider and issue a traffic ticket.", "Passengers can also be part of helmet enforcement depending on the current rule and facts."]
+            },
+            "any": {
+              "amount_display": "Applies mainly to motorcycles and similar two-wheelers.",
+              "status": "not_applicable"
+            }
+          }
+        },
+        "no_seatbelt": {
+          "label": "Seat belt violation",
+          "legal_basis": "Thailand road-safety rules require seat-belt use in vehicles fitted with belts; verify current Land Traffic Act amendments and police fine schedule.",
+          "source": "https://www.ilo.org/dyn/natlex/docs/ELECTRONIC/71258/76700/F155209158/THA71258%20Eng.pdf",
+          "vehicles": {
+            "light_motor_vehicle": {
+              "amount_display": "Fine amount needs latest Royal Thai Police schedule verification.",
+              "status": "needs_review",
+              "caveats": ["Passenger and rear-seat rules may depend on the current amendment and vehicle configuration."]
+            },
+            "any": {
+              "amount_display": "Fine amount needs latest Royal Thai Police schedule verification.",
+              "status": "needs_review"
+            }
+          }
+        },
+        "drink_driving": {
+          "label": "Driving under influence of alcohol or drugs",
+          "legal_basis": "Thailand Land Traffic Act and related regulations prohibit driving while intoxicated; enforcement may involve breath testing, court process, licence suspension, fine, or imprisonment.",
+          "source": "https://www.ilo.org/dyn/natlex/docs/ELECTRONIC/71258/76700/F155209158/THA71258%20Eng.pdf",
+          "vehicles": {
+            "any": {
+              "amount_display": "Court/enforcement outcome depends on BAC, driver category, crash involvement, and current law.",
+              "status": "needs_review",
+              "consequences": ["Possible arrest or court referral", "Possible licence suspension", "Crashes or repeat offences can increase consequences"]
+            }
+          }
+        },
+        "no_license": {
+          "label": "Driving without a valid licence",
+          "legal_basis": "Thailand driver licensing requirements are enforced through traffic and vehicle laws; foreign drivers should confirm IDP/Thai licence validity before travel.",
+          "source": "https://www.dlt.go.th/",
+          "vehicles": {
+            "any": {
+              "amount_display": "Fine amount needs latest Department of Land Transport / police schedule verification.",
+              "status": "needs_review",
+              "caveats": ["Tourists should carry a valid licence accepted in Thailand and passport/ID evidence."]
+            }
+          }
+        },
+        "mobile_phone": {
+          "label": "Unsafe mobile phone use while driving",
+          "legal_basis": "Thailand traffic enforcement treats handheld phone use and distracted driving as safety risks; verify current police fine schedule.",
+          "source": "https://www.royalthaipolice.go.th/",
+          "vehicles": {
+            "any": {
+              "amount_display": "Fine amount needs latest Royal Thai Police schedule verification.",
+              "status": "needs_review",
+              "consequences": ["Use hands-free only where lawful and safe; stop in a safe place for calls or navigation changes."]
+            }
+          }
+        }
+      }
+    },
+    "myanmar_national": {
+      "name": "Myanmar",
+      "country": "Myanmar",
+      "offences": {
+        "overspeeding": {
+          "label": "Overspeeding",
+          "legal_basis": "Vehicle law / traffic rules; current official English source pending legal review.",
+          "source": "https://www.myanmar-law-library.org/law-library/laws-and-regulations/laws/myanmar-laws-1988-until-now/union-solidarity-and-development-party-laws-2010-2016/myanmar-vehicle-law-2015.html",
+          "vehicles": {
+            "any": {
+              "amount_display": "Amount requires latest official schedule verification.",
+              "status": "needs_review"
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,3 @@
+# The MVP runs on the Python standard library.
+# Optional but supported for PDF ingestion:
+pypdf>=4.0.0

@@ -1,0 +1,23 @@
+__pycache__/
+*.py[cod]
+*.log
+.pytest_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Runtime data
+data/raw/downloads/*
+!data/raw/downloads/.gitkeep
+data/processed/*.tmp
+data/feedback.log
+
+# Local model files can be many GB.
+models/*
+!models/.gitkeep
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

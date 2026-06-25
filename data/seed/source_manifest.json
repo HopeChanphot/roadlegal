@@ -1,0 +1,94 @@
+{
+  "sources": [
+    {
+      "id": "who_road_traffic_injuries",
+      "title": "WHO Road traffic injuries fact sheet",
+      "country": "Global",
+      "jurisdiction": "global",
+      "url": "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries",
+      "filename": "who_road_traffic_injuries.html",
+      "source_type": "official_public_health",
+      "tags": ["who", "speed", "helmet", "seatbelt", "drink_driving", "risk"]
+    },
+    {
+      "id": "who_global_status_2023",
+      "title": "WHO Global status report on road safety 2023",
+      "country": "Global",
+      "jurisdiction": "global",
+      "url": "https://www.who.int/publications/i/item/9789240086517",
+      "filename": "who_global_status_report_2023.html",
+      "source_type": "official_public_health",
+      "tags": ["who", "global_status", "bimstec", "fatalities"]
+    },
+    {
+      "id": "india_motor_vehicles_act_1988",
+      "title": "India Motor Vehicles Act, 1988",
+      "country": "India",
+      "jurisdiction": "india_national",
+      "url": "https://www.indiacode.nic.in/bitstream/123456789/9460/1/a1988-59.pdf",
+      "filename": "india_motor_vehicles_act_1988.pdf",
+      "source_type": "official_law",
+      "tags": ["india", "motor_vehicles_act", "speed", "helmet", "seatbelt", "drink_driving", "fine"]
+    },
+    {
+      "id": "bangladesh_road_transport_act_2018",
+      "title": "Bangladesh Road Transport Act, 2018",
+      "country": "Bangladesh",
+      "jurisdiction": "bangladesh_national",
+      "url": "http://bdlaws.minlaw.gov.bd/act-1262.html",
+      "filename": "bangladesh_road_transport_act_2018.html",
+      "source_type": "official_law",
+      "tags": ["bangladesh", "road_transport_act", "license", "penalty", "points"]
+    },
+    {
+      "id": "nepal_motor_vehicle_transport_management_act",
+      "title": "Nepal Motor Vehicles and Transport Management Act, 2049",
+      "country": "Nepal",
+      "jurisdiction": "nepal_national",
+      "url": "https://lawcommission.gov.np/en/wp-content/uploads/2021/01/Motor-Vehicles-and-Transport-Management-Act-2049-1993.pdf",
+      "filename": "nepal_motor_vehicles_transport_management_act_2049.pdf",
+      "source_type": "official_law",
+      "tags": ["nepal", "motor_vehicle", "license", "registration", "penalty"]
+    },
+    {
+      "id": "bhutan_road_safety_transport_act",
+      "title": "Bhutan Road Safety and Transport Act, 1999",
+      "country": "Bhutan",
+      "jurisdiction": "bhutan_national",
+      "url": "https://www.rsta.gov.bt/rstaweb/wp-content/uploads/2018/09/Road-Safety-and-Transport-Act-1999.pdf",
+      "filename": "bhutan_road_safety_transport_act_1999.pdf",
+      "source_type": "official_law",
+      "tags": ["bhutan", "road_safety", "transport", "license", "registration"]
+    },
+    {
+      "id": "sri_lanka_motor_traffic_lawnet",
+      "title": "Sri Lanka Motor Traffic Act reference",
+      "country": "Sri Lanka",
+      "jurisdiction": "sri_lanka_national",
+      "url": "https://www.lawnet.gov.lk/motor-traffic-2/",
+      "filename": "sri_lanka_motor_traffic_act_lawnet.html",
+      "source_type": "official_or_public_legal_reference",
+      "tags": ["sri_lanka", "motor_traffic", "license", "registration"]
+    },
+    {
+      "id": "thailand_land_traffic_act_translation",
+      "title": "Thailand Land Traffic Act reference translation",
+      "country": "Thailand",
+      "jurisdiction": "thailand_national",
+      "url": "https://www.ilo.org/dyn/natlex/docs/ELECTRONIC/71258/76700/F155209158/THA71258%20Eng.pdf",
+      "filename": "thailand_land_traffic_act_translation.pdf",
+      "source_type": "public_translation_needs_legal_review",
+      "tags": ["thailand", "land_traffic", "license", "speed"]
+    },
+    {
+      "id": "myanmar_vehicle_law_reference",
+      "title": "Myanmar Vehicle Law reference",
+      "country": "Myanmar",
+      "jurisdiction": "myanmar_national",
+      "url": "https://www.myanmar-law-library.org/law-library/laws-and-regulations/laws/myanmar-laws-1988-until-now/union-solidarity-and-development-party-laws-2010-2016/myanmar-vehicle-law-2015.html",
+      "filename": "myanmar_vehicle_law_2015_reference.html",
+      "source_type": "public_legal_reference_needs_legal_review",
+      "tags": ["myanmar", "vehicle_law", "license", "registration"]
+    }
+  ]
+}
