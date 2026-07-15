@@ -223,7 +223,7 @@ class RoadLegalRAG:
 
         if retrieved:
             lines.append("Grounded answer:")
-            for item in retrieved[:3]:
+            for item in retrieved[:2]:
                 snippet = self._relevant_snippet(message, item["text"])
                 lines.append(f"- {snippet} [{item['source_title']}]")
         else:
