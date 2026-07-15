@@ -6,35 +6,39 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
 concurrency:
   group: pages
   cancel-in-progress: false
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
       - name: Export static demo data
         run: python scripts/export_static_demo.py
-      - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: web
-
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Publish web directory to gh-pages
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch origin gh-pages
+          git worktree add /tmp/roadlegal-pages origin/gh-pages
+          find /tmp/roadlegal-pages -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf -- {} +
+          cp -R web/. /tmp/roadlegal-pages/
+          touch /tmp/roadlegal-pages/.nojekyll
+          cd /tmp/roadlegal-pages
+          git add -A
+          if git diff --cached --quiet; then
+            echo "Pages content is already current."
+            exit 0
+          fi
+          git commit -m "Deploy RoadLegal ${GITHUB_SHA}"
+          git push origin HEAD:gh-pages
