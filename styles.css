@@ -242,7 +242,6 @@ textarea {
 }
 
 .icon-button,
-.demo-button,
 .send-button,
 .primary-button,
 .secondary-button,
@@ -272,7 +271,7 @@ textarea {
 .system-bar {
   min-height: 58px;
   display: grid;
-  grid-template-columns: minmax(250px, 0.8fr) minmax(420px, 1fr) auto;
+  grid-template-columns: minmax(250px, 0.8fr) minmax(420px, 1fr);
   align-items: center;
   gap: 18px;
   margin-top: 10px;
@@ -353,21 +352,6 @@ textarea {
   overflow: hidden;
   font-size: 11px;
   text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.demo-button {
-  min-height: 38px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 7px;
-  padding: 0 13px;
-  color: var(--forest);
-  background: #ffffff;
-  border: 1px solid #ffffff;
-  font-size: 12px;
-  font-weight: 800;
   white-space: nowrap;
 }
 
@@ -741,6 +725,23 @@ textarea {
   background: var(--coral-soft);
 }
 
+.quiz-heading-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.quiz-restart {
+  width: 30px;
+  min-height: 24px;
+  border-radius: 4px;
+}
+
+.quiz-restart svg {
+  width: 13px;
+  height: 13px;
+}
+
 .status-pill svg {
   width: 12px;
   height: 12px;
@@ -915,6 +916,67 @@ textarea {
   margin-top: 0;
 }
 
+.learning-progress {
+  display: grid;
+  gap: 7px;
+  margin-bottom: 12px;
+  padding: 9px 10px;
+  background: var(--surface-muted);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+}
+
+.learning-progress-copy {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  color: var(--ink-soft);
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.learning-badge {
+  min-width: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--forest);
+  font-weight: 900;
+}
+
+.learning-badge svg {
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+}
+
+.learning-progress-track {
+  height: 6px;
+  overflow: hidden;
+  background: #dfe8e4;
+  border-radius: 3px;
+}
+
+#levelProgressFill {
+  display: block;
+  width: 0;
+  height: 100%;
+  background: var(--green);
+  border-radius: inherit;
+  transition: width 180ms ease;
+}
+
+.quiz-round {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--blue);
+  font-size: 9px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
 .quiz-box > strong {
   display: block;
   color: var(--ink);
@@ -952,10 +1014,70 @@ textarea {
   border-color: #daa397;
 }
 
-#quizExplanation {
+.quiz-feedback {
+  display: grid;
+  gap: 8px;
   margin-top: 10px;
+}
+
+.quiz-feedback:empty {
+  display: none;
+}
+
+.quiz-feedback-message {
+  display: grid;
+  gap: 5px;
+  padding: 9px 10px;
   color: var(--ink-soft);
+  background: var(--surface);
+  border-left: 4px solid var(--line-strong);
+  border-radius: 4px;
   font-size: 10px;
+}
+
+.quiz-feedback-message strong,
+.quiz-feedback-message strong svg {
+  color: var(--ink);
+}
+
+.quiz-feedback-message strong {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.quiz-feedback-message strong svg {
+  width: 14px;
+  height: 14px;
+}
+
+.quiz-feedback-message.success {
+  border-left-color: var(--green);
+}
+
+.quiz-feedback-message.review {
+  border-left-color: var(--amber);
+}
+
+.quiz-feedback-message.neutral {
+  border-left-color: var(--blue);
+}
+
+.level-unlocked {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 9px;
+  color: #7a4b08;
+  background: #fff3d8;
+  border: 1px solid #e7c36e;
+  border-radius: 5px;
+  font-size: 10px;
+}
+
+.level-unlocked svg {
+  width: 15px;
+  height: 15px;
 }
 
 .directory-box {
@@ -1038,10 +1160,6 @@ textarea {
   border-color: #0d604d;
 }
 
-.demo-button:hover {
-  transform: translateY(-1px);
-}
-
 @media (max-width: 1180px) {
   .app-header {
     grid-template-columns: auto 1fr;
@@ -1063,7 +1181,7 @@ textarea {
   }
 
   .system-bar {
-    grid-template-columns: minmax(220px, 0.75fr) minmax(360px, 1fr) auto;
+    grid-template-columns: minmax(220px, 0.75fr) minmax(360px, 1fr);
   }
 }
 
@@ -1123,7 +1241,7 @@ textarea {
   }
 
   .system-bar {
-    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-columns: minmax(0, 1fr);
     gap: 10px;
     padding: 9px 10px;
   }
@@ -1131,13 +1249,6 @@ textarea {
   .system-metrics {
     grid-column: 1 / -1;
     grid-row: 2;
-  }
-
-  .demo-button {
-    grid-column: 2;
-    grid-row: 1;
-    padding: 0 9px;
-    font-size: 10px;
   }
 
   .workspace {

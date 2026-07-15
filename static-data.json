@@ -512,7 +512,7 @@
         "overspeeding": {
           "topic": "overspeeding",
           "title": "Speed limits and overspeeding in India",
-          "summary": "The packaged verified schedule for India reports Rs 1,000 - Rs 2,000 for this demo case.",
+          "summary": "The packaged verified schedule for India reports Rs 1,000 - Rs 2,000 for this selected case.",
           "rules": [
             "Motor Vehicles Act, 1988, section 183 as amended; state compounding rules may vary.",
             "Motor Vehicles Act, 1988, as amended, together with central rules and state or local enforcement schedules.",
@@ -555,7 +555,7 @@
         "no_helmet": {
           "topic": "no_helmet",
           "title": "Motorcycle helmet rule in India",
-          "summary": "The packaged verified schedule for India reports Rs 1,000 for this demo case.",
+          "summary": "The packaged verified schedule for India reports Rs 1,000 for this selected case.",
           "rules": [
             "Motor Vehicles Act, 1988, sections 129 and 194D as amended.",
             "Motor Vehicles Act, 1988, as amended, together with central rules and state or local enforcement schedules.",
@@ -598,7 +598,7 @@
         "no_seatbelt": {
           "topic": "no_seatbelt",
           "title": "Seat-belt and occupant protection rule in India",
-          "summary": "The packaged verified schedule for India reports Rs 1,000 for this demo case.",
+          "summary": "The packaged verified schedule for India reports Rs 1,000 for this selected case.",
           "rules": [
             "Motor Vehicles Act, 1988, section 194B as amended; vehicle safety rules also apply.",
             "Motor Vehicles Act, 1988, as amended, together with central rules and state or local enforcement schedules.",
@@ -639,7 +639,7 @@
         "drink_driving": {
           "topic": "drink_driving",
           "title": "Drink-driving and impairment in India",
-          "summary": "The packaged verified schedule for India reports Rs 10,000 for this demo case.",
+          "summary": "The packaged verified schedule for India reports Rs 10,000 for this selected case.",
           "rules": [
             "Motor Vehicles Act, 1988, section 185 as amended.",
             "Motor Vehicles Act, 1988, as amended, together with central rules and state or local enforcement schedules.",
@@ -684,7 +684,7 @@
         "mobile_phone": {
           "topic": "mobile_phone",
           "title": "Mobile phone and distracted driving in India",
-          "summary": "The packaged verified schedule for India reports Rs 1,000 - Rs 5,000 for this demo case.",
+          "summary": "The packaged verified schedule for India reports Rs 1,000 - Rs 5,000 for this selected case.",
           "rules": [
             "Motor Vehicles Act, 1988, section 184 as amended; local enforcement notices may specify phone-use challans.",
             "Motor Vehicles Act, 1988, as amended, together with central rules and state or local enforcement schedules.",
@@ -727,7 +727,7 @@
         "no_license": {
           "topic": "no_license",
           "title": "Driving-licence requirement in India",
-          "summary": "The packaged verified schedule for India reports Rs 5,000 for this demo case.",
+          "summary": "The packaged verified schedule for India reports Rs 5,000 for this selected case.",
           "rules": [
             "Motor Vehicles Act, 1988, section 181 as amended.",
             "Motor Vehicles Act, 1988, as amended, together with central rules and state or local enforcement schedules.",
@@ -853,7 +853,7 @@
         "scenario": {
           "topic": "scenario",
           "title": "India safety scenario",
-          "summary": "In India, why does the challan calculator ask for vehicle class on overspeeding?",
+          "summary": "In India, why does the challan / ticket calculator ask for vehicle class on overspeeding?",
           "rules": [
             "Best choice: Fines can differ by light and heavy vehicle class",
             "The structured calculator separates light, two-wheeler, and heavy vehicle cases where the law or compounding schedule differs."
@@ -900,7 +900,7 @@
         "overspeeding": {
           "topic": "overspeeding",
           "title": "Speed limits and overspeeding in Delhi, India",
-          "summary": "The packaged verified schedule for Delhi, India reports Rs 2,000 for this demo case.",
+          "summary": "The packaged verified schedule for Delhi, India reports Rs 2,000 for this selected case.",
           "rules": [
             "Motor Vehicles Act national baseline plus Delhi traffic police compounding/enforcement practice.",
             "India's Motor Vehicles Act and central rules, applied with Delhi traffic notifications and compounding practice.",
@@ -943,7 +943,7 @@
         "no_helmet": {
           "topic": "no_helmet",
           "title": "Motorcycle helmet rule in Delhi, India",
-          "summary": "The packaged verified schedule for Delhi, India reports Rs 1,000 for this demo case.",
+          "summary": "The packaged verified schedule for Delhi, India reports Rs 1,000 for this selected case.",
           "rules": [
             "Motor Vehicles Act, sections 129 and 194D; Delhi local enforcement.",
             "India's Motor Vehicles Act and central rules, applied with Delhi traffic notifications and compounding practice.",
@@ -2572,7 +2572,7 @@
         "overspeeding": {
           "topic": "overspeeding",
           "title": "Speed limits and overspeeding in Thailand",
-          "summary": "The packaged verified schedule for Thailand reports Up to THB 4,000 for this demo case.",
+          "summary": "The packaged verified schedule for Thailand reports Up to THB 4,000 for this selected case.",
           "rules": [
             "Land Traffic Act B.E. 2522 and current Royal Thai Police/regulatory fine schedule. Posted signs and road class control the legal speed.",
             "Land Traffic Act and amendments, Royal Thai Police enforcement notices, and Department of Land Transport requirements.",
@@ -2632,7 +2632,7 @@
         "no_helmet": {
           "topic": "no_helmet",
           "title": "Motorcycle helmet rule in Thailand",
-          "summary": "The packaged verified schedule for Thailand reports Up to THB 2,000 for this demo case.",
+          "summary": "The packaged verified schedule for Thailand reports Up to THB 2,000 for this selected case.",
           "rules": [
             "Thailand Land Traffic Act amendments effective 5 September 2022 require motorcycle helmet use and increased the maximum fine.",
             "Land Traffic Act and amendments, Royal Thai Police enforcement notices, and Department of Land Transport requirements.",
@@ -2693,7 +2693,7 @@
         "no_seatbelt": {
           "topic": "no_seatbelt",
           "title": "Seat-belt and occupant protection rule in Thailand",
-          "summary": "The packaged verified schedule for Thailand reports Up to THB 2,000 for this demo case.",
+          "summary": "The packaged verified schedule for Thailand reports Up to THB 2,000 for this selected case.",
           "rules": [
             "Thailand Land Traffic Act amendments effective 5 September 2022 require seat-belt use in covered seating positions and increased the maximum fine.",
             "Land Traffic Act and amendments, Royal Thai Police enforcement notices, and Department of Land Transport requirements.",
@@ -2736,7 +2736,7 @@
         "drink_driving": {
           "topic": "drink_driving",
           "title": "Drink-driving and impairment in Thailand",
-          "summary": "The packaged verified schedule for Thailand reports First offence: THB 5,000 - 20,000; repeat within 2 years: THB 50,000 - 100,000 for this demo case.",
+          "summary": "The packaged verified schedule for Thailand reports First offence: THB 5,000 - 20,000; repeat within 2 years: THB 50,000 - 100,000 for this selected case.",
           "rules": [
             "Thailand Land Traffic Act and related regulations prohibit driving while intoxicated; enforcement may involve breath testing, court process, licence suspension, fine, or imprisonment.",
             "Land Traffic Act and amendments, Royal Thai Police enforcement notices, and Department of Land Transport requirements.",
@@ -25327,7 +25327,7 @@
       "questions": [
         {
           "id": "india_speed_1",
-          "question": "In India, why does the challan calculator ask for vehicle class on overspeeding?",
+          "question": "In India, why does the challan / ticket calculator ask for vehicle class on overspeeding?",
           "options": [
             "Fines can differ by light and heavy vehicle class",
             "Vehicle class never matters",
