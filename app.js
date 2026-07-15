@@ -976,11 +976,13 @@ function answerQuiz(index, question) {
 
 function restartQuiz() {
   state.quizIndex = 0;
+  state.score = 0;
+  localStorage.setItem("roadlegal_score", "0");
   renderQuiz();
   $("quizFeedback").innerHTML = `
     <div class="quiz-feedback-message neutral">
       <strong><i data-lucide="rotate-ccw" aria-hidden="true"></i> Quiz restarted</strong>
-      <p>Your score and learning badge are saved. Start again from question 1.</p>
+      <p>Your score and learning level were reset. Start again from question 1.</p>
     </div>
   `;
   window.lucide?.createIcons();
