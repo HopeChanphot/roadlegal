@@ -3,12 +3,9 @@ title: RoadLegal BIMSTEC
 emoji: 🚦
 colorFrom: green
 colorTo: red
-sdk: docker
-app_port: 7860
+sdk: gradio
 models:
-  - Qwen/Qwen3-0.6B-GGUF
-preload_from_hub:
-  - Qwen/Qwen3-0.6B-GGUF Qwen3-0.6B-Q8_0.gguf
+  - Qwen/Qwen3-0.6B
 ---
 
 # RoadLegal
@@ -23,7 +20,7 @@ The current build is a runnable MVP designed for demo and extension:
 - Installable service-worker cache for the complete browser demo, including the UI, icons, 909-passage knowledge base, country packs, calculator data, directory, and quizzes.
 - Hybrid BM25+ RAG over 909 local passages with Unicode query expansion, source-quality weighting, and strict country isolation.
 - Starter BIMSTEC legal/safety seed data plus expanded Thailand road-law/game content and a downloader for official source documents.
-- Persistent Qwen3-0.6B GGUF generation through `llama-cpp-python`, with verified model download and answer caching.
+- Live Qwen3-0.6B generation on Hugging Face's quota-free CPU path through a queued Gradio API, plus local GGUF support through `llama.cpp`.
 - Evidence validation for generated numbers, citations, and high-risk consequences before an AI answer is shown.
 - Extractive RAG fallback when no runnable GGUF model is present.
 
@@ -77,9 +74,9 @@ The workflow in `.github/workflows/pages.yml` deploys the `web/` folder. The sta
 
 ### Option B: Cloud AI Backend
 
-The primary free AI target is a Hugging Face Docker Space. Add a GitHub Actions secret named `HF_TOKEN`, then run `Deploy AI Backend to Hugging Face Space`. The workflow creates or updates `HopeChanphot/roadlegal`; complete instructions are in [Cloud AI Deployment](docs/CLOUD_AI_DEPLOYMENT.md).
+The primary free AI target is the public Hugging Face Gradio Space [`chanphot/roadlegal`](https://huggingface.co/spaces/chanphot/roadlegal). Add a GitHub Actions secret named `HF_TOKEN`, then run `Deploy AI Backend to Hugging Face Space`; complete instructions are in [Cloud AI Deployment](docs/CLOUD_AI_DEPLOYMENT.md).
 
-- Hugging Face Spaces: free 2-vCPU/16-GB CPU host for Qwen3-0.6B.
+- Hugging Face Spaces: quota-free CPU generation with Qwen3-0.6B and an immediate extractive-RAG fallback.
 - Render: connect the GitHub repo using `render.yaml`; use an instance with enough memory.
 - Railway: connect the repo; `railway.json` and `Dockerfile` are included.
 - Any Docker host:

@@ -680,14 +680,14 @@ Workflow:
 .github/workflows/pages.yml
 ```
 
-### 12.3 Hugging Face Docker Space
+### 12.3 Hugging Face Gradio Space
 
-The primary cloud target is `HopeChanphot/roadlegal`. Add a GitHub repository secret named `HF_TOKEN` with Hugging Face write permission, then manually run `.github/workflows/huggingface-space.yml`. The workflow creates or updates the Docker Space, preloads Qwen3-0.6B, and exposes `/api/health` on port 7860.
+The primary cloud target is `chanphot/roadlegal`. Add a GitHub repository secret named `HF_TOKEN` with Hugging Face write permission, then manually run `.github/workflows/huggingface-space.yml`. The workflow creates or updates the Gradio Space, exposes the REST health and data routes, and runs Qwen3-0.6B generation through the named queued CPU endpoint `/chat`.
 
 The GitHub Pages frontend is configured to call:
 
 ```text
-https://hopechanphot-roadlegal.hf.space
+https://chanphot-roadlegal.hf.space
 ```
 
 Free Spaces sleep after inactivity. The frontend times out quickly and continues with its packaged offline index while the model host wakes.

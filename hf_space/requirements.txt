@@ -1,0 +1,5 @@
+fastapi>=0.115,<1
+gradio>=6.20,<7
+requests>=2.32,<3
+transformers>=5.0,<6
+uvicorn[standard]>=0.34,<1

@@ -11,6 +11,7 @@ from roadlegal.rag import RoadLegalRAG
 ROOT = Path(__file__).resolve().parents[1]
 STATIC_DATA = ROOT / "web" / "static-data.json"
 SERVICE_WORKER = ROOT / "web" / "sw.js"
+HF_SPACE_APP = ROOT / "hf_space" / "app.py"
 
 
 class RoadLegalTests(unittest.TestCase):
@@ -84,6 +85,14 @@ class RoadLegalTests(unittest.TestCase):
         fine = rag._maybe_calculate("Thailand overspeeding rules", "thailand_national")
         self.assertFalse(rag._generation_is_grounded("Speeding leads to imprisonment [S1].", results, fine))
 
+    def test_generation_guard_allows_list_numbering_but_rejects_invented_fines(self):
+        rag = RoadLegalRAG()
+        results = rag.search("helmet Thailand", jurisdiction="thailand_national", k=2)
+        fine = rag._maybe_calculate("helmet fine", "thailand_national")
+        self.assertTrue(rag._generation_is_grounded("1. Wear a fastened helmet [S1].", results, fine))
+        self.assertFalse(rag._generation_is_grounded("The fine is THB 9,999 [S1].", results, fine))
+        self.assertFalse(rag._generation_is_grounded("[S1] Source title | status=verified_source [S2]", results, fine))
+
     def test_offline_demo_has_complete_country_answer_packs(self):
         payload = json.loads(STATIC_DATA.read_text(encoding="utf-8"))
         packs = payload["offline_answers"]
@@ -134,6 +143,16 @@ class RoadLegalTests(unittest.TestCase):
             self.assertIn(asset, worker)
         self.assertIn("caches.open", worker)
         self.assertIn("self.skipWaiting", worker)
+
+    def test_hugging_face_space_exposes_live_ai_contract(self):
+        source = HF_SPACE_APP.read_text(encoding="utf-8")
+        self.assertIn('MODEL_ID = os.environ.get("ROADLEGAL_TRANSFORMERS_MODEL", "Qwen/Qwen3-0.6B")', source)
+        self.assertIn('@app.get("/api/health")', source)
+        self.assertIn('@app.post("/api/chat")', source)
+        self.assertIn('@app.post("/api/calculate-challan")', source)
+        self.assertIn("RAG.llm = TransformersRuntime()", source)
+        self.assertIn("app = gr.Server()", source)
+        self.assertIn('@app.api(name="chat", concurrency_limit=1)', source)
 
 
 if __name__ == "__main__":

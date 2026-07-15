@@ -309,6 +309,7 @@ class RoadLegalRAG:
         return (
             "Answer the road-law question using only the supplied sources and fine record. "
             "Be concise, use the selected language, and cite claims as [S1], [S2], etc. "
+            "Write a direct answer and never repeat source headers, metadata, or status fields. "
             "Never invent a fine, section, limit, phone number, or enforcement outcome. "
             "When a record says needs_review, clearly say the amount requires official verification. "
             "If evidence is insufficient, say what is missing. Do not provide legal advice. /no_think\n\n"
@@ -388,11 +389,21 @@ class RoadLegalRAG:
     def _generation_is_grounded(
         generated: str, retrieved: list[dict[str, Any]], fine: dict[str, Any] | None
     ) -> bool:
+        if "| status=" in generated.casefold() or "fine estimate:" in generated.casefold():
+            return False
         evidence = " ".join(item["text"] for item in retrieved[:2]) + " " + json.dumps(fine or {}, ensure_ascii=False)
         evidence_folded = evidence.casefold().replace(",", "")
         without_citations = re.sub(r"\[S\d+\]", "", generated)
-        for number in re.findall(r"\b\d+(?:[.,]\d+)*\b", without_citations):
-            if number.replace(",", "") not in evidence_folded:
+        high_stakes_numbers = re.findall(
+            r"(?:[$฿₹]|\b(?:thb|inr|bdt|npr|lkr|mmk|btn)\s*)\d[\d,.]*"
+            r"|\b\d[\d,.]*\s*(?:km/h|kph|%|percent|mg|g/l|baht|rupees?|taka|kyat|ngultrum)\b",
+            without_citations,
+            flags=re.IGNORECASE,
+        )
+        for claim in high_stakes_numbers:
+            number_match = re.search(r"\d[\d,.]*", claim)
+            number = number_match.group(0).replace(",", "") if number_match else ""
+            if number and number not in evidence_folded:
                 return False
         risky_terms = (
             "imprison",

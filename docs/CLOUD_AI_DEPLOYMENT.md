@@ -5,12 +5,12 @@
 RoadLegal uses two cooperating deployments:
 
 - GitHub Pages serves the resilient frontend and packaged static RAG fallback.
-- A Hugging Face Docker Space runs the Python API, persistent `llama.cpp` model, hybrid retriever, calculator, quizzes, and feedback endpoint.
+- A Hugging Face Gradio Space runs the Python API, queued Qwen3-0.6B model, hybrid retriever, calculator, quizzes, and feedback endpoint.
 
 The frontend endpoint is configured in `web/config.js`. It currently targets:
 
 ```text
-https://hopechanphot-roadlegal.hf.space
+https://chanphot-roadlegal.hf.space
 ```
 
 If the API cannot answer within five seconds during startup, the page switches to its local 909-passage static index. A later refresh reconnects after a sleeping Space has awakened.
@@ -29,19 +29,19 @@ If the API cannot answer within five seconds during startup, the page switches t
 - Output cap: 128 tokens
 - Mode: non-thinking, low-temperature grounded synthesis
 
-The Docker image preloads the model from Hugging Face and warms it in a background thread. Common structured fine questions bypass generation and use the verified calculator directly, which reduces latency and avoids model arithmetic errors.
+The Gradio Space loads Qwen3-0.6B on the first queued generative request. The public `/chat` function uses the Space's CPU path and does not request ZeroGPU, so judges do not need a Hugging Face account or GPU quota. Common structured fine questions bypass generation and use the verified calculator directly, which reduces latency and avoids model arithmetic errors. If generation is unavailable or fails the grounding guard, extractive RAG returns a cited answer instead of inventing a result.
 
 ## First deployment
 
-1. Create or sign in to a Hugging Face account. The default workflow expects the username `HopeChanphot`.
+1. Create or sign in to a Hugging Face account. The current public Space owner is `chanphot`.
 2. Create a Hugging Face access token with repository write permission.
 3. In `HopeChanphot/roadlegal` on GitHub, open `Settings -> Secrets and variables -> Actions`.
 4. Create a repository secret named `HF_TOKEN` containing that token.
 5. Open `Actions -> Deploy AI Backend to Hugging Face Space -> Run workflow`.
-6. Keep the default Space id `HopeChanphot/roadlegal`, or enter the actual Hugging Face owner and name.
-7. Wait for the Docker build and verify `https://hopechanphot-roadlegal.hf.space/api/health`.
+6. Keep the default Space id `chanphot/roadlegal`, or enter another Hugging Face owner and name.
+7. Wait for the Gradio build and verify `https://chanphot-roadlegal.hf.space/api/health`.
 
-The workflow creates the Docker Space if necessary and uploads the application without local models, raw downloads, `.git`, or deliverables. Hugging Face preloads the official model into its cache.
+The workflow creates the Gradio Space if necessary and uploads the small `hf_space/` deployment bundle. The running app downloads the versioned RoadLegal source archive and the official Qwen model when needed.
 
 If the Space owner or name changes, update `apiBase` in `web/config.js`, run `scripts/export_static_demo.py`, commit, and push to GitHub.
 
@@ -71,7 +71,7 @@ Measured on the development computer with the 0.6B Q8 model:
 - Grounded generation: approximately 10 seconds cold and 7 seconds warm.
 - Repeated cached answer: below 1 ms.
 
-Free cloud CPU performance can differ. Hugging Face CPU Basic currently provides two vCPU and 16 GB RAM and may sleep after inactivity. The first request after sleep can therefore take longer than a warm request.
+Free cloud performance can differ and the Space may sleep after inactivity. The first generative request after sleep can therefore take longer than a warm request; calculator and extractive-RAG responses remain fast.
 
 ## Alternative hosts
 

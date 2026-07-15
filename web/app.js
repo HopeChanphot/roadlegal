@@ -121,6 +121,44 @@ let backendAvailable = true;
 let backendRetryTimer = null;
 let staticDataPromise = null;
 
+async function queuedAIChat(options, signal) {
+  const payload = JSON.parse(options.body || "{}");
+  const submission = await fetch(`${apiBase}/gradio_api/call/chat`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      data: [
+        payload.message || "",
+        payload.jurisdiction || "india_national",
+        payload.language || "English"
+      ]
+    }),
+    signal
+  });
+  if (!submission.ok) throw new Error(`AI queue unavailable (${submission.status})`);
+  const { event_id: eventId } = await submission.json();
+  if (!eventId) throw new Error("AI queue did not return an event id");
+
+  const events = await fetch(`${apiBase}/gradio_api/call/chat/${eventId}`, {
+    headers: { Accept: "text/event-stream" },
+    signal
+  });
+  if (!events.ok) throw new Error(`AI response unavailable (${events.status})`);
+  const eventText = await events.text();
+  const eventLines = eventText.split(/\r?\n/);
+  const completeIndex = eventLines.findIndex((line) => line.trim() === "event: complete");
+  const dataLine = completeIndex >= 0
+    ? eventLines.slice(completeIndex + 1).find((line) => line.startsWith("data:"))
+    : null;
+  if (!dataLine) {
+    const detail = eventText.slice(-240).replace(/\s+/g, " ").trim() || "empty event stream";
+    throw new Error(`AI queue finished without a complete answer: ${detail}`);
+  }
+  const envelope = JSON.parse(dataLine.slice(5).trim());
+  const raw = Array.isArray(envelope) ? envelope[0] : envelope;
+  return typeof raw === "string" ? JSON.parse(raw) : raw;
+}
+
 const offenceAliases = {
   speed: "overspeeding",
   speeding: "overspeeding",
@@ -180,19 +218,26 @@ async function api(path, options = {}) {
   if (state.runtime === "offline") {
     return staticApi(path, options);
   }
-  if (backendAvailable) {
+  const forceQueuedChat = path.endsWith("/api/chat") && apiBase.includes(".hf.space");
+  if (backendAvailable || forceQueuedChat) {
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), path.endsWith("/api/chat") ? 90000 : 5000);
     try {
-      const response = await fetch(`${apiBase}${path}`, {
-        headers: { "Content-Type": "application/json" },
-        signal: controller.signal,
-        ...options
-      });
-      if (!response.ok) {
-        throw new Error(response.statusText);
+      let result;
+      if (forceQueuedChat) {
+        result = await queuedAIChat(options, controller.signal);
+      } else {
+        const response = await fetch(`${apiBase}${path}`, {
+          headers: { "Content-Type": "application/json" },
+          signal: controller.signal,
+          ...options
+        });
+        if (!response.ok) {
+          throw new Error(response.statusText);
+        }
+        result = await response.json();
       }
-      const result = await response.json();
+      backendAvailable = true;
       state.backendState = result.model?.loaded === false ? "warming" : "live";
       updateRuntimeUI();
       return result;

@@ -1,4 +1,4 @@
-const CACHE_NAME = "roadlegal-offline-v5";
+const CACHE_NAME = "roadlegal-offline-v10";
 const APP_SHELL = [
   "./",
   "./index.html",

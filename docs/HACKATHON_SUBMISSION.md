@@ -41,7 +41,7 @@ https://hopechanphot.github.io/roadlegal/
 
 The mode switch is deliberately visible. It lets judges distinguish deterministic offline readiness from model-generated live RAG instead of treating an unavailable cloud endpoint as an application failure.
 
-For public demos, GitHub Pages serves the frontend and its packaged offline RAG data. The production frontend can call the Hugging Face Docker Space, where the Python API, full RAG pipeline, and small Qwen model run. If the API is sleeping or unavailable, the browser keeps the deterministic prepared-answer experience available. Render and Railway remain Docker alternatives.
+For public demos, GitHub Pages serves the frontend and its packaged offline RAG data. The production frontend calls the public Hugging Face Gradio Space at `https://chanphot-roadlegal.hf.space`, where the Python API, full RAG pipeline, and Qwen3-0.6B run through a queued CPU endpoint without a per-visitor GPU quota. If the API is sleeping or unavailable, the browser keeps the deterministic prepared-answer experience available. Render and Railway remain Docker alternatives.
 
 Demo queries:
 
