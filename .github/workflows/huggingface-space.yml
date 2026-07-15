@@ -1,0 +1,27 @@
+name: Deploy AI Backend to Hugging Face Space
+
+on:
+  workflow_dispatch:
+    inputs:
+      space_id:
+        description: Hugging Face Space id (owner/name)
+        required: true
+        default: HopeChanphot/roadlegal
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install Hugging Face deployment client
+        run: pip install "huggingface-hub>=0.33,<2.0"
+      - name: Create or update Docker Space
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: python scripts/deploy_hf_space.py "${{ inputs.space_id }}"

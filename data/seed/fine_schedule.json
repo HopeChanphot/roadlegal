@@ -258,37 +258,37 @@
         "overspeeding": {
           "label": "Overspeeding",
           "legal_basis": "Land Traffic Act B.E. 2522 and current Royal Thai Police/regulatory fine schedule. Posted signs and road class control the legal speed.",
-          "source": "https://www.ilo.org/dyn/natlex/docs/ELECTRONIC/71258/76700/F155209158/THA71258%20Eng.pdf",
+          "source": "https://region2.prd.go.th/th/content/category/detail/id/1169/iid/118650",
           "vehicles": {
             "light_motor_vehicle": {
-              "amount_display": "Fine amount needs latest Royal Thai Police schedule verification.",
-              "status": "needs_review",
-              "caveats": ["Use the posted speed sign, road type, and current police comparison-fine notice before showing a final challan amount."]
+              "amount_display": "Up to THB 4,000",
+              "status": "verified",
+              "caveats": ["This is the statutory maximum reported by Thailand's Government Public Relations Department for the amendment effective 5 September 2022; the issued amount can depend on the facts and current police schedule."]
             },
             "two_wheeler": {
-              "amount_display": "Fine amount needs latest Royal Thai Police schedule verification.",
-              "status": "needs_review",
+              "amount_display": "Up to THB 4,000",
+              "status": "verified",
               "caveats": ["Motorcycles may have different access and speed rules on expressways/motorways."]
             },
             "heavy_vehicle": {
-              "amount_display": "Fine amount needs latest Royal Thai Police schedule verification.",
-              "status": "needs_review",
+              "amount_display": "Up to THB 4,000",
+              "status": "verified",
               "caveats": ["Heavy vehicles, buses, trailers, and trucks can have lower speed limits than private cars."]
             },
             "any": {
-              "amount_display": "Fine amount needs latest Royal Thai Police schedule verification.",
-              "status": "needs_review"
+              "amount_display": "Up to THB 4,000",
+              "status": "verified"
             }
           }
         },
         "no_helmet": {
           "label": "Motorcycle helmet violation",
-          "legal_basis": "Thailand Land Traffic Act / traffic regulations require motorcycle riders and passengers to use protective helmets; verify the latest police fine notice.",
-          "source": "https://www.ilo.org/dyn/natlex/docs/ELECTRONIC/71258/76700/F155209158/THA71258%20Eng.pdf",
+          "legal_basis": "Thailand Land Traffic Act amendments effective 5 September 2022 require motorcycle helmet use and increased the maximum fine.",
+          "source": "https://region2.prd.go.th/th/content/category/detail/id/1169/iid/118650",
           "vehicles": {
             "two_wheeler": {
-              "amount_display": "Fine amount needs latest Royal Thai Police schedule verification.",
-              "status": "needs_review",
+              "amount_display": "Up to THB 2,000",
+              "status": "verified",
               "consequences": ["Police may stop the rider and issue a traffic ticket.", "Passengers can also be part of helmet enforcement depending on the current rule and facts."]
             },
             "any": {
@@ -299,29 +299,30 @@
         },
         "no_seatbelt": {
           "label": "Seat belt violation",
-          "legal_basis": "Thailand road-safety rules require seat-belt use in vehicles fitted with belts; verify current Land Traffic Act amendments and police fine schedule.",
-          "source": "https://www.ilo.org/dyn/natlex/docs/ELECTRONIC/71258/76700/F155209158/THA71258%20Eng.pdf",
+          "legal_basis": "Thailand Land Traffic Act amendments effective 5 September 2022 require seat-belt use in covered seating positions and increased the maximum fine.",
+          "source": "https://region2.prd.go.th/th/content/category/detail/id/1169/iid/118650",
           "vehicles": {
             "light_motor_vehicle": {
-              "amount_display": "Fine amount needs latest Royal Thai Police schedule verification.",
-              "status": "needs_review",
+              "amount_display": "Up to THB 2,000",
+              "status": "verified",
               "caveats": ["Passenger and rear-seat rules may depend on the current amendment and vehicle configuration."]
             },
             "any": {
-              "amount_display": "Fine amount needs latest Royal Thai Police schedule verification.",
-              "status": "needs_review"
+              "amount_display": "Up to THB 2,000",
+              "status": "verified"
             }
           }
         },
         "drink_driving": {
           "label": "Driving under influence of alcohol or drugs",
           "legal_basis": "Thailand Land Traffic Act and related regulations prohibit driving while intoxicated; enforcement may involve breath testing, court process, licence suspension, fine, or imprisonment.",
-          "source": "https://www.ilo.org/dyn/natlex/docs/ELECTRONIC/71258/76700/F155209158/THA71258%20Eng.pdf",
+          "source": "https://region2.prd.go.th/th/content/category/detail/id/1169/iid/118650",
           "vehicles": {
             "any": {
-              "amount_display": "Court/enforcement outcome depends on BAC, driver category, crash involvement, and current law.",
-              "status": "needs_review",
-              "consequences": ["Possible arrest or court referral", "Possible licence suspension", "Crashes or repeat offences can increase consequences"]
+              "amount_display": "First offence: THB 5,000 - 20,000; repeat within 2 years: THB 50,000 - 100,000",
+              "status": "verified",
+              "consequences": ["First offence can include imprisonment up to 1 year", "Repeat within 2 years can include imprisonment up to 2 years", "Drink-driving deducts 4 of the 12 driver points under the points system"],
+              "caveats": ["BAC, driver category, crash involvement, injury, refusal, and later amendments can change the charge or court outcome."]
             }
           }
         },

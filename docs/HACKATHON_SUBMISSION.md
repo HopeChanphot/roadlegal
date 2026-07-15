@@ -24,7 +24,7 @@ Open:
 http://127.0.0.1:8000
 ```
 
-For public demos, deploy the static GitHub Pages build. It uses packaged browser-side RAG data and does not need a Python server. For a full backend demo, deploy the repo to Render or Railway using the included `render.yaml`, `railway.json`, `Dockerfile`, and `Procfile`.
+For public demos, GitHub Pages serves the frontend and its packaged offline RAG data. The configured production frontend calls the Hugging Face Docker Space first, where the Python API, full RAG pipeline, and small Qwen model run. If the API is sleeping or unavailable, the browser falls back to local static retrieval. Render and Railway remain Docker alternatives.
 
 Demo queries:
 
@@ -35,26 +35,26 @@ Demo queries:
 - Switch the menu to Thailand, then ask: What are Thailand helmet rules for scooter passengers?
 - Switch the menu to Thailand and play the quiz; it now loads Thailand-specific scenarios.
 
-## Local Model Status
+## Small Model Status
 
-Detected on this machine:
+The completed AI backend uses the official Apache-2.0 `Qwen/Qwen3-0.6B-GGUF` model, file `Qwen3-0.6B-Q8_0.gguf`. The 639 MB artifact is checksum-verified by `scripts/download_model.py` and loaded once per server process through `llama-cpp-python`.
 
-- `llama-cli.exe`
-- `llama-server.exe`
-- cached Hugging Face `Llama-3.2-3B-Instruct` safetensors
-
-The current app runs in extractive RAG mode because `llama.cpp` requires GGUF weights. Put a quantized GGUF model in `models/` or set `ROADLEGAL_GGUF_MODEL` to enable generative RAG.
+Measured on the development machine, model loading takes about 1.4 seconds. Structured challan answers bypass free-form generation and return in milliseconds; grounded generative answers take about 7-11 seconds when warm and are then cached. If model loading fails, the same API remains usable in deterministic extractive RAG mode.
 
 ## RAG Corpus
 
-The downloader successfully fetched:
+The downloader successfully fetched official or authoritative material including:
 
 - WHO road traffic injuries fact sheet
 - WHO global status report publication page
+- WHO 2023 road-safety country profiles for all seven BIMSTEC countries
 - India Motor Vehicles Act, 1988 PDF
 - Bangladesh Road Transport Act, 2018 page
+- Bhutan Road Safety and Transport Act and 2021 Regulations
+- Thailand PRD traffic penalties and driver-points notices
+- Thailand Department of Land Transport motorcycle safety guidance
 
-The processed index currently contains 658 passages. Thailand now has expanded seed passages and game content. Other BIMSTEC jurisdictions are represented by seed records marked `needs_review` until updated official documents are ingested and reviewed.
+The processed index currently contains 909 passages. Retrieval is Unicode-aware, expands common road-law terms across BIMSTEC languages, filters strictly by selected jurisdiction, and weights official verified material above translations and unreviewed seeds. Thailand has official fine records plus expanded law and game content. Exact fines that have not completed legal review remain visibly marked `needs_review`.
 
 ## Legal Review Pipeline
 
@@ -68,6 +68,6 @@ The processed index currently contains 658 passages. Thailand now has expanded s
 
 - Add state/municipal polygons for geofencing instead of rough country boxes.
 - Add official fine schedules for every BIMSTEC country and major border states/cities.
-- Add a GGUF Phi, SmolLM, Gemma, or Llama 3B model for fluent on-device generation.
+- Evaluate a 3B model or Gemma multimodal variant on larger paid hosts for deeper reasoning and road-sign input.
 - Add speech input/output and offline translation packs.
 - Add signed legal-data releases and version stamps for auditability.

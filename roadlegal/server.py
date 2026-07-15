@@ -4,6 +4,7 @@ import argparse
 import json
 import mimetypes
 import os
+import threading
 from dataclasses import asdict
 from http import HTTPStatus
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
@@ -22,7 +23,13 @@ CALCULATOR = ChallanCalculator()
 
 
 class RoadLegalHandler(SimpleHTTPRequestHandler):
-    server_version = "RoadLegal/0.1"
+    server_version = "RoadLegal/0.2"
+
+    def do_OPTIONS(self) -> None:
+        self.send_response(HTTPStatus.NO_CONTENT)
+        self._cors_headers()
+        self.send_header("Content-Length", "0")
+        self.end_headers()
 
     def do_GET(self) -> None:
         parsed = urlparse(self.path)
@@ -51,6 +58,16 @@ class RoadLegalHandler(SimpleHTTPRequestHandler):
             query = parse_qs(parsed.query)
             jurisdiction = query.get("jurisdiction", ["india_national"])[0]
             self._json(quiz_for(jurisdiction))
+            return
+        if parsed.path == "/api/search":
+            query = parse_qs(parsed.query)
+            message = query.get("q", [""])[0].strip()
+            jurisdiction = query.get("jurisdiction", ["india_national"])[0]
+            if not message:
+                self._json({"error": "q is required"}, HTTPStatus.BAD_REQUEST)
+                return
+            results, diagnostics = RAG.search_with_diagnostics(message, jurisdiction=jurisdiction)
+            self._json({"results": results, "retrieval": diagnostics})
             return
         self._serve_static(parsed.path)
 
@@ -97,7 +114,8 @@ class RoadLegalHandler(SimpleHTTPRequestHandler):
         body = json.dumps(payload, ensure_ascii=False, indent=2).encode("utf-8")
         self.send_response(status)
         self.send_header("Content-Type", "application/json; charset=utf-8")
-        self.send_header("Access-Control-Allow-Origin", "*")
+        self._cors_headers()
+        self.send_header("Cache-Control", "no-store")
         self.send_header("Content-Length", str(len(body)))
         self.end_headers()
         self.wfile.write(body)
@@ -115,6 +133,13 @@ class RoadLegalHandler(SimpleHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(content)
 
+    def _cors_headers(self) -> None:
+        allowed = os.environ.get("ROADLEGAL_CORS_ORIGIN", "*")
+        self.send_header("Access-Control-Allow-Origin", allowed)
+        self.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+        self.send_header("Access-Control-Allow-Headers", "Content-Type")
+        self.send_header("Access-Control-Max-Age", "86400")
+
     def _save_feedback(self, payload: dict) -> None:
         FEEDBACK_LOG.parent.mkdir(parents=True, exist_ok=True)
         with FEEDBACK_LOG.open("a", encoding="utf-8") as handle:
@@ -127,6 +152,8 @@ def main() -> None:
     args = parser.parse_args()
     WEB_DIR.mkdir(parents=True, exist_ok=True)
     server = ThreadingHTTPServer((args.host, args.port), RoadLegalHandler)
+    if os.environ.get("ROADLEGAL_WARM_MODEL", "").lower() in {"1", "true", "yes", "on"}:
+        threading.Thread(target=RAG.llm.warmup, name="roadlegal-model-warmup", daemon=True).start()
     print(f"RoadLegal running at http://{args.host}:{args.port}")
     print(json.dumps(RAG.health(), indent=2))
     try:

@@ -1,5 +1,5 @@
 const state = {
-  jurisdiction: "india_national",
+  jurisdiction: localStorage.getItem("roadlegal_jurisdiction") || "india_national",
   jurisdictions: [],
   score: Number(localStorage.getItem("roadlegal_score") || "0"),
   quiz: [],
@@ -105,7 +105,17 @@ const state = {
 };
 
 const $ = (id) => document.getElementById(id);
+const apiQuery = new URLSearchParams(window.location.search).get("api");
+if (apiQuery) localStorage.setItem("roadlegal_api_base", apiQuery.replace(/\/$/, ""));
+const sameOriginBackend = ["localhost", "127.0.0.1"].includes(window.location.hostname) || window.location.hostname.endsWith(".hf.space");
+const apiBase = (
+  apiQuery ||
+  (sameOriginBackend ? "" : window.ROADLEGAL_CONFIG?.apiBase) ||
+  localStorage.getItem("roadlegal_api_base") ||
+  ""
+).replace(/\/$/, "");
 let backendAvailable = true;
+let backendRetryTimer = null;
 let staticDataPromise = null;
 
 const offenceAliases = {
@@ -125,6 +135,15 @@ const offenceAliases = {
   mobile: "mobile_phone",
   insurance: "no_insurance",
   registration: "no_registration"
+};
+
+const retrievalAliases = {
+  overspeeding: ["speed", "speeding", "speed limit", "ความเร็ว", "ขับรถเร็ว", "গতি", "द्रुतगति", "तीव्र गति", "වේගය", "အမြန်နှုန်း"],
+  no_helmet: ["helmet", "no helmet", "หมวกกันน็อก", "หมวกนิรภัย", "হেলমেট", "हेलमेट", "हेल्मेट", "හිස්වැසුම", "ဦးထုပ်"],
+  no_seatbelt: ["seat belt", "seatbelt", "เข็มขัดนิรภัย", "সিটবেল্ট", "सिट बेल्ट", "सीट बेल्ट", "ආසන පටිය", "ထိုင်ခုံခါးပတ်"],
+  drink_driving: ["drink driving", "drunk driving", "alcohol", "เมาแล้วขับ", "แอลกอฮอล์", "মদ্যপ", "मादक", "नशे", "බීමත්ව", "အရက်မူးမောင်း"],
+  no_license: ["license", "licence", "ใบขับขี่", "ড্রাইভিং লাইসেন্স", "चालक अनुमति", "ड्राइविंग लाइसेंस", "රියදුරු බලපත්‍රය", "ယာဉ်မောင်းလိုင်စင်"],
+  mobile_phone: ["mobile phone", "cell phone", "โทรศัพท์", "মোবাইল ফোন", "मोबाइल फोन", "ජංගම දුරකථනය", "မိုဘိုင်းဖုန်း"]
 };
 
 const countryBoxes = [
@@ -147,9 +166,12 @@ function escapeHtml(value) {
 
 async function api(path, options = {}) {
   if (backendAvailable) {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), path.endsWith("/api/chat") ? 90000 : 5000);
     try {
-      const response = await fetch(path, {
+      const response = await fetch(`${apiBase}${path}`, {
         headers: { "Content-Type": "application/json" },
+        signal: controller.signal,
         ...options
       });
       if (!response.ok) {
@@ -158,10 +180,45 @@ async function api(path, options = {}) {
       return response.json();
     } catch (error) {
       backendAvailable = false;
+      scheduleBackendRetry();
       console.info("RoadLegal backend unavailable; using static demo mode.", error);
+    } finally {
+      clearTimeout(timeout);
     }
   }
   return staticApi(path, options);
+}
+
+function renderHealth(health) {
+  $("modeText").textContent = health.model.mode;
+  $("indexText").textContent = `${health.passages} passages`;
+  $("modelText").textContent = health.model.loaded
+    ? "Qwen3 ready"
+    : health.model.gguf_model || health.model.mode === "model-loading"
+      ? "model warming"
+      : "extractive fallback";
+  $("modelText").title = health.model.note;
+}
+
+function scheduleBackendRetry(delay = 30000) {
+  if (!apiBase || sameOriginBackend || backendRetryTimer) return;
+  backendRetryTimer = setTimeout(async () => {
+    backendRetryTimer = null;
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 15000);
+    try {
+      const response = await fetch(`${apiBase}/api/health`, {signal: controller.signal});
+      if (!response.ok) throw new Error(response.statusText);
+      const health = await response.json();
+      backendAvailable = true;
+      renderHealth(health);
+    } catch (error) {
+      console.info("RoadLegal AI backend is still warming.", error);
+      scheduleBackendRetry(60000);
+    } finally {
+      clearTimeout(timeout);
+    }
+  }, delay);
 }
 
 async function getStaticData() {
@@ -302,18 +359,41 @@ function staticGeofence(lat, lon) {
 }
 
 function tokenize(value) {
-  return String(value || "").toLowerCase().match(/[a-z0-9]+/g) || [];
+  return String(value || "").toLocaleLowerCase().match(/[\p{L}\p{N}]+/gu) || [];
+}
+
+function expandStaticQuery(value) {
+  const normalized = String(value || "").toLocaleLowerCase();
+  const terms = tokenize(normalized);
+  const concepts = [];
+  Object.entries(retrievalAliases).forEach(([concept, aliases]) => {
+    if (aliases.some((alias) => normalized.includes(alias.toLocaleLowerCase()))) {
+      concepts.push(concept);
+      terms.push(...tokenize(concept.replaceAll("_", " ")));
+      aliases.filter((alias) => /^[\x00-\x7F]+$/.test(alias)).forEach((alias) => terms.push(...tokenize(alias)));
+    }
+  });
+  return { terms: [...new Set(terms)], concepts };
 }
 
 function staticSearch(data, message, jurisdiction) {
-  const terms = tokenize(message);
+  const { terms, concepts } = expandStaticQuery(message);
+  const allowed = new Set([jurisdiction, "global", "bimstec"]);
+  if (jurisdiction === "delhi") allowed.add("india_national");
   return data.passages
+    .filter((passage) => allowed.has(passage.jurisdiction))
     .map((passage) => {
-      const haystack = `${passage.title} ${passage.text} ${(passage.tags || []).join(" ")}`.toLowerCase();
-      let score = terms.reduce((total, term) => total + (haystack.includes(term) ? 1 : 0), 0);
-      if (passage.jurisdiction === jurisdiction) score *= 1.7;
-      if (["global", "bimstec"].includes(passage.jurisdiction)) score *= 1.15;
-      if ((passage.tags || []).some((tag) => terms.includes(tag))) score += 1;
+      const title = String(passage.title || "").toLocaleLowerCase();
+      const body = String(passage.text || "").toLocaleLowerCase();
+      const tags = (passage.tags || []).map((tag) => String(tag).toLocaleLowerCase());
+      let score = terms.reduce((total, term) => total + (body.includes(term) ? 1 : 0) + (title.includes(term) ? 1.8 : 0), 0);
+      score += terms.reduce((total, term) => total + (tags.some((tag) => tag.includes(term)) ? 1.4 : 0), 0);
+      score += concepts.reduce((total, concept) => total + (tags.includes(concept) ? 2.4 : 0), 0);
+      if (passage.jurisdiction === jurisdiction) score *= 1.38;
+      if (passage.jurisdiction === "global") score *= 0.78;
+      if (passage.jurisdiction === "bimstec") score *= 0.92;
+      score *= passage.verified ? 1.14 : 0.84;
+      if (["official_law", "official_government", "official_public_health"].includes(passage.source_type)) score *= 1.16;
       return { ...passage, score };
     })
     .filter((passage) => passage.score > 0)
@@ -340,7 +420,10 @@ function safetyTip(message) {
 
 function staticChat(data, message, jurisdiction = "india_national", language = "English") {
   const retrieved = staticSearch(data, message, jurisdiction);
-  const fine = staticCalculate(data, jurisdiction, message, message?.toLowerCase().includes("bike") || message?.toLowerCase().includes("scooter") ? "two_wheeler" : "light_motor_vehicle");
+  const expanded = expandStaticQuery(message);
+  const offenceInput = expanded.concepts[0] || message;
+  const twoWheeler = expanded.concepts.includes("no_helmet") || message?.toLowerCase().includes("bike") || message?.toLowerCase().includes("scooter");
+  const fine = staticCalculate(data, jurisdiction, offenceInput, twoWheeler ? "two_wheeler" : "light_motor_vehicle");
   const lines = [];
   if (fine.status !== "unknown_offence") {
     lines.push(`Challan estimate for ${fine.jurisdiction.replaceAll("_", " ")}: ${fine.amount_display}.`);
@@ -399,15 +482,15 @@ function addMessage(role, text, citations = []) {
 
 async function loadHealth() {
   const health = await api("/api/health");
-  $("modeText").textContent = health.model.mode;
-  $("indexText").textContent = `${health.passages} passages`;
-  $("modelText").textContent = health.model.gguf_model ? "GGUF ready" : "extractive fallback";
-  $("modelText").title = health.model.note;
+  renderHealth(health);
 }
 
 async function loadJurisdictions() {
   const data = await api("/api/jurisdictions");
   state.jurisdictions = data.jurisdictions;
+  if (!data.jurisdictions.some((item) => item.id === state.jurisdiction)) {
+    state.jurisdiction = "india_national";
+  }
   const groups = data.jurisdictions.reduce((acc, item) => {
     const key = item.country || "Other";
     acc[key] = acc[key] || [];
@@ -634,6 +717,7 @@ function bindEvents() {
   });
   $("jurisdictionSelect").addEventListener("change", async (event) => {
     state.jurisdiction = event.target.value;
+    localStorage.setItem("roadlegal_jurisdiction", state.jurisdiction);
     await loadOffences();
     await loadQuiz();
     renderCountryProfile();

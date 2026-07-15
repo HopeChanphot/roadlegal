@@ -233,20 +233,20 @@ Supported status values include:
 
 Responsibilities:
 
+- Loads a persistent GGUF model through `llama-cpp-python`.
+- Downloads the configured model from Hugging Face when cloud auto-download is enabled.
 - Detects local `llama-cli`.
 - Detects local `llama-server`.
 - Detects GGUF model files in `models/`.
 - Detects `ROADLEGAL_GGUF_MODEL`.
-- Detects cached Hugging Face Llama 3.2 3B snapshot on the development machine.
-- Calls `llama-cli` when a compatible GGUF is available.
+- Uses `llama-cli` only as a compatibility fallback when Python bindings are unavailable.
 
 Current local machine status:
 
-- `llama-cli.exe` found.
-- `llama-server.exe` found.
-- Hugging Face `Llama-3.2-3B-Instruct` safetensors found.
-- No GGUF model found.
-- App therefore runs in extractive RAG mode.
+- `Qwen3-0.6B-Q8_0.gguf` is downloaded and checksum verified.
+- `llama-cpp-python` 0.3.34 loads the model persistently in about 1.4 seconds.
+- The app runs in `generative-rag` mode with fast structured-fine bypass and answer caching.
+- Extractive RAG remains available automatically if the model cannot load.
 
 Important limitation:
 
@@ -468,7 +468,7 @@ Planned upgrade:
 Answer modes:
 
 - `extractive-rag`: Backend builds answer from retrieved passages.
-- `generative-rag`: Backend calls local GGUF through `llama-cli`.
+- `generative-rag`: Backend uses persistent `llama-cpp-python` GGUF inference, with `llama-cli` as a fallback.
 - `static-rag`: Browser builds answer from packaged data on GitHub Pages.
 
 The app never silently invents fine amounts. When schedules need review, it says so.
@@ -489,7 +489,7 @@ The backend is designed around `llama.cpp` because:
 Option 1: place a GGUF file in `models/`.
 
 ```text
-models/llama-3.2-3b-instruct-q4.gguf
+models/Qwen3-0.6B-Q8_0.gguf
 ```
 
 Option 2: set:
@@ -504,14 +504,9 @@ Then run:
 python -m roadlegal.server --host 127.0.0.1 --port 8000
 ```
 
-### 10.3 Suggested Models
+### 10.3 Selected and Future Models
 
-Potential models for future testing:
-
-- Phi mini instruction model converted to GGUF.
-- SmolLM 3B instruction GGUF.
-- Llama 3.2 3B Instruct GGUF.
-- Gemma small/mobile instruction GGUF where licensing and hardware permit.
+The production demo uses Qwen3-0.6B Q8 GGUF because it is compact, Apache-2.0 licensed, multilingual, and fast enough for a free CPU Space. Future paid-host comparisons may include Phi-4-mini, SmolLM3-3B, or Gemma multimodal variants.
 
 Selection criteria:
 
@@ -533,14 +528,15 @@ Returns:
 
 ```json
 {
-  "passages": 658,
+  "passages": 909,
   "index_file": "...",
   "jurisdictions": ["india_national", "thailand_national"],
   "model": {
-    "mode": "extractive-rag",
-    "llama_cli": "...",
-    "gguf_model": null,
-    "note": "..."
+    "mode": "generative-rag",
+    "engine": "llama-cpp-python",
+    "model": "Qwen3-0.6B-Q8_0.gguf",
+    "loaded": true,
+    "load_seconds": 1.4
   }
 }
 ```
@@ -685,7 +681,19 @@ Workflow:
 .github/workflows/pages.yml
 ```
 
-### 12.3 Render
+### 12.3 Hugging Face Docker Space
+
+The primary cloud target is `HopeChanphot/roadlegal`. Add a GitHub repository secret named `HF_TOKEN` with Hugging Face write permission, then manually run `.github/workflows/huggingface-space.yml`. The workflow creates or updates the Docker Space, preloads Qwen3-0.6B, and exposes `/api/health` on port 7860.
+
+The GitHub Pages frontend is configured to call:
+
+```text
+https://hopechanphot-roadlegal.hf.space
+```
+
+Free Spaces sleep after inactivity. The frontend times out quickly and continues with its packaged offline index while the model host wakes.
+
+### 12.4 Render
 
 The repo includes:
 
@@ -698,19 +706,10 @@ Render setup:
 1. Create a new Web Service from GitHub.
 2. Select `HopeChanphot/roadlegal`.
 3. Use the included Render config.
-4. Confirm build command:
+4. Use the included Docker service definition and a paid instance with sufficient memory.
+5. Set `ROADLEGAL_CORS_ORIGIN=https://hopechanphot.github.io`.
 
-```text
-pip install -r requirements.txt
-```
-
-5. Confirm start command:
-
-```text
-python -m roadlegal.server --host 0.0.0.0 --port $PORT
-```
-
-### 12.4 Railway
+### 12.5 Railway
 
 The repo includes:
 
@@ -727,7 +726,7 @@ Railway setup:
 4. Railway builds from Dockerfile.
 5. Open the generated Railway domain.
 
-### 12.5 Docker
+### 12.6 Docker
 
 ```powershell
 docker build -t roadlegal .
@@ -893,7 +892,7 @@ GitHub Pages mode:
 
 ### 16.3 Cloud Backend Mode
 
-If deployed on Render/Railway:
+If deployed on Hugging Face Spaces, Render, or Railway:
 
 - Requests pass through the cloud server.
 - Add a privacy notice before production use.
@@ -903,7 +902,7 @@ If deployed on Render/Railway:
 
 ### 16.4 Model Safety
 
-The optional LLM is only given retrieved context and the user question. The system prompt instructs it to answer from context and admit insufficient information.
+The LLM is only given retrieved context, a structured fine record, and the user question. The system prompt restricts answers to that evidence, and a post-generation guard rejects unsupported numbers, citation ids, imprisonment, suspension, or revocation claims.
 
 Production additions:
 
@@ -1003,12 +1002,14 @@ git subtree push --prefix web origin gh-pages
 
 Check `/api/health`.
 
-If mode is `extractive-rag`, then no GGUF was found.
+If mode is `extractive-rag`, the GGUF or a compatible inference engine was not found or could not load.
 
 Fix:
 
 - Put a GGUF model in `models/`.
 - Or set `ROADLEGAL_GGUF_MODEL`.
+- Install `llama-cpp-python` from `requirements-cloud.txt`.
+- Check the `note` field for a download, checksum, memory, or model-format error.
 
 ### 18.4 Downloader Fails
 

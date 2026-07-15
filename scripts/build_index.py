@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+from collections import Counter
 from pathlib import Path
 
 from pypdf import PdfReader
@@ -36,16 +37,47 @@ def read_document(path: Path) -> str:
     return raw
 
 
+def select_content(text: str, source: dict) -> str:
+    """Trim known page chrome while preserving the official article text."""
+    selected = text
+    start_marker = source.get("content_start")
+    if start_marker:
+        if source.get("content_start_mode") == "last":
+            start = selected.rfind(start_marker)
+        else:
+            start = selected.find(start_marker)
+        if start >= 0:
+            selected = selected[start:]
+
+    end_marker = source.get("content_end")
+    if end_marker:
+        end = selected.find(end_marker)
+        if end >= 0:
+            selected = selected[:end]
+    return selected.strip()
+
+
 def main() -> int:
     OUT.parent.mkdir(parents=True, exist_ok=True)
     passages = json.loads(SEED.read_text(encoding="utf-8"))
+    seen = {hashlib.sha1(" ".join(item["text"].casefold().split()).encode("utf-8")).hexdigest() for item in passages}
     manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
+    added_by_source: Counter[str] = Counter()
     for source in manifest["sources"]:
         path = DOWNLOADS / source["filename"]
         if not path.exists() or path.stat().st_size == 0:
             continue
-        text = read_document(path)
+        try:
+            text = select_content(read_document(path), source)
+        except Exception as exc:
+            print(f"skip {source['id']}: {type(exc).__name__}: {exc}")
+            continue
         for index, chunk in enumerate(split_chunks(text)):
+            normalized = " ".join(chunk.casefold().split())
+            content_hash = hashlib.sha1(normalized.encode("utf-8")).hexdigest()
+            if len(normalized) < 120 or content_hash in seen:
+                continue
+            seen.add(content_hash)
             digest = hashlib.sha1(f"{source['id']}:{index}:{chunk[:80]}".encode("utf-8")).hexdigest()[:12]
             passages.append(
                 {
@@ -57,11 +89,19 @@ def main() -> int:
                     "source_title": source["title"],
                     "source_url": source["url"],
                     "tags": source.get("tags", []),
-                    "verified": True,
+                    "verified": bool(source.get("verified", False)),
+                    "source_type": source.get("source_type", "reference"),
+                    "review_status": source.get("review_status", "needs_review"),
+                    "published_date": source.get("published_date"),
+                    "effective_date": source.get("effective_date"),
+                    "language": source.get("language", "English"),
                 }
             )
+            added_by_source[source["id"]] += 1
     OUT.write_text(json.dumps(passages, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"wrote {len(passages)} passages to {OUT}")
+    for source_id, count in added_by_source.most_common():
+        print(f"  {source_id}: {count}")
     return 0
 
 

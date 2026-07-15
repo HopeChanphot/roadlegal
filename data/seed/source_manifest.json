@@ -1,4 +1,5 @@
 {
+  "schema_version": 2,
   "sources": [
     {
       "id": "who_road_traffic_injuries",
@@ -8,7 +9,10 @@
       "url": "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries",
       "filename": "who_road_traffic_injuries.html",
       "source_type": "official_public_health",
-      "tags": ["who", "speed", "helmet", "seatbelt", "drink_driving", "risk"]
+      "verified": true,
+      "review_status": "verified_source",
+      "language": "English",
+      "tags": ["who", "speed", "helmet", "seatbelt", "drink_driving", "risk", "enforcement"]
     },
     {
       "id": "who_global_status_2023",
@@ -18,7 +22,109 @@
       "url": "https://www.who.int/publications/i/item/9789240086517",
       "filename": "who_global_status_report_2023.html",
       "source_type": "official_public_health",
-      "tags": ["who", "global_status", "bimstec", "fatalities"]
+      "verified": true,
+      "review_status": "verified_source",
+      "language": "English",
+      "published_date": "2023-12-13",
+      "tags": ["who", "global_status", "bimstec", "fatalities", "safe_system"]
+    },
+    {
+      "id": "who_bangladesh_profile_2023",
+      "title": "WHO Road safety Bangladesh 2023 country profile",
+      "country": "Bangladesh",
+      "jurisdiction": "bangladesh_national",
+      "url": "https://cdn.who.int/media/docs/default-source/country-profiles/road-safety/road-safety-2023-bgd.pdf",
+      "filename": "who_road_safety_2023_bangladesh.pdf",
+      "source_type": "official_public_health",
+      "verified": true,
+      "review_status": "verified_source",
+      "language": "English",
+      "published_date": "2024-04-30",
+      "tags": ["bangladesh", "who", "helmet", "seatbelt", "speed", "drink_driving", "country_profile"]
+    },
+    {
+      "id": "who_bhutan_profile_2023",
+      "title": "WHO Road safety Bhutan 2023 country profile",
+      "country": "Bhutan",
+      "jurisdiction": "bhutan_national",
+      "url": "https://cdn.who.int/media/docs/default-source/country-profiles/road-safety/road-safety-2023-btn.pdf",
+      "filename": "who_road_safety_2023_bhutan.pdf",
+      "source_type": "official_public_health",
+      "verified": true,
+      "review_status": "verified_source",
+      "language": "English",
+      "published_date": "2024-04-30",
+      "tags": ["bhutan", "who", "helmet", "seatbelt", "speed", "drink_driving", "country_profile"]
+    },
+    {
+      "id": "who_india_profile_2023",
+      "title": "WHO Road safety India 2023 country profile",
+      "country": "India",
+      "jurisdiction": "india_national",
+      "url": "https://cdn.who.int/media/docs/default-source/country-profiles/road-safety/road-safety-2023-ind.pdf",
+      "filename": "who_road_safety_2023_india.pdf",
+      "source_type": "official_public_health",
+      "verified": true,
+      "review_status": "verified_source",
+      "language": "English",
+      "published_date": "2024-04-30",
+      "tags": ["india", "who", "helmet", "seatbelt", "speed", "drink_driving", "country_profile"]
+    },
+    {
+      "id": "who_myanmar_profile_2023",
+      "title": "WHO Road safety Myanmar 2023 country profile",
+      "country": "Myanmar",
+      "jurisdiction": "myanmar_national",
+      "url": "https://cdn.who.int/media/docs/default-source/country-profiles/road-safety/road-safety-2023-mmr.pdf",
+      "filename": "who_road_safety_2023_myanmar.pdf",
+      "source_type": "official_public_health",
+      "verified": true,
+      "review_status": "verified_source",
+      "language": "English",
+      "published_date": "2024-04-30",
+      "tags": ["myanmar", "who", "helmet", "seatbelt", "speed", "drink_driving", "country_profile"]
+    },
+    {
+      "id": "who_nepal_profile_2023",
+      "title": "WHO Road safety Nepal 2023 country profile",
+      "country": "Nepal",
+      "jurisdiction": "nepal_national",
+      "url": "https://cdn.who.int/media/docs/default-source/country-profiles/road-safety/road-safety-2023-npl.pdf",
+      "filename": "who_road_safety_2023_nepal.pdf",
+      "source_type": "official_public_health",
+      "verified": true,
+      "review_status": "verified_source",
+      "language": "English",
+      "published_date": "2024-04-30",
+      "tags": ["nepal", "who", "helmet", "seatbelt", "speed", "drink_driving", "country_profile"]
+    },
+    {
+      "id": "who_sri_lanka_profile_2023",
+      "title": "WHO Road safety Sri Lanka 2023 country profile",
+      "country": "Sri Lanka",
+      "jurisdiction": "sri_lanka_national",
+      "url": "https://cdn.who.int/media/docs/default-source/country-profiles/road-safety/road-safety-2023-lka.pdf",
+      "filename": "who_road_safety_2023_sri_lanka.pdf",
+      "source_type": "official_public_health",
+      "verified": true,
+      "review_status": "verified_source",
+      "language": "English",
+      "published_date": "2024-04-30",
+      "tags": ["sri_lanka", "who", "helmet", "seatbelt", "speed", "drink_driving", "country_profile"]
+    },
+    {
+      "id": "who_thailand_profile_2023",
+      "title": "WHO Road safety Thailand 2023 country profile",
+      "country": "Thailand",
+      "jurisdiction": "thailand_national",
+      "url": "https://cdn.who.int/media/docs/default-source/country-profiles/road-safety/road-safety-2023-tha.pdf",
+      "filename": "who_road_safety_2023_thailand.pdf",
+      "source_type": "official_public_health",
+      "verified": true,
+      "review_status": "verified_source",
+      "language": "English",
+      "published_date": "2024-04-30",
+      "tags": ["thailand", "who", "helmet", "seatbelt", "speed", "drink_driving", "country_profile"]
     },
     {
       "id": "india_motor_vehicles_act_1988",
@@ -28,7 +134,10 @@
       "url": "https://www.indiacode.nic.in/bitstream/123456789/9460/1/a1988-59.pdf",
       "filename": "india_motor_vehicles_act_1988.pdf",
       "source_type": "official_law",
-      "tags": ["india", "motor_vehicles_act", "speed", "helmet", "seatbelt", "drink_driving", "fine"]
+      "verified": true,
+      "review_status": "verified_source",
+      "language": "English",
+      "tags": ["india", "motor_vehicles_act", "speed", "helmet", "seatbelt", "drink_driving", "fine", "license"]
     },
     {
       "id": "bangladesh_road_transport_act_2018",
@@ -38,7 +147,10 @@
       "url": "http://bdlaws.minlaw.gov.bd/act-1262.html",
       "filename": "bangladesh_road_transport_act_2018.html",
       "source_type": "official_law",
-      "tags": ["bangladesh", "road_transport_act", "license", "penalty", "points"]
+      "verified": true,
+      "review_status": "verified_source",
+      "language": "Bengali",
+      "tags": ["bangladesh", "road_transport_act", "license", "penalty", "points", "registration"]
     },
     {
       "id": "nepal_motor_vehicle_transport_management_act",
@@ -48,27 +160,66 @@
       "url": "https://lawcommission.gov.np/en/wp-content/uploads/2021/01/Motor-Vehicles-and-Transport-Management-Act-2049-1993.pdf",
       "filename": "nepal_motor_vehicles_transport_management_act_2049.pdf",
       "source_type": "official_law",
-      "tags": ["nepal", "motor_vehicle", "license", "registration", "penalty"]
+      "verified": true,
+      "review_status": "verified_source_translation",
+      "language": "English",
+      "tags": ["nepal", "motor_vehicle", "license", "registration", "penalty", "speed"]
     },
     {
       "id": "bhutan_road_safety_transport_act",
       "title": "Bhutan Road Safety and Transport Act, 1999",
       "country": "Bhutan",
       "jurisdiction": "bhutan_national",
-      "url": "https://www.rsta.gov.bt/rstaweb/wp-content/uploads/2018/09/Road-Safety-and-Transport-Act-1999.pdf",
+      "url": "https://bcta.gov.bt/acts-and-regulations/",
+      "download_url": "https://drive.google.com/uc?export=download&id=0B2WOxwAY-uenX05pRHJiaTRadEE",
       "filename": "bhutan_road_safety_transport_act_1999.pdf",
       "source_type": "official_law",
-      "tags": ["bhutan", "road_safety", "transport", "license", "registration"]
+      "verified": true,
+      "review_status": "verified_source",
+      "language": "English",
+      "tags": ["bhutan", "road_safety", "transport", "license", "registration", "penalty"]
+    },
+    {
+      "id": "bhutan_road_safety_transport_regulations_2021",
+      "title": "Bhutan Road Safety and Transport Regulations 2021",
+      "country": "Bhutan",
+      "jurisdiction": "bhutan_national",
+      "url": "https://bcta.gov.bt/road-safety-and-transport-regulations-2021/",
+      "download_url": "https://drive.google.com/uc?export=download&id=1CB7Ky2oG1XxNpBp1XipwJl-33qwTry4Z",
+      "filename": "bhutan_road_safety_transport_regulations_2021.pdf",
+      "source_type": "official_law",
+      "verified": true,
+      "review_status": "verified_source",
+      "language": "English",
+      "effective_date": "2022-07-01",
+      "tags": ["bhutan", "road_safety", "regulations", "license", "registration", "penalty", "fine"]
     },
     {
       "id": "sri_lanka_motor_traffic_lawnet",
       "title": "Sri Lanka Motor Traffic Act reference",
       "country": "Sri Lanka",
       "jurisdiction": "sri_lanka_national",
-      "url": "https://www.lawnet.gov.lk/motor-traffic-2/",
+      "url": "https://lawnet.gov.lk/motor-traffic-2/",
       "filename": "sri_lanka_motor_traffic_act_lawnet.html",
-      "source_type": "official_or_public_legal_reference",
-      "tags": ["sri_lanka", "motor_traffic", "license", "registration"]
+      "source_type": "official_law",
+      "verified": true,
+      "review_status": "verified_source",
+      "language": "English",
+      "tags": ["sri_lanka", "motor_traffic", "license", "registration", "helmet", "speed"]
+    },
+    {
+      "id": "sri_lanka_motor_traffic_amendment_2009",
+      "title": "Sri Lanka Motor Traffic Amendment Act No. 8 of 2009",
+      "country": "Sri Lanka",
+      "jurisdiction": "sri_lanka_national",
+      "url": "https://lawnet.gov.lk/wp-content/uploads/2016/11/8of2009.pdf",
+      "filename": "sri_lanka_motor_traffic_amendment_2009.pdf",
+      "source_type": "official_law",
+      "verified": true,
+      "review_status": "verified_source",
+      "language": "English",
+      "published_date": "2009-03-11",
+      "tags": ["sri_lanka", "motor_traffic", "amendment", "fine", "penalty", "points"]
     },
     {
       "id": "thailand_land_traffic_act_translation",
@@ -77,18 +228,76 @@
       "jurisdiction": "thailand_national",
       "url": "https://www.ilo.org/dyn/natlex/docs/ELECTRONIC/71258/76700/F155209158/THA71258%20Eng.pdf",
       "filename": "thailand_land_traffic_act_translation.pdf",
-      "source_type": "public_translation_needs_legal_review",
-      "tags": ["thailand", "land_traffic", "license", "speed"]
+      "source_type": "public_translation",
+      "verified": false,
+      "review_status": "translation_needs_legal_review",
+      "language": "English",
+      "tags": ["thailand", "land_traffic", "license", "speed", "helmet", "seatbelt"]
     },
     {
-      "id": "myanmar_vehicle_law_reference",
-      "title": "Myanmar Vehicle Law reference",
+      "id": "thailand_prd_traffic_penalties_2022",
+      "title": "Thailand PRD traffic penalties effective September 2022",
+      "country": "Thailand",
+      "jurisdiction": "thailand_national",
+      "url": "https://region2.prd.go.th/th/content/category/detail/id/1169/iid/118650",
+      "filename": "thailand_prd_traffic_penalties_2022.html",
+      "source_type": "official_government",
+      "verified": true,
+      "review_status": "verified_source_thai",
+      "language": "Thai",
+      "published_date": "2022-09-03",
+      "effective_date": "2022-09-05",
+      "content_start": "เตือนแล้วนะ!! อัตราโทษ กฎหมายจราจรฉบับใหม่ บังคับใช้ 5 ก.ย.นี้",
+      "content_start_mode": "last",
+      "content_end": "คะแนนโหวต",
+      "tags": ["thailand", "fine", "overspeeding", "no_helmet", "no_seatbelt", "drink_driving", "penalty"]
+    },
+    {
+      "id": "thailand_prd_driver_points_2023",
+      "title": "Thailand PRD driver licence points enforcement",
+      "country": "Thailand",
+      "jurisdiction": "thailand_national",
+      "url": "https://www.prd.go.th/th/content/category/detail/id/9/iid/163852",
+      "filename": "thailand_prd_driver_points_2023.html",
+      "source_type": "official_government",
+      "verified": true,
+      "review_status": "verified_source_thai",
+      "language": "Thai",
+      "published_date": "2023-03-06",
+      "content_start": "สำนักงานตำรวจแห่งชาติ เข้มงวดผู้ที่ทำผิดกฎหมายจราจร โดยการตัดแต้มใบขับขี่ เพื่อสร้างวินัย ลดอุบัติเหตุบนท้องถนน",
+      "content_start_mode": "last",
+      "content_end": "คำสำคัญ",
+      "tags": ["thailand", "driver_points", "drink_driving", "red_light", "license_suspension", "penalty"]
+    },
+    {
+      "id": "thailand_dlt_motorcycle_safety_2024",
+      "title": "Thailand DLT motorcycle helmet and truck blind-spot guidance",
+      "country": "Thailand",
+      "jurisdiction": "thailand_national",
+      "url": "https://elms.dlt.go.th/news/view/50",
+      "filename": "thailand_dlt_motorcycle_safety_2024.html",
+      "source_type": "official_government",
+      "verified": true,
+      "review_status": "verified_source_thai",
+      "language": "Thai",
+      "published_date": "2024-04-26",
+      "content_start": "ข้อควรระวังเมื่อขับรถใกล้จุดบอดรถใหญ่หรือรถขนาดใหญ่",
+      "content_start_mode": "first",
+      "content_end": "แท็ก :",
+      "tags": ["thailand", "helmet", "motorcycle", "truck", "blind_spot", "safety"]
+    },
+    {
+      "id": "myanmar_vehicle_safety_motor_vehicle_management_law_2020",
+      "title": "Myanmar Vehicle Safety and Motor Vehicle Management Law 2020",
       "country": "Myanmar",
       "jurisdiction": "myanmar_national",
-      "url": "https://www.myanmar-law-library.org/law-library/laws-and-regulations/laws/myanmar-laws-1988-until-now/union-solidarity-and-development-party-laws-2010-2016/myanmar-vehicle-law-2015.html",
-      "filename": "myanmar_vehicle_law_2015_reference.html",
-      "source_type": "public_legal_reference_needs_legal_review",
-      "tags": ["myanmar", "vehicle_law", "license", "registration"]
+      "url": "https://www.motc.gov.mm/sites/default/files/Vehicle%20Safety%20and%20Motor%20Vehicle%20Management%20Law%202020%28%E1%81%82%E1%81%80%E1%81%82%E1%81%80%20%E1%80%A5%E1%80%95%E1%80%92%E1%80%B1%20%E1%80%A1%E1%80%84%E1%80%BA%E1%80%B9%E1%80%82%E1%80%9C%E1%80%AD%E1%80%95%E1%80%BA%E1%80%85%E1%80%AC%29.pdf",
+      "filename": "myanmar_vehicle_safety_motor_vehicle_management_law_2020.pdf",
+      "source_type": "official_law",
+      "verified": true,
+      "review_status": "verified_source_translation",
+      "language": "English",
+      "tags": ["myanmar", "vehicle_law", "road_safety", "license", "registration", "penalty"]
     }
   ]
 }
