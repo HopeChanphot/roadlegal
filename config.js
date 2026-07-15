@@ -1,3 +1,3 @@
 window.ROADLEGAL_CONFIG = {
-  apiBase: "https://hopechanphot-roadlegal.hf.space"
+  apiBase: "https://chanphot-roadlegal.hf.space"
 };
