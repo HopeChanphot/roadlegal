@@ -5,6 +5,7 @@ from pathlib import Path
 from roadlegal.challan import ChallanCalculator
 from roadlegal.game_content import quiz_for
 from roadlegal.geo import geofence
+from roadlegal.prepared import apply_prepared_fallback, prepared_response
 from roadlegal.rag import RoadLegalRAG
 
 
@@ -37,6 +38,8 @@ class RoadLegalTests(unittest.TestCase):
 
     def test_rag_returns_citations(self):
         rag = RoadLegalRAG()
+        self.assertEqual(rag.health()["answer_topics"], 200)
+        self.assertTrue(rag.health()["prepared_fallback"])
         answer = rag.answer("What is the fine for overspeeding in India?", jurisdiction="india_national")
         self.assertIn("answer", answer)
         self.assertGreaterEqual(len(answer["citations"]), 1)
@@ -109,10 +112,25 @@ class RoadLegalTests(unittest.TestCase):
             "cross_border",
             "emergency",
             "scenario",
+            "no_insurance",
+            "no_registration",
+            "dangerous_driving",
+            "parking",
+            "traffic_signals",
+            "pedestrian_safety",
+            "child_restraints",
+            "vehicle_condition",
+            "fatigue",
+            "weather",
+            "road_signs",
+            "overtaking",
+            "road_rules_overview",
+            "accident_duties",
+            "ticket_payment",
         }
 
         self.assertEqual(len(packs), 8)
-        self.assertEqual(payload["health"]["answer_topics"], 80)
+        self.assertEqual(payload["health"]["answer_topics"], 200)
         self.assertTrue(payload["health"]["offline_ready"])
         for jurisdiction, pack in packs.items():
             self.assertEqual(set(pack["answers"]), required_topics, jurisdiction)
@@ -121,6 +139,41 @@ class RoadLegalTests(unittest.TestCase):
                 self.assertTrue(answer["rules"], f"{jurisdiction}:{topic}")
                 self.assertTrue(answer["actions"], f"{jurisdiction}:{topic}")
                 self.assertTrue(answer["citations"], f"{jurisdiction}:{topic}")
+                self.assertTrue(answer["keywords"], f"{jurisdiction}:{topic}")
+
+    def test_prepared_answer_matching_covers_common_paraphrases_in_every_country(self):
+        cases = {
+            "How do I pay or appeal a traffic fine?": "ticket_payment",
+            "What must I do after a road collision?": "accident_duties",
+            "Does a small child need a booster seat?": "child_restraints",
+            "How should I drive in monsoon rain and low visibility?": "weather",
+            "Can I pass another vehicle near a blind curve?": "overtaking",
+            "What should I do when I am too tired to drive?": "fatigue",
+        }
+        jurisdictions = json.loads(STATIC_DATA.read_text(encoding="utf-8"))["offline_answers"]
+        for jurisdiction in jurisdictions:
+            for question, topic in cases.items():
+                response = prepared_response(question, jurisdiction)
+                self.assertIsNotNone(response, f"{jurisdiction}:{question}")
+                self.assertEqual(response["matched_topic"], topic, f"{jurisdiction}:{question}")
+                self.assertTrue(response["citations"])
+
+    def test_unavailable_live_model_uses_prepared_answer(self):
+        weak_live_response = {
+            "answer": "I do not have enough local source material.",
+            "citations": [],
+            "fine": None,
+            "model": {"loaded": False, "mode": "extractive-rag"},
+        }
+        response = apply_prepared_fallback(
+            weak_live_response,
+            "What are the helmet rules?",
+            "thailand_national",
+        )
+        self.assertTrue(response["live_fallback"])
+        self.assertEqual(response["mode"], "prepared-fallback")
+        self.assertEqual(response["matched_topic"], "no_helmet")
+        self.assertTrue(response["prepared"]["summary"])
 
     def test_every_country_has_a_complete_learning_quiz(self):
         payload = json.loads(STATIC_DATA.read_text(encoding="utf-8"))
@@ -146,6 +199,8 @@ class RoadLegalTests(unittest.TestCase):
         self.assertIn('state.score = 0', script)
         self.assertIn('localStorage.setItem("roadlegal_score", "0")', script)
         self.assertIn("Your score and learning level were reset", script)
+        self.assertIn("liveResponseNeedsPreparedFallback", script)
+        self.assertIn("Live AI was unavailable or did not return a sufficiently grounded answer", script)
 
     def test_service_worker_caches_the_complete_demo(self):
         worker = SERVICE_WORKER.read_text(encoding="utf-8")
@@ -171,6 +226,8 @@ class RoadLegalTests(unittest.TestCase):
         self.assertIn("RAG.llm = TransformersRuntime()", source)
         self.assertIn("app = gr.Server()", source)
         self.assertIn('@app.api(name="chat", concurrency_limit=1)', source)
+        self.assertIn("apply_prepared_fallback", source)
+        self.assertIn("_answer_with_fallback", source)
 
 
 if __name__ == "__main__":

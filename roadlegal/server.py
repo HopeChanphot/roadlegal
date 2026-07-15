@@ -15,6 +15,7 @@ from .challan import ChallanCalculator
 from .game_content import quiz_for
 from .geo import geofence
 from .paths import FEEDBACK_LOG, WEB_DIR
+from .prepared import apply_prepared_fallback
 from .rag import RoadLegalRAG
 
 
@@ -81,7 +82,8 @@ class RoadLegalHandler(SimpleHTTPRequestHandler):
                 return
             jurisdiction = str(payload.get("jurisdiction", "india_national"))
             language = str(payload.get("language", "English"))
-            self._json(RAG.answer(message, jurisdiction=jurisdiction, language=language))
+            result = RAG.answer(message, jurisdiction=jurisdiction, language=language)
+            self._json(apply_prepared_fallback(result, message, jurisdiction, language))
             return
         if parsed.path == "/api/calculate-challan":
             result = CALCULATOR.calculate(

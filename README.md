@@ -17,7 +17,7 @@ The current build is a runnable MVP designed for demo and extension:
 - Professional responsive web app with chat, challan/ticket calculator, quiz/scenario game content, source citations, feedback, and country/jurisdiction switching.
 - Explicit `Offline Demo` and `Live AI` modes with the same country menu, prepared answers, calculator, quiz, directory, and citations in every country context.
 - Learning progression with immediate answer feedback, points saved between visits, a full progress reset button, and a new badge every 50 points.
-- Eight country packs with 80 prepared legal and safety topics. Every answer includes practical actions, source status, and citations; unverified exact fines remain clearly marked for review.
+- Eight country packs with 200 prepared legal and safety answers across 25 topics per jurisdiction. Every answer includes practical actions, source status, and citations; unverified exact fines remain clearly marked for review.
 - Installable service-worker cache for the complete browser demo, including the UI, icons, 909-passage knowledge base, country packs, calculator data, directory, and quizzes.
 - Hybrid BM25+ RAG over 909 local passages with Unicode query expansion, source-quality weighting, and strict country isolation.
 - Starter BIMSTEC legal/safety seed data plus expanded Thailand road-law/game content and a downloader for official source documents.
@@ -59,7 +59,7 @@ https://hopechanphot.github.io/roadlegal/
 5. Disconnect the network or stop the local server, reload, and repeat the same workflow from the browser cache.
 6. Reconnect and choose `Live AI` to demonstrate the Qwen3-0.6B RAG backend. If the cloud service is unavailable, the app says so and retains the complete prepared-answer fallback.
 
-`Offline Demo` is deterministic and presentation-safe. `Live AI` sends the question to the Python hybrid-RAG API and Qwen model, validates the generated claims, and uses the same local evidence pack as its resilient fallback.
+`Offline Demo` is deterministic and presentation-safe. It recognizes common paraphrases for 25 road-law topics and always retains a cited country overview when a question is outside a specific prepared category. `Live AI` sends the question to the Python hybrid-RAG API and Qwen model, validates the generated claims and response quality, and automatically uses the same prepared answer pack when the model is unavailable, times out, lacks evidence, or returns an unusable answer.
 
 ## Public Hosting Options
 

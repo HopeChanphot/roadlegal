@@ -71,7 +71,7 @@ The downloader successfully fetched official or authoritative material including
 - Thailand PRD traffic penalties and driver-points notices
 - Thailand Department of Land Transport motorcycle safety guidance
 
-The processed index currently contains 909 passages. The browser release adds 80 prepared answer topics across eight country/jurisdiction packs and at least five quiz questions for each. Retrieval is Unicode-aware, expands common road-law terms across BIMSTEC languages, filters strictly by selected jurisdiction, and weights official verified material above translations and unreviewed seeds. Thailand has official fine records plus expanded law and game content. Exact fines that have not completed legal review remain visibly marked `needs_review`.
+The processed index currently contains 909 passages. The browser release adds 200 prepared answers across eight country/jurisdiction packs, covering 25 road-law and safety topics per jurisdiction, plus at least five quiz questions for each. Keyword-scored matching recognizes common paraphrases. Retrieval is Unicode-aware, expands common road-law terms across BIMSTEC languages, filters strictly by selected jurisdiction, and weights official verified material above translations and unreviewed seeds. Thailand has official fine records plus expanded law and game content. Exact fines that have not completed legal review remain visibly marked `needs_review`.
 
 ## Legal Review Pipeline
 

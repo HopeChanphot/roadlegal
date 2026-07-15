@@ -184,7 +184,12 @@ const standardOfflineOffences = [
   ["no_seatbelt", "Seat-belt violation"],
   ["drink_driving", "Driving under the influence"],
   ["no_license", "Driving without a valid licence"],
-  ["mobile_phone", "Unsafe mobile-phone use"]
+  ["mobile_phone", "Unsafe mobile-phone use"],
+  ["no_insurance", "Driving without required insurance"],
+  ["no_registration", "Unregistered vehicle"],
+  ["dangerous_driving", "Dangerous or reckless driving"],
+  ["parking", "Parking or stopping violation"],
+  ["traffic_signals", "Traffic-signal violation"]
 ];
 
 const retrievalAliases = {
@@ -569,14 +574,51 @@ function safetyTip(message) {
   return "";
 }
 
-function detectPreparedTopic(message) {
-  const lowered = String(message || "").toLocaleLowerCase();
+function normalizePreparedText(value) {
+  return String(value || "")
+    .normalize("NFKC")
+    .toLocaleLowerCase()
+    .replaceAll("_", " ")
+    .replaceAll("-", " ")
+    .replace(/[^\p{L}\p{N}\s]/gu, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function containsPreparedPhrase(query, phrase) {
+  return ` ${query} `.includes(` ${phrase} `);
+}
+
+function detectPreparedTopic(message, answers = {}) {
+  const lowered = normalizePreparedText(message);
+  const queryTokens = new Set(lowered.split(" ").filter(Boolean));
   const expanded = expandStaticQuery(message);
-  if (/\b(quiz|scenario|challenge|game)\b/.test(lowered)) return "scenario";
-  if (/\b(emergency|accident|crash|collision|ambulance|police help)\b/.test(lowered)) return "emergency";
-  if (/\b(cross[- ]?border|border|traveller|traveler|tourist|entering|road trip)\b/.test(lowered)) return "cross_border";
-  if (/\b(document|documents|carry|registration|insurance|permit|paperwork|checklist)\b/.test(lowered)) return "documents";
-  return expanded.concepts[0] || "";
+  const concept = expanded.concepts.find((item) => answers[item]);
+  if (concept) return concept;
+
+  let bestTopic = "";
+  let bestScore = 0;
+  Object.entries(answers).forEach(([topic, answer]) => {
+    const phrases = [topic.replaceAll("_", " "), ...(answer.keywords || [])];
+    let score = 0;
+    phrases.forEach((phrase) => {
+      const normalized = normalizePreparedText(phrase);
+      if (!normalized) return;
+      const phraseTokens = new Set(normalized.split(" "));
+      if (containsPreparedPhrase(lowered, normalized)) {
+        score += 5 + Math.min(3, phraseTokens.size);
+        return;
+      }
+      const overlap = [...phraseTokens].filter((token) => queryTokens.has(token)).length;
+      if (phraseTokens.size > 1 && overlap === phraseTokens.size) score += 3;
+      if (phraseTokens.size === 1 && overlap === 1 && normalized.length >= 4) score += 2;
+    });
+    if (score > bestScore) {
+      bestScore = score;
+      bestTopic = topic;
+    }
+  });
+  return bestScore >= 2 ? bestTopic : "";
 }
 
 function preparedAnswerText(prepared) {
@@ -587,6 +629,23 @@ function preparedAnswerText(prepared) {
   if (prepared.safety) lines.push("", `Safety note: ${prepared.safety}`);
   lines.push("", `Source status: ${prepared.verification}`);
   return lines.join("\n");
+}
+
+function preparedChatResponse(data, entry, jurisdiction, language, mode = "offline-prepared", extra = {}) {
+  const localized = entry.localizations?.[language] || {};
+  const prepared = { ...entry, ...localized, citations: entry.citations, fine: entry.fine };
+  return {
+    answer: preparedAnswerText(prepared),
+    prepared,
+    mode,
+    jurisdiction,
+    language,
+    citations: prepared.citations || [],
+    fine: prepared.fine || null,
+    model: data.health.model,
+    matched_topic: entry.topic,
+    ...extra
+  };
 }
 
 function relevantStaticSnippet(message, text, maxChars = 300) {
@@ -607,21 +666,11 @@ function relevantStaticSnippet(message, text, maxChars = 300) {
 }
 
 function staticChat(data, message, jurisdiction = "india_national", language = "English") {
-  const topic = detectPreparedTopic(message);
-  const entry = data.offline_answers?.[jurisdiction]?.answers?.[topic];
+  const answers = data.offline_answers?.[jurisdiction]?.answers || data.offline_answers?.india_national?.answers || {};
+  const topic = detectPreparedTopic(message, answers);
+  const entry = answers[topic];
   if (entry) {
-    const localized = entry.localizations?.[language] || {};
-    const prepared = { ...entry, ...localized, citations: entry.citations, fine: entry.fine };
-    return {
-      answer: preparedAnswerText(prepared),
-      prepared,
-      mode: "offline-prepared",
-      jurisdiction,
-      language,
-      citations: prepared.citations || [],
-      fine: prepared.fine || null,
-      model: data.health.model
-    };
+    return preparedChatResponse(data, entry, jurisdiction, language);
   }
 
   const retrieved = staticSearch(data, message, jurisdiction);
@@ -643,6 +692,12 @@ function staticChat(data, message, jurisdiction = "india_national", language = "
       lines.push(`- ${snippet} [${item.source_title}]`);
     });
   } else {
+    const overview = answers.road_rules_overview;
+    if (overview) {
+      return preparedChatResponse(data, overview, jurisdiction, language, "offline-prepared", {
+        fallback_reason: "The question did not match a more specific prepared road-law topic."
+      });
+    }
     lines.push("I do not have enough packaged source material to answer that safely yet.");
   }
   const tip = safetyTip(message);
@@ -663,6 +718,17 @@ function staticChat(data, message, jurisdiction = "india_national", language = "
     fine,
     model: data.health.model
   };
+}
+
+function liveResponseNeedsPreparedFallback(data) {
+  if (!data || data.live_fallback) return false;
+  const answer = String(data.answer || "").trim();
+  const lowered = answer.toLocaleLowerCase();
+  if (data.model && data.model.loaded === false) return true;
+  if (answer.length < 40) return true;
+  if (lowered.includes("do not have enough") || lowered.includes("not have enough")) return true;
+  if (!(data.citations || []).length && !data.fine) return true;
+  return false;
 }
 
 function renderPreparedAnswer(prepared) {
@@ -845,7 +911,7 @@ async function ask(message) {
   const button = document.querySelector(".send-button");
   button.disabled = true;
   try {
-    const data = await api("/api/chat", {
+    let data = await api("/api/chat", {
       method: "POST",
       body: JSON.stringify({
         message,
@@ -853,6 +919,24 @@ async function ask(message) {
         language: $("languageSelect").value
       })
     });
+    if (state.runtime === "live" && liveResponseNeedsPreparedFallback(data)) {
+      const fallback = await staticApi("/api/chat", {
+        method: "POST",
+        body: JSON.stringify({
+          message,
+          jurisdiction: state.jurisdiction,
+          language: $("languageSelect").value
+        })
+      });
+      data = {
+        ...fallback,
+        live_fallback: true,
+        fallback_reason: "Live AI was unavailable or did not return a sufficiently grounded answer.",
+        model: data.model || fallback.model
+      };
+      state.backendState = "fallback";
+      updateRuntimeUI();
+    }
     addMessage("bot", data.answer, data.citations, data.prepared);
   } catch (error) {
     addMessage("bot", `RoadLegal could not answer: ${error.message}`);

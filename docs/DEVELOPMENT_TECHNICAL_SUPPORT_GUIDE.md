@@ -108,7 +108,7 @@ The GitHub Pages version runs without the Python backend. The file `web/static-d
 - Jurisdictions.
 - Fine schedule.
 - Quiz content.
-- Eight country profiles and 80 prepared answer topics.
+- Eight country profiles and 200 prepared answers across 25 topics per jurisdiction.
 - Runtime health data for static mode.
 
 The UI exposes two explicit runtime choices. `Offline Demo` reads only the packaged data and returns deterministic structured answers. `Live AI` calls the Python/Qwen backend and falls back to the same complete prepared answer pack if the API is unavailable. A service worker caches all required same-origin assets after the first visit so the GitHub Pages release can be reloaded without connectivity.
@@ -306,7 +306,9 @@ Responsibilities:
 
 ### 7.2 Runtime Modes
 
-The frontend starts in `Offline Demo` unless the user has explicitly saved `Live AI` as the preferred mode. Offline mode never waits for a network request. It loads `static-data.json`, uses exact prepared topics when a query matches, and uses jurisdiction-filtered browser retrieval for open-form fallback questions.
+The frontend starts in `Offline Demo` unless the user has explicitly saved `Live AI` as the preferred mode. Offline mode never waits for a network request. It loads `static-data.json`, scores keywords to recognize paraphrases across 25 prepared topics, and uses jurisdiction-filtered browser retrieval for open-form questions. When no specific topic or passage is strong enough, it returns the selected country's cited road-rules overview instead of a blank or incomplete answer.
+
+In `Live AI`, a grounded Qwen response remains the preferred result. The browser and Python API both validate model availability, answer length, refusal text, citations, and structured fine evidence. A timeout, unavailable model, empty response, evidence-free response, or insufficient-source response automatically returns the matching prepared answer without changing the user's selected country.
 
 In `Live AI`, API handlers call the configured backend. Successful requests use server-side hybrid RAG and Qwen generation. Failed or timed-out requests are clearly reported and answered from the local prepared pack. Feedback in offline mode is saved to browser `localStorage`.
 
@@ -836,7 +838,7 @@ Frontend checks:
 - Calculator offence list changes.
 - Quiz changes.
 - Chat returns citations.
-- Every country has ten prepared answer topics and at least five quiz questions.
+- Every country has 25 prepared answer topics and at least five quiz questions.
 - Service-worker install reports `Offline cache ready`.
 - Reload with the network or local server stopped still opens the app and returns a prepared answer.
 - `Live AI` reports the Qwen backend state and falls back without losing the answer workflow.

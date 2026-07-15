@@ -16,6 +16,7 @@ from .challan import ChallanCalculator
 from .geo import jurisdiction_from_text
 from .llm_runtime import LocalLLMRuntime
 from .paths import PROCESSED_DIR, SEED_DIR
+from .prepared import prepared_answer_count
 from .text import QUERY_ALIASES, expand_query, normalize_space, tokenize
 
 
@@ -63,6 +64,8 @@ class RoadLegalRAG:
         jurisdictions = sorted({p.jurisdiction for p in self.passages})
         return {
             "passages": len(self.passages),
+            "answer_topics": prepared_answer_count(),
+            "prepared_fallback": True,
             "index_file": str(self.index_file),
             "jurisdictions": jurisdictions,
             "model": asdict(status),

@@ -56,6 +56,7 @@ from roadlegal.challan import ChallanCalculator  # noqa: E402
 from roadlegal.game_content import quiz_for  # noqa: E402
 from roadlegal.geo import geofence  # noqa: E402
 from roadlegal.llm_runtime import ModelStatus  # noqa: E402
+from roadlegal.prepared import apply_prepared_fallback  # noqa: E402
 from roadlegal.rag import RoadLegalRAG  # noqa: E402
 
 
@@ -158,6 +159,11 @@ RAG = RoadLegalRAG()
 RAG.llm = TransformersRuntime()
 CALCULATOR = ChallanCalculator()
 
+
+def _answer_with_fallback(message: str, jurisdiction: str, language: str) -> dict[str, Any]:
+    result = RAG.answer(message, jurisdiction=jurisdiction, language=language)
+    return apply_prepared_fallback(result, message, jurisdiction, language)
+
 app = gr.Server()
 app.add_middleware(
     CORSMiddleware,
@@ -226,15 +232,13 @@ def chat(payload: dict[str, Any]) -> dict[str, Any]:
     message = str(payload.get("message", "")).strip()
     if not message:
         raise HTTPException(status_code=400, detail="message is required")
-    return RAG.answer(
-        message,
-        jurisdiction=str(payload.get("jurisdiction", "india_national")),
-        language=str(payload.get("language", "English")),
-    )
+    jurisdiction = str(payload.get("jurisdiction", "india_national"))
+    language = str(payload.get("language", "English"))
+    return _answer_with_fallback(message, jurisdiction, language)
 
 
 def _gradio_chat_impl(message: str, jurisdiction: str, language: str) -> str:
-    result = RAG.answer(message.strip(), jurisdiction=jurisdiction, language=language)
+    result = _answer_with_fallback(message.strip(), jurisdiction, language)
     return json.dumps(result, ensure_ascii=False)
 
 
