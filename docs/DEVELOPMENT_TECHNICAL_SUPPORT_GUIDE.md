@@ -108,9 +108,10 @@ The GitHub Pages version runs without the Python backend. The file `web/static-d
 - Jurisdictions.
 - Fine schedule.
 - Quiz content.
+- Eight country profiles and 80 prepared answer topics.
 - Runtime health data for static mode.
 
-The frontend detects when the backend API is unavailable and automatically switches to static mode.
+The UI exposes two explicit runtime choices. `Offline Demo` reads only the packaged data and returns deterministic structured answers. `Live AI` calls the Python/Qwen backend and falls back to the same complete prepared answer pack if the API is unavailable. A service worker caches all required same-origin assets after the first visit so the GitHub Pages release can be reloaded without connectivity.
 
 ### 3.6 Cloud Backend
 
@@ -133,8 +134,9 @@ Cloud deployment files included:
 ```mermaid
 flowchart TD
     User["User browser"] --> UI["web/index.html + app.js"]
-    UI -->|Backend available| API["roadlegal.server"]
-    UI -->|Backend unavailable| Static["web/static-data.json"]
+    UI -->|Live AI selected| API["roadlegal.server"]
+    UI -->|Offline Demo or API unavailable| Static["web/static-data.json"]
+    SW["web/sw.js cache"] --> UI
     API --> RAG["RoadLegalRAG"]
     API --> Calc["ChallanCalculator"]
     API --> Geo["Geofence module"]
@@ -143,13 +145,13 @@ flowchart TD
     RAG --> LLM["Optional llama.cpp GGUF runtime"]
     Calc --> Fines["data/seed/fine_schedule.json"]
     Game --> Quiz["roadlegal/game_content.py"]
-    Static --> BrowserRAG["Browser-side static RAG fallback"]
+    Static --> Prepared["Prepared answers + browser RAG fallback"]
 ```
 
-The architecture has two modes:
+The architecture has two user-visible modes:
 
-1. Backend mode: Python serves the API and static UI.
-2. Static mode: GitHub Pages serves `web/` and the browser performs search/calculation locally.
+1. `Live AI`: Python serves hybrid retrieval, guarded Qwen generation, structured calculations, and API data.
+2. `Offline Demo`: GitHub Pages or local static hosting serves `web/`; the browser uses prepared answers, local search/calculation, quizzes, directory data, and feedback storage.
 
 ## 5. Repository Structure
 
@@ -298,19 +300,17 @@ Responsibilities:
 - `web/styles.css`: Responsive app styling.
 - `web/app.js`: State, API calls, static fallback, chat, calculator, quiz, geofence, feedback.
 - `web/static-data.json`: Generated static demo data.
+- `web/sw.js`: Versioned offline cache and navigation fallback.
+- `web/vendor/lucide.min.js`: Pinned local icon bundle so icons work offline.
 - `web/.nojekyll`: Prevents GitHub Pages from processing files through Jekyll.
 
 ### 7.2 Runtime Modes
 
-The frontend first tries backend API calls.
+The frontend starts in `Offline Demo` unless the user has explicitly saved `Live AI` as the preferred mode. Offline mode never waits for a network request. It loads `static-data.json`, uses exact prepared topics when a query matches, and uses jurisdiction-filtered browser retrieval for open-form fallback questions.
 
-If backend calls fail:
+In `Live AI`, API handlers call the configured backend. Successful requests use server-side hybrid RAG and Qwen generation. Failed or timed-out requests are clearly reported and answered from the local prepared pack. Feedback in offline mode is saved to browser `localStorage`.
 
-1. `backendAvailable` is set to `false`.
-2. The browser loads `static-data.json`.
-3. Static API handlers emulate backend endpoints.
-4. Chat uses browser-side lexical retrieval.
-5. Feedback is saved to browser `localStorage`.
+`web/sw.js` installs a versioned cache containing the HTML, CSS, JavaScript, configuration, static data, and local icon bundle. It excludes `/api/` requests and provides the cached app shell for navigation requests when the network is unavailable.
 
 This makes the same UI work locally, on a cloud backend, and on GitHub Pages.
 
@@ -319,13 +319,12 @@ This makes the same UI work locally, on a cloud backend, and on GitHub Pages.
 Main areas:
 
 - Top country/language toolbar.
+- Offline/Live segmented mode control.
 - Runtime status strip.
+- One-click judge demonstration.
 - Chat panel.
 - Country mode card.
-- Challan calculator.
-- Quiz/game card.
-- Directory card.
-- Feedback form.
+- Tabbed challan, quiz, directory, and feedback tools.
 
 Country switching updates:
 
@@ -836,7 +835,10 @@ Frontend checks:
 - Calculator offence list changes.
 - Quiz changes.
 - Chat returns citations.
-- Static GitHub Pages demo works without backend.
+- Every country has ten prepared answer topics and at least five quiz questions.
+- Service-worker install reports `Offline cache ready`.
+- Reload with the network or local server stopped still opens the app and returns a prepared answer.
+- `Live AI` reports the Qwen backend state and falls back without losing the answer workflow.
 
 ## 15. Legal Accuracy and Review Policy
 
@@ -1069,7 +1071,7 @@ Planned improvements:
 Current performance:
 
 - Backend loads RAG index into memory.
-- Static demo loads a 1.6 MB JSON file.
+- Static demo loads one generated JSON knowledge bundle.
 - No database required.
 - No vector server required.
 
@@ -1079,14 +1081,13 @@ Potential optimizations:
 - Lazy-load country data after menu selection.
 - Compress static JSON on CDN.
 - Add precomputed search index.
-- Add service worker caching.
 - Add ONNX embeddings when runtime is available.
 
 ## 21. Known Limitations
 
 - Country geofencing uses rough bounding boxes, not official boundaries.
 - Many BIMSTEC fine schedules are starter/review-needed.
-- Thailand has expanded content but exact fine amounts still need current official schedule review.
+- Thailand has expanded, sourced content; most other exact national fine schedules still need current official legal review.
 - GitHub Pages mode is static and cannot persist server-side feedback.
 - Local LLM generation requires GGUF, not safetensors.
 - No user accounts or synced leaderboard yet.
@@ -1096,9 +1097,7 @@ Potential optimizations:
 
 Short term:
 
-- Enable GitHub Pages setting for public static demo.
 - Add issue templates.
-- Add more official Thailand fine sources.
 - Add Bangladesh, Nepal, Bhutan, Sri Lanka, and Myanmar fine schedules.
 - Add review dates to fine records.
 
@@ -1106,7 +1105,6 @@ Medium term:
 
 - Add semantic retrieval.
 - Add speech input/output.
-- Add service worker offline cache.
 - Add state/city geofencing.
 - Add admin data-review tool.
 

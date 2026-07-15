@@ -24,7 +24,24 @@ Open:
 http://127.0.0.1:8000
 ```
 
-For public demos, GitHub Pages serves the frontend and its packaged offline RAG data. The configured production frontend calls the Hugging Face Docker Space first, where the Python API, full RAG pipeline, and small Qwen model run. If the API is sleeping or unavailable, the browser falls back to local static retrieval. Render and Railway remain Docker alternatives.
+Public URL:
+
+```text
+https://hopechanphot.github.io/roadlegal/
+```
+
+### Recommended Three-Minute Judge Flow
+
+1. Click `Run judge demo`. The app switches to the prepared offline engine, selects Thailand, opens the calculator, answers the motorcycle-helmet question with official-source status, and calculates `Up to THB 2,000` for the prepared two-wheeler case.
+2. Change the country menu to Bhutan or Myanmar. Ask the helmet or document question to show that RoadLegal provides a useful complete answer while refusing to invent an exact unreviewed fine.
+3. Open `Quiz`, answer a country-specific scenario, and show the instant explanation and locally saved score.
+4. Open `Directory` and `Feedback` to demonstrate official contacts and the offline update loop.
+5. Disconnect the network and reload. The service worker restores the full interface and its 909-passage, 80-topic data bundle; repeat a prepared question and challan calculation.
+6. Reconnect, choose `Live AI`, and ask an open-form question. The Python API runs hybrid retrieval plus Qwen3-0.6B generation, checks citations and numeric claims, and falls back to the prepared pack if cloud compute is unavailable.
+
+The mode switch is deliberately visible. It lets judges distinguish deterministic offline readiness from model-generated live RAG instead of treating an unavailable cloud endpoint as an application failure.
+
+For public demos, GitHub Pages serves the frontend and its packaged offline RAG data. The production frontend can call the Hugging Face Docker Space, where the Python API, full RAG pipeline, and small Qwen model run. If the API is sleeping or unavailable, the browser keeps the deterministic prepared-answer experience available. Render and Railway remain Docker alternatives.
 
 Demo queries:
 
@@ -54,7 +71,7 @@ The downloader successfully fetched official or authoritative material including
 - Thailand PRD traffic penalties and driver-points notices
 - Thailand Department of Land Transport motorcycle safety guidance
 
-The processed index currently contains 909 passages. Retrieval is Unicode-aware, expands common road-law terms across BIMSTEC languages, filters strictly by selected jurisdiction, and weights official verified material above translations and unreviewed seeds. Thailand has official fine records plus expanded law and game content. Exact fines that have not completed legal review remain visibly marked `needs_review`.
+The processed index currently contains 909 passages. The browser release adds 80 prepared answer topics across eight country/jurisdiction packs and at least five quiz questions for each. Retrieval is Unicode-aware, expands common road-law terms across BIMSTEC languages, filters strictly by selected jurisdiction, and weights official verified material above translations and unreviewed seeds. Thailand has official fine records plus expanded law and game content. Exact fines that have not completed legal review remain visibly marked `needs_review`.
 
 ## Legal Review Pipeline
 

@@ -1,9 +1,16 @@
+import json
 import unittest
+from pathlib import Path
 
 from roadlegal.challan import ChallanCalculator
 from roadlegal.game_content import quiz_for
 from roadlegal.geo import geofence
 from roadlegal.rag import RoadLegalRAG
+
+
+ROOT = Path(__file__).resolve().parents[1]
+STATIC_DATA = ROOT / "web" / "static-data.json"
+SERVICE_WORKER = ROOT / "web" / "sw.js"
 
 
 class RoadLegalTests(unittest.TestCase):
@@ -76,6 +83,57 @@ class RoadLegalTests(unittest.TestCase):
         results = rag.search("Thailand overspeeding rules", jurisdiction="thailand_national", k=2)
         fine = rag._maybe_calculate("Thailand overspeeding rules", "thailand_national")
         self.assertFalse(rag._generation_is_grounded("Speeding leads to imprisonment [S1].", results, fine))
+
+    def test_offline_demo_has_complete_country_answer_packs(self):
+        payload = json.loads(STATIC_DATA.read_text(encoding="utf-8"))
+        packs = payload["offline_answers"]
+        required_topics = {
+            "overspeeding",
+            "no_helmet",
+            "no_seatbelt",
+            "drink_driving",
+            "mobile_phone",
+            "no_license",
+            "documents",
+            "cross_border",
+            "emergency",
+            "scenario",
+        }
+
+        self.assertEqual(len(packs), 8)
+        self.assertEqual(payload["health"]["answer_topics"], 80)
+        self.assertTrue(payload["health"]["offline_ready"])
+        for jurisdiction, pack in packs.items():
+            self.assertEqual(set(pack["answers"]), required_topics, jurisdiction)
+            for topic, answer in pack["answers"].items():
+                self.assertTrue(answer["summary"], f"{jurisdiction}:{topic}")
+                self.assertTrue(answer["rules"], f"{jurisdiction}:{topic}")
+                self.assertTrue(answer["actions"], f"{jurisdiction}:{topic}")
+                self.assertTrue(answer["citations"], f"{jurisdiction}:{topic}")
+
+    def test_every_country_has_a_judge_ready_quiz(self):
+        payload = json.loads(STATIC_DATA.read_text(encoding="utf-8"))
+        self.assertEqual(set(payload["quizzes"]), set(payload["offline_answers"]))
+        for jurisdiction, quiz in payload["quizzes"].items():
+            self.assertGreaterEqual(len(quiz["questions"]), 5, jurisdiction)
+            for question in quiz["questions"]:
+                self.assertIn(question["answer"], range(len(question["options"])))
+                self.assertTrue(question["explanation"])
+
+    def test_service_worker_caches_the_complete_demo(self):
+        worker = SERVICE_WORKER.read_text(encoding="utf-8")
+        for asset in (
+            "./",
+            "./index.html",
+            "./styles.css",
+            "./app.js",
+            "./config.js",
+            "./static-data.json",
+            "./vendor/lucide.min.js",
+        ):
+            self.assertIn(asset, worker)
+        self.assertIn("caches.open", worker)
+        self.assertIn("self.skipWaiting", worker)
 
 
 if __name__ == "__main__":

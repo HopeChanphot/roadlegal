@@ -3,25 +3,39 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>RoadLegal</title>
+    <meta name="theme-color" content="#12372f" />
+    <meta name="description" content="Offline-first BIMSTEC traffic-law guidance, challan estimates, and road-safety learning." />
+    <title>RoadLegal | BIMSTEC Road Safety</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <main class="shell">
-      <section class="topbar" aria-label="RoadLegal controls">
-        <div class="brand">
-          <div class="mark" aria-hidden="true">RL</div>
-          <div>
-            <h1>RoadLegal</h1>
-            <p>Offline-first traffic-law companion for BIMSTEC roads</p>
-          </div>
+    <div class="app-shell">
+      <header class="app-header" aria-label="RoadLegal controls">
+        <a class="brand" href="./" aria-label="RoadLegal home">
+          <span class="brand-mark" aria-hidden="true"><i data-lucide="shield-check"></i></span>
+          <span class="brand-copy">
+            <span class="eyebrow">BIMSTEC ROAD SAFETY</span>
+            <strong>RoadLegal</strong>
+          </span>
+        </a>
+
+        <div class="runtime-switch" role="group" aria-label="Answer mode">
+          <button type="button" data-runtime="offline" aria-pressed="true">
+            <i data-lucide="cloud-off" aria-hidden="true"></i>
+            <span><strong>Offline Demo</strong><small>Prepared answers</small></span>
+          </button>
+          <button type="button" data-runtime="live" aria-pressed="false">
+            <i data-lucide="sparkles" aria-hidden="true"></i>
+            <span><strong>Live AI</strong><small>Qwen 0.6B</small></span>
+          </button>
         </div>
-        <div class="toolbar">
-          <label>
+
+        <div class="header-controls">
+          <label class="select-control">
             <span>Country / law area</span>
             <select id="jurisdictionSelect"></select>
           </label>
-          <label>
+          <label class="select-control language-control">
             <span>Language</span>
             <select id="languageSelect">
               <option>English</option>
@@ -34,109 +48,165 @@
               <option>Dzongkha</option>
             </select>
           </label>
-          <button class="icon-button" id="geoButton" title="Use device location" aria-label="Use device location">
-            <span aria-hidden="true">◎</span>
+          <button class="icon-button" id="geoButton" type="button" title="Use device location" aria-label="Use device location">
+            <i data-lucide="locate-fixed" aria-hidden="true"></i>
           </button>
         </div>
+      </header>
+
+      <section class="system-bar" aria-label="System status">
+        <div class="runtime-status">
+          <span id="connectionDot" class="connection-dot offline" aria-hidden="true"></span>
+          <span>
+            <strong id="modeText">Offline Demo</strong>
+            <small id="modeDescription">Prepared answers and local retrieval</small>
+          </span>
+        </div>
+        <div class="system-metrics">
+          <span><small>Answer pack</small><strong id="answerCountText">Loading</strong></span>
+          <span><small>Knowledge</small><strong id="indexText">0 passages</strong></span>
+          <span><small>Engine</small><strong id="modelText">Local only</strong></span>
+        </div>
+        <button id="demoButton" class="demo-button" type="button">
+          <i data-lucide="play" aria-hidden="true"></i>
+          Run judge demo
+        </button>
       </section>
 
-      <section class="status-strip" aria-label="System status">
-        <div>
-          <span class="status-label">Mode</span>
-          <strong id="modeText">Loading</strong>
-        </div>
-        <div>
-          <span class="status-label">Index</span>
-          <strong id="indexText">0 passages</strong>
-        </div>
-        <div>
-          <span class="status-label">Local model</span>
-          <strong id="modelText">Checking</strong>
-        </div>
-      </section>
-
-      <section class="workspace">
+      <main class="workspace">
         <section class="chat-panel" aria-label="RoadLegal chat">
-          <div class="chat-header">
-            <div>
-              <h2>Ask RoadLegal</h2>
-              <p>Answers are grounded in local sources and marked when a fine schedule needs review.</p>
+          <div class="panel-header chat-header">
+            <div class="panel-title">
+              <span class="title-icon" aria-hidden="true"><i data-lucide="messages-square"></i></span>
+              <span>
+                <h1>Traffic-law companion</h1>
+                <p>Jurisdiction-filtered answers with source status and practical next steps.</p>
+              </span>
             </div>
-            <button class="ghost-button" id="clearChatButton">Clear</button>
+            <div class="header-actions">
+              <span class="trust-label"><i data-lucide="file-check-2" aria-hidden="true"></i> Evidence grounded</span>
+              <button class="icon-button quiet" id="clearChatButton" type="button" title="Clear conversation" aria-label="Clear conversation">
+                <i data-lucide="trash-2" aria-hidden="true"></i>
+              </button>
+            </div>
           </div>
-          <div class="quick-grid" aria-label="Common questions">
-            <button data-prompt="What is the fine for overspeeding in India for a car?">Speed fine</button>
-            <button data-prompt="Do motorcycle passengers need helmets?">Helmet rule</button>
-            <button data-prompt="What happens for drunk driving?">Drink driving</button>
-            <button data-prompt="Give me a cross-border checklist for India to Bangladesh.">Border checklist</button>
+
+          <div class="quick-grid" aria-label="Prepared demonstration questions">
+            <button type="button" data-prompt="What should I know about overspeeding in India?" data-demo-topic="speed">
+              <i data-lucide="gauge" aria-hidden="true"></i><span>India speed</span>
+            </button>
+            <button type="button" data-prompt="What are the helmet rules in India?" data-demo-topic="helmet">
+              <i data-lucide="bike" aria-hidden="true"></i><span>India helmet</span>
+            </button>
+            <button type="button" data-prompt="What driving documents should I carry in India?" data-demo-topic="documents">
+              <i data-lucide="notebook-tabs" aria-hidden="true"></i><span>India documents</span>
+            </button>
+            <button type="button" data-prompt="Give me a cross-border checklist for India." data-demo-topic="border">
+              <i data-lucide="route" aria-hidden="true"></i><span>Border checklist</span>
+            </button>
+            <button type="button" data-prompt="Give me an India road safety scenario." data-demo-topic="scenario">
+              <i data-lucide="trophy" aria-hidden="true"></i><span>India scenario</span>
+            </button>
           </div>
+
           <div id="messages" class="messages" aria-live="polite"></div>
+
           <form id="chatForm" class="composer">
-            <textarea id="messageInput" rows="2" placeholder="Ask about fines, documents, helmet rules, speed limits, or safety advice..."></textarea>
-            <button class="send-button" type="submit" aria-label="Send question">→</button>
+            <div class="composer-field">
+              <textarea id="messageInput" rows="2" maxlength="1800" aria-label="Road-law question" placeholder="Ask about fines, documents, helmets, speed, border travel, or emergency steps..."></textarea>
+              <span id="composerModeLabel"><i data-lucide="cloud-off" aria-hidden="true"></i> Offline answer pack</span>
+            </div>
+            <button class="send-button" type="submit" aria-label="Send question" title="Send question">
+              <i data-lucide="send" aria-hidden="true"></i>
+            </button>
           </form>
         </section>
 
         <aside class="side-panel" aria-label="RoadLegal tools">
-          <section class="tool-card">
-            <div class="tool-heading">
-              <h2 id="countryTitle">Country Mode</h2>
-              <span id="coveragePill" class="pill">starter</span>
+          <section class="country-panel" aria-label="Selected jurisdiction">
+            <div class="country-heading">
+              <div>
+                <span class="eyebrow">CURRENT JURISDICTION</span>
+                <h2 id="countryTitle">Country Mode</h2>
+              </div>
+              <span id="coveragePill" class="status-pill">starter</span>
             </div>
             <div id="countryBox" class="country-box"></div>
           </section>
 
-          <section class="tool-card">
-            <div class="tool-heading">
-              <h2>Challan Calculator</h2>
-              <span class="pill">offline</span>
+          <section class="tool-shell">
+            <div class="tool-tabs" role="tablist" aria-label="RoadLegal tools">
+              <button type="button" role="tab" data-tool-tab="calculator" aria-selected="true" aria-controls="calculatorPanel">
+                <i data-lucide="calculator" aria-hidden="true"></i><span>Challan</span>
+              </button>
+              <button type="button" role="tab" data-tool-tab="quiz" aria-selected="false" aria-controls="quizPanel">
+                <i data-lucide="gamepad-2" aria-hidden="true"></i><span>Quiz</span>
+              </button>
+              <button type="button" role="tab" data-tool-tab="directory" aria-selected="false" aria-controls="directoryPanel">
+                <i data-lucide="contact-round" aria-hidden="true"></i><span>Directory</span>
+              </button>
+              <button type="button" role="tab" data-tool-tab="feedback" aria-selected="false" aria-controls="feedbackPanel">
+                <i data-lucide="message-square-warning" aria-hidden="true"></i><span>Feedback</span>
+              </button>
             </div>
-            <label>
-              <span>Offence</span>
-              <select id="offenceSelect"></select>
-            </label>
-            <label>
-              <span>Vehicle</span>
-              <select id="vehicleSelect">
-                <option value="light_motor_vehicle">Light motor vehicle</option>
-                <option value="two_wheeler">Two wheeler</option>
-                <option value="heavy_vehicle">Heavy vehicle</option>
-                <option value="any">Any</option>
-              </select>
-            </label>
-            <button id="calculateButton" class="primary-button">Calculate</button>
-            <div id="fineResult" class="result-box">Select an offence to estimate the penalty.</div>
-          </section>
 
-          <section class="tool-card">
-            <div class="tool-heading">
-              <h2>Quiz</h2>
-              <span id="scorePill" class="pill">0 pts</span>
+            <div id="calculatorPanel" class="tool-panel active" data-tool-panel="calculator" role="tabpanel">
+              <div class="tool-panel-heading">
+                <div><span class="eyebrow">OFFLINE CALCULATOR</span><h2>Challan estimate</h2></div>
+                <span class="status-pill neutral"><i data-lucide="database" aria-hidden="true"></i> Local data</span>
+              </div>
+              <div class="form-grid">
+                <label><span>Offence</span><select id="offenceSelect"></select></label>
+                <label><span>Vehicle</span>
+                  <select id="vehicleSelect">
+                    <option value="light_motor_vehicle">Light motor vehicle</option>
+                    <option value="two_wheeler">Two wheeler</option>
+                    <option value="heavy_vehicle">Heavy vehicle</option>
+                    <option value="any">Any / general</option>
+                  </select>
+                </label>
+              </div>
+              <button id="calculateButton" class="primary-button" type="button"><i data-lucide="receipt-text" aria-hidden="true"></i> Calculate estimate</button>
+              <div id="fineResult" class="result-box" aria-live="polite">Choose an offence and vehicle class.</div>
             </div>
-            <div id="quizBox" class="quiz-box">Loading quiz...</div>
-          </section>
 
-          <section class="tool-card">
-            <div class="tool-heading">
-              <h2>Directory</h2>
-              <span class="pill">starter</span>
+            <div id="quizPanel" class="tool-panel" data-tool-panel="quiz" role="tabpanel" hidden>
+              <div class="tool-panel-heading">
+                <div><span class="eyebrow">SAFETY CHALLENGE</span><h2>Country quiz</h2></div>
+                <span id="scorePill" class="status-pill score">0 pts</span>
+              </div>
+              <div id="quizBox" class="quiz-box">Loading quiz...</div>
             </div>
-            <div id="directoryBox" class="directory-box"></div>
-          </section>
 
-          <section class="tool-card">
-            <div class="tool-heading">
-              <h2>Feedback</h2>
-              <span class="pill">local log</span>
+            <div id="directoryPanel" class="tool-panel" data-tool-panel="directory" role="tabpanel" hidden>
+              <div class="tool-panel-heading">
+                <div><span class="eyebrow">OFFICIAL CONTACTS</span><h2>Help directory</h2></div>
+                <span class="status-pill neutral"><i data-lucide="map-pin" aria-hidden="true"></i> Local</span>
+              </div>
+              <div id="directoryBox" class="directory-box"></div>
             </div>
-            <form id="feedbackForm" class="feedback-form">
-              <textarea id="feedbackInput" rows="3" placeholder="Report unclear or outdated legal information..."></textarea>
-              <button class="ghost-button" type="submit">Submit feedback</button>
-            </form>
+
+            <div id="feedbackPanel" class="tool-panel" data-tool-panel="feedback" role="tabpanel" hidden>
+              <div class="tool-panel-heading">
+                <div><span class="eyebrow">LEGAL REVIEW</span><h2>Report an issue</h2></div>
+                <span class="status-pill neutral"><i data-lucide="hard-drive" aria-hidden="true"></i> Saved locally</span>
+              </div>
+              <form id="feedbackForm" class="feedback-form">
+                <label><span>What looks unclear or outdated?</span><textarea id="feedbackInput" rows="5" maxlength="1200" placeholder="Describe the law, amount, source, or location that needs review..."></textarea></label>
+                <button class="secondary-button" type="submit"><i data-lucide="save" aria-hidden="true"></i> Save feedback</button>
+              </form>
+            </div>
           </section>
         </aside>
-      </section>
-    </main>
+      </main>
+
+      <footer class="app-footer">
+        <span><i data-lucide="shield-alert" aria-hidden="true"></i> Informational guidance, not legal advice. Verify disputed or urgent matters with local authorities.</span>
+        <span id="offlineCacheText"><i data-lucide="hard-drive-download" aria-hidden="true"></i> Preparing offline cache</span>
+      </footer>
+    </div>
+
+    <script src="vendor/lucide.min.js"></script>
     <script src="config.js"></script>
     <script src="app.js"></script>
   </body>

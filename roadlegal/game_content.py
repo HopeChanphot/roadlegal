@@ -71,7 +71,21 @@ COUNTRY_QUESTIONS = {
             "options": ["Fines can differ by light and heavy vehicle class", "Vehicle class never matters", "Only vehicle colour matters"],
             "answer": 0,
             "explanation": "The structured calculator separates light, two-wheeler, and heavy vehicle cases where the law or compounding schedule differs.",
-        }
+        },
+        {
+            "id": "india_helmet_1",
+            "question": "An adult passenger joins a short two-wheeler trip in India without a helmet. What should the rider do?",
+            "options": ["Wait until the passenger has a fastened helmet", "Continue below 20 km/h", "Use side streets to avoid enforcement"],
+            "answer": 0,
+            "explanation": "Protective-headgear duties and injury risk apply to short trips too; the safe choice is a correctly fastened helmet before moving.",
+        },
+        {
+            "id": "india_challan_1",
+            "question": "An India e-challan looks unfamiliar. What is the strongest first check?",
+            "options": ["Verify it on the official Parivahan or local police portal", "Pay through a link in an unknown message", "Ignore every camera challan"],
+            "answer": 0,
+            "explanation": "Use an official portal to verify vehicle, offence, location, amount, and payment status before acting.",
+        },
     ],
     "delhi": [
         {
@@ -80,7 +94,14 @@ COUNTRY_QUESTIONS = {
             "options": ["Vehicle number, location, measured speed, road limit, and e-challan portal status", "Only the colour of the vehicle", "Ignore it until stopped again"],
             "answer": 0,
             "explanation": "Camera/enforcement records should be checked against the official e-challan details and local speed limit.",
-        }
+        },
+        {
+            "id": "delhi_air_quality_1",
+            "question": "A Delhi traveller hears that temporary vehicle restrictions may be active. What should they do?",
+            "options": ["Check current official traffic and transport notices before departure", "Assume last year's rule is unchanged", "Rely only on a social-media message"],
+            "answer": 0,
+            "explanation": "Temporary restrictions can change quickly; an official current notice is the proper source.",
+        },
     ],
     "bangladesh_national": [
         {
@@ -89,7 +110,78 @@ COUNTRY_QUESTIONS = {
             "options": ["Cite the source and avoid inventing a final amount", "Guess a fine", "Copy another country's schedule"],
             "answer": 0,
             "explanation": "Legal accuracy beats false certainty. RoadLegal should flag schedules that still need BRTA/legal review.",
-        }
+        },
+        {
+            "id": "bangladesh_documents_1",
+            "question": "Before a commercial road trip in Bangladesh, which check is most complete?",
+            "options": ["Licence, registration, fitness, route permit, and required insurance evidence", "Only the driver's phone", "Only the number plate"],
+            "answer": 0,
+            "explanation": "Vehicle and trip type can require several driver, vehicle, fitness, and permit documents.",
+        },
+    ],
+    "bhutan_national": [
+        {
+            "id": "bhutan_mountain_1",
+            "question": "Fog reduces visibility on a mountain road in Bhutan. What is the safest response?",
+            "options": ["Slow down, increase distance, and stop safely if visibility collapses", "Follow the centre line at normal speed", "Overtake before the next bend"],
+            "answer": 0,
+            "explanation": "Mountain geometry, weather, and limited sight distance require a speed well below the maximum when conditions deteriorate.",
+        },
+        {
+            "id": "bhutan_documents_1",
+            "question": "A cross-border vehicle enters Bhutan. What should be checked before continuing?",
+            "options": ["Entry authority, licence, registration, insurance, permits, and route conditions", "Only fuel level", "Only a hotel address"],
+            "answer": 0,
+            "explanation": "Cross-border driving can involve vehicle-entry and route requirements in addition to ordinary driver documents.",
+        },
+    ],
+    "nepal_national": [
+        {
+            "id": "nepal_descent_1",
+            "question": "A driver begins a long steep descent in Nepal. Which technique is safest?",
+            "options": ["Use an appropriate lower gear and preserve braking capacity", "Coast in neutral", "Hold the brakes continuously at high speed"],
+            "answer": 0,
+            "explanation": "Controlled gearing and speed help prevent brake overheating on long descents.",
+        },
+        {
+            "id": "nepal_cross_border_1",
+            "question": "Before taking a rented vehicle across a Nepal border, what must be confirmed?",
+            "options": ["Rental authority, border permission, licence acceptance, insurance, and vehicle documents", "Only the rental price", "A verbal promise from another traveller"],
+            "answer": 0,
+            "explanation": "Rental and insurance agreements may restrict border travel even when the driver holds a licence.",
+        },
+    ],
+    "sri_lanka_national": [
+        {
+            "id": "sri_lanka_licence_1",
+            "question": "A visitor plans to drive in Sri Lanka. What should be confirmed before collecting the rental car?",
+            "options": ["Licence recognition or endorsement, rental authority, and insurance", "Only passport expiry", "Only the vehicle colour"],
+            "answer": 0,
+            "explanation": "Visitors should confirm that their driving credential is accepted and that the rental and insurance cover them.",
+        },
+        {
+            "id": "sri_lanka_crossing_1",
+            "question": "Pedestrians are waiting near an uncontrolled crossing in Sri Lanka. What is the lowest-risk choice?",
+            "options": ["Slow early, scan both sides, and be ready to stop", "Accelerate before they step out", "Sound the horn and keep speed"],
+            "answer": 0,
+            "explanation": "Early speed reduction creates time to detect and yield safely to vulnerable road users.",
+        },
+    ],
+    "myanmar_national": [
+        {
+            "id": "myanmar_traffic_side_1",
+            "question": "What deserves special attention when beginning to drive in Myanmar?",
+            "options": ["Right-hand traffic, vehicle blind spots, turns, and overtaking position", "Assume all vehicles place the driver on the same side", "Follow the largest vehicle closely"],
+            "answer": 0,
+            "explanation": "Myanmar uses right-hand traffic while vehicle layouts can vary, so sight lines and overtaking need deliberate adjustment.",
+        },
+        {
+            "id": "myanmar_source_1",
+            "question": "A Myanmar fine amount cannot be verified from the packaged official material. What should RoadLegal display?",
+            "options": ["The rule and source status, without inventing an amount", "A neighbouring country's fine", "A random estimate"],
+            "answer": 0,
+            "explanation": "A cautious, traceable answer is more legally useful than unsupported precision.",
+        },
     ],
 }
 

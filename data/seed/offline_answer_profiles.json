@@ -1,0 +1,112 @@
+{
+  "india_national": {
+    "country": "India",
+    "traffic_side": "Left-hand traffic",
+    "framework": "Motor Vehicles Act, 1988, as amended, together with central rules and state or local enforcement schedules.",
+    "source_title": "India Motor Vehicles Act, 1988",
+    "source_url": "https://www.indiacode.nic.in/bitstream/123456789/9460/1/a1988-59.pdf",
+    "source_status": "Official national law",
+    "documents": ["valid driving licence", "vehicle registration", "insurance evidence", "pollution-control certificate where required", "permit or fitness documents for applicable vehicles"],
+    "emergency": ["National emergency: 112", "Official e-Challan: echallan.parivahan.gov.in"],
+    "traveller_note": "State compounding schedules, local speed notifications, permits, and document rules can vary, so cross-state travellers should check the destination state before departure."
+  },
+  "delhi": {
+    "country": "Delhi, India",
+    "traffic_side": "Left-hand traffic",
+    "framework": "India's Motor Vehicles Act and central rules, applied with Delhi traffic notifications and compounding practice.",
+    "source_title": "Delhi Traffic Police and India Motor Vehicles Act",
+    "source_url": "https://traffic.delhipolice.gov.in/",
+    "source_status": "National law with local enforcement layer",
+    "documents": ["valid driving licence", "vehicle registration", "insurance evidence", "pollution-control certificate", "permit or fitness documents where applicable"],
+    "emergency": ["National emergency: 112", "Delhi Traffic Police: traffic.delhipolice.gov.in"],
+    "traveller_note": "Check Delhi's posted limits, camera-enforcement details, restricted corridors, and current compounding schedule before relying on a national baseline."
+  },
+  "bangladesh_national": {
+    "country": "Bangladesh",
+    "traffic_side": "Left-hand traffic",
+    "framework": "Road Transport Act, 2018, related rules, and current BRTA or traffic-police enforcement schedules.",
+    "source_title": "Bangladesh Road Transport Act, 2018",
+    "source_url": "http://bdlaws.minlaw.gov.bd/act-1262.html",
+    "source_status": "Official law; exact current fine schedule needs legal review",
+    "documents": ["valid driving licence", "vehicle registration", "insurance or required financial-responsibility evidence", "fitness and route-permit documents where applicable", "traveller identity and vehicle authority documents"],
+    "emergency": ["National emergency service: 999", "BRTA: brta.gov.bd"],
+    "traveller_note": "Confirm that the licence and vehicle documents are accepted in Bangladesh and verify current BRTA requirements before a cross-border journey."
+  },
+  "bhutan_national": {
+    "country": "Bhutan",
+    "traffic_side": "Left-hand traffic",
+    "framework": "Road Safety and Transport Act, 1999 and Road Safety and Transport Regulations 2021.",
+    "source_title": "Bhutan Road Safety and Transport Regulations 2021",
+    "source_url": "https://bcta.gov.bt/road-safety-and-transport-regulations-2021/",
+    "source_status": "Official law and regulations; current penalty amount needs schedule review",
+    "documents": ["valid driving licence", "vehicle registration", "insurance evidence", "route permit or entry authorization where applicable", "fitness and commercial-vehicle documents where applicable"],
+    "emergency": ["Police emergency: 113", "Bhutan Construction and Transport Authority: bcta.gov.bt"],
+    "traveller_note": "Mountain roads, local permits, vehicle entry conditions, and weather can materially change a safe travel plan; verify them before departure."
+  },
+  "nepal_national": {
+    "country": "Nepal",
+    "traffic_side": "Left-hand traffic",
+    "framework": "Motor Vehicles and Transport Management Act, 2049, related rules, and current traffic-police schedules.",
+    "source_title": "WHO Road safety Nepal 2023 country profile",
+    "source_url": "https://cdn.who.int/media/docs/default-source/country-profiles/road-safety/road-safety-2023-npl.pdf",
+    "source_status": "Official safety profile; primary legal PDF link requires replacement",
+    "documents": ["valid driving licence", "vehicle registration", "insurance evidence", "route permit or entry documents where applicable", "traveller identity and rental authority documents"],
+    "emergency": ["Police emergency: 100", "Department of Transport Management: dotm.gov.np"],
+    "traveller_note": "Confirm border entry permission, licence acceptance, insurance, route restrictions, and mountain-road conditions before driving in Nepal."
+  },
+  "sri_lanka_national": {
+    "country": "Sri Lanka",
+    "traffic_side": "Left-hand traffic",
+    "framework": "Motor Traffic Act and current police, spot-fine, court, and licensing regulations.",
+    "source_title": "WHO Road safety Sri Lanka 2023 country profile",
+    "source_url": "https://cdn.who.int/media/docs/default-source/country-profiles/road-safety/road-safety-2023-lka.pdf",
+    "source_status": "Official safety profile; LawNet source currently has a certificate fault",
+    "documents": ["valid driving licence accepted in Sri Lanka", "vehicle registration", "insurance evidence", "rental or vehicle-authority documents", "passport or identity evidence for travellers"],
+    "emergency": ["Police emergency: 119", "Sri Lanka Police: police.lk"],
+    "traveller_note": "Travellers should confirm licence recognition or local endorsement, rental authorization, insurance, and current police requirements before driving."
+  },
+  "thailand_national": {
+    "country": "Thailand",
+    "traffic_side": "Left-hand traffic",
+    "framework": "Land Traffic Act and amendments, Royal Thai Police enforcement notices, and Department of Land Transport requirements.",
+    "source_title": "Thailand PRD traffic penalties effective September 2022",
+    "source_url": "https://region2.prd.go.th/th/content/category/detail/id/1169/iid/118650",
+    "source_status": "Official Government Public Relations Department notice",
+    "documents": ["driving licence accepted in Thailand", "passport or identity evidence", "vehicle registration or rental agreement", "insurance evidence", "vehicle inspection or permit documents where applicable"],
+    "emergency": ["Police emergency: 191", "Medical emergency: 1669", "Tourist Police: 1155"],
+    "traveller_note": "Check licence acceptance, rental restrictions, insurance, motorcycle eligibility, road class, posted limits, and left-side traffic habits before driving.",
+    "thai_localizations": {
+      "overspeeding": {
+        "title": "กฎหมายขับรถเร็วในประเทศไทย",
+        "summary": "ประกาศของกรมประชาสัมพันธ์ระบุว่าโทษปรับสูงสุดสำหรับการขับรถเร็วเกินกำหนดคือ 4,000 บาท โดยความเร็วที่ใช้จริงขึ้นอยู่กับป้าย ประเภทรถ ประเภทถนน และข้อเท็จจริงของเหตุการณ์",
+        "actions": ["ตรวจป้ายจำกัดความเร็วทุกครั้ง", "ลดความเร็วเมื่อฝนตก ทัศนวิสัยต่ำ หรือมีคนเดินเท้า", "ตรวจข้อมูลใบสั่งกับหน่วยงานตำรวจหากมีข้อโต้แย้ง"]
+      },
+      "no_helmet": {
+        "title": "กฎหมายหมวกนิรภัยในประเทศไทย",
+        "summary": "ผู้ขับขี่และผู้ซ้อนรถจักรยานยนต์ควรสวมหมวกนิรภัยและรัดสายให้แน่น ประกาศของกรมประชาสัมพันธ์ระบุโทษปรับสูงสุด 2,000 บาทสำหรับการไม่สวมหมวกนิรภัย",
+        "actions": ["สวมหมวกนิรภัยมาตรฐานทั้งผู้ขับขี่และผู้ซ้อน", "รัดสายคางก่อนออกรถ", "เปลี่ยนหมวกที่แตกร้าวหรือผ่านการกระแทกรุนแรง"]
+      },
+      "drink_driving": {
+        "title": "เมาแล้วขับในประเทศไทย",
+        "summary": "อย่าขับรถหลังดื่มแอลกอฮอล์ โทษอาจรวมถึงค่าปรับ จำคุก การพักใช้ใบอนุญาต และโทษที่สูงขึ้นเมื่อกระทำผิดซ้ำหรือเกิดอุบัติเหตุ",
+        "actions": ["ใช้คนขับที่ไม่ดื่ม รถแท็กซี่ หรือขนส่งสาธารณะ", "อย่าพึ่งกาแฟหรือการรอเพียงไม่กี่นาที", "เตรียมวิธีกลับบ้านก่อนเริ่มดื่ม"]
+      },
+      "documents": {
+        "title": "เอกสารที่ควรพกเมื่อขับรถในประเทศไทย",
+        "summary": "ควรพกใบขับขี่ที่ประเทศไทยยอมรับ เอกสารประจำตัว เอกสารทะเบียนรถหรือสัญญาเช่า และหลักฐานประกันภัย",
+        "actions": ["ตรวจว่าใบขับขี่ใช้ได้กับประเภทรถ", "อ่านข้อจำกัดของบริษัทเช่ารถ", "เก็บเบอร์ฉุกเฉิน 191, 1669 และตำรวจท่องเที่ยว 1155"]
+      }
+    }
+  },
+  "myanmar_national": {
+    "country": "Myanmar",
+    "traffic_side": "Right-hand traffic",
+    "framework": "Vehicle Safety and Motor Vehicle Management Law 2020 and current traffic rules and enforcement schedules.",
+    "source_title": "WHO Road safety Myanmar 2023 country profile",
+    "source_url": "https://cdn.who.int/media/docs/default-source/country-profiles/road-safety/road-safety-2023-mmr.pdf",
+    "source_status": "Official safety profile; MOTC legal download is currently unavailable",
+    "documents": ["valid driving licence", "vehicle registration", "insurance or required financial-responsibility evidence", "vehicle authorization or rental documents", "local entry or permit documents where applicable"],
+    "emergency": ["Police emergency: 199", "Verify current local authority contacts before travel"],
+    "traveller_note": "Myanmar uses right-hand traffic despite many right-hand-drive vehicles; confirm current travel access, licence acceptance, insurance, and local restrictions before driving."
+  }
+}
