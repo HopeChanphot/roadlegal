@@ -1,5 +1,8 @@
 const state = {
   jurisdiction: localStorage.getItem("roadlegal_jurisdiction") || "india_national",
+  runtime: localStorage.getItem("roadlegal_runtime") === "live" ? "live" : "offline",
+  backendState: "offline",
+  activeTool: "calculator",
   jurisdictions: [],
   score: Number(localStorage.getItem("roadlegal_score") || "0"),
   quiz: [],
@@ -8,56 +11,56 @@ const state = {
     india_national: {
       title: "India",
       side: "Left-hand traffic",
-      coverage: "verified starter",
+      coverage: "verified law",
       focus: "Motor Vehicles Act, challan calculator, helmets, speed, drink driving",
-      note: "India has the strongest starter fine coverage in this MVP."
+      note: "Prepared answers combine the national Act, structured fines, and official-source retrieval."
     },
     delhi: {
       title: "Delhi, India",
       side: "Left-hand traffic",
-      coverage: "city layer",
+      coverage: "local layer",
       focus: "Delhi traffic enforcement and India national baseline",
-      note: "Use Delhi for local demo cases where compounding practice differs from national baseline."
+      note: "Delhi adds a local enforcement layer to the India national baseline."
     },
     bangladesh_national: {
       title: "Bangladesh",
       side: "Left-hand traffic",
-      coverage: "review needed",
+      coverage: "law covered",
       focus: "Road Transport Act, BRTA/legal review, documents",
       note: "Fine amounts are intentionally cautious until the latest official schedule is reviewed."
     },
     bhutan_national: {
       title: "Bhutan",
       side: "Left-hand traffic",
-      coverage: "review needed",
+      coverage: "law covered",
       focus: "RSTA law source, licence and safety reminders",
       note: "Starter law mode is ready; challan values need official schedule review."
     },
     nepal_national: {
       title: "Nepal",
       side: "Left-hand traffic",
-      coverage: "review needed",
+      coverage: "safety covered",
       focus: "Motor vehicle act, documents, speed safety",
       note: "Use for cautious legal guidance while fine schedules are being verified."
     },
     sri_lanka_national: {
       title: "Sri Lanka",
       side: "Left-hand traffic",
-      coverage: "review needed",
+      coverage: "safety covered",
       focus: "Motor Traffic Act starter coverage",
       note: "RoadLegal distinguishes spot-fine and court-referred offences once schedules are added."
     },
     thailand_national: {
       title: "Thailand",
       side: "Left-hand traffic",
-      coverage: "expanded game mode",
+      coverage: "verified fines",
       focus: "Land Traffic Act, helmets, speed signs, drink driving, tourist documents",
-      note: "Thailand now has richer law passages, calculator offence types, and scenario quiz content."
+      note: "Official fine notices, traveller checklists, Thai answers, and country scenarios are packaged offline."
     },
     myanmar_national: {
       title: "Myanmar",
       side: "Right-hand traffic",
-      coverage: "review needed",
+      coverage: "safety covered",
       focus: "Vehicle law starter coverage and cautious safety guidance",
       note: "Fine amounts remain source-needed until current official material is reviewed."
     }
@@ -137,6 +140,15 @@ const offenceAliases = {
   registration: "no_registration"
 };
 
+const standardOfflineOffences = [
+  ["overspeeding", "Overspeeding"],
+  ["no_helmet", "Motorcycle helmet violation"],
+  ["no_seatbelt", "Seat-belt violation"],
+  ["drink_driving", "Driving under the influence"],
+  ["no_license", "Driving without a valid licence"],
+  ["mobile_phone", "Unsafe mobile-phone use"]
+];
+
 const retrievalAliases = {
   overspeeding: ["speed", "speeding", "speed limit", "ความเร็ว", "ขับรถเร็ว", "গতি", "द्रुतगति", "तीव्र गति", "වේගය", "အမြန်နှုန်း"],
   no_helmet: ["helmet", "no helmet", "หมวกกันน็อก", "หมวกนิรภัย", "হেলমেট", "हेलमेट", "हेल्मेट", "හිස්වැසුම", "ဦးထုပ်"],
@@ -165,6 +177,9 @@ function escapeHtml(value) {
 }
 
 async function api(path, options = {}) {
+  if (state.runtime === "offline") {
+    return staticApi(path, options);
+  }
   if (backendAvailable) {
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), path.endsWith("/api/chat") ? 90000 : 5000);
@@ -177,31 +192,79 @@ async function api(path, options = {}) {
       if (!response.ok) {
         throw new Error(response.statusText);
       }
-      return response.json();
+      const result = await response.json();
+      state.backendState = result.model?.loaded === false ? "warming" : "live";
+      updateRuntimeUI();
+      return result;
     } catch (error) {
       backendAvailable = false;
+      state.backendState = "fallback";
+      updateRuntimeUI();
       scheduleBackendRetry();
       console.info("RoadLegal backend unavailable; using static demo mode.", error);
     } finally {
       clearTimeout(timeout);
     }
   }
-  return staticApi(path, options);
+  const fallback = await staticApi(path, options);
+  return { ...fallback, live_fallback: true };
 }
 
 function renderHealth(health) {
-  $("modeText").textContent = health.model.mode;
   $("indexText").textContent = `${health.passages} passages`;
-  $("modelText").textContent = health.model.loaded
-    ? "Qwen3 ready"
-    : health.model.gguf_model || health.model.mode === "model-loading"
-      ? "model warming"
-      : "extractive fallback";
-  $("modelText").title = health.model.note;
+  if (health.answer_topics != null) {
+    $("answerCountText").textContent = `${health.answer_topics} topics`;
+  }
+  if (state.runtime === "offline") {
+    state.backendState = "offline";
+  } else if (health.model.loaded) {
+    state.backendState = "live";
+  } else if (health.model.mode === "model-loading" || health.model.gguf_model) {
+    state.backendState = "warming";
+  }
+  $("modelText").title = health.model.note || "";
+  updateRuntimeUI();
+}
+
+function updateRuntimeUI() {
+  const offline = state.runtime === "offline";
+  document.documentElement.dataset.runtime = state.runtime;
+  document.querySelectorAll("[data-runtime]").forEach((button) => {
+    button.setAttribute("aria-pressed", String(button.dataset.runtime === state.runtime));
+  });
+
+  const dot = $("connectionDot");
+  dot.className = "connection-dot";
+  if (offline) {
+    dot.classList.add("offline");
+    $("modeText").textContent = "Offline Demo";
+    $("modeDescription").textContent = "Prepared answers and local retrieval";
+    $("modelText").textContent = "Offline ready";
+    $("composerModeLabel").innerHTML = '<i data-lucide="cloud-off" aria-hidden="true"></i> Offline answer pack';
+  } else if (state.backendState === "live") {
+    dot.classList.add("live");
+    $("modeText").textContent = "Live AI";
+    $("modeDescription").textContent = "Qwen generation with evidence guard";
+    $("modelText").textContent = "Qwen3 ready";
+    $("composerModeLabel").innerHTML = '<i data-lucide="sparkles" aria-hidden="true"></i> Live grounded AI';
+  } else if (state.backendState === "warming") {
+    dot.classList.add("live");
+    $("modeText").textContent = "Live AI warming";
+    $("modeDescription").textContent = "Model host is loading";
+    $("modelText").textContent = "Qwen3 warming";
+    $("composerModeLabel").innerHTML = '<i data-lucide="loader-circle" aria-hidden="true"></i> AI host warming';
+  } else {
+    dot.classList.add("fallback");
+    $("modeText").textContent = "Live AI fallback";
+    $("modeDescription").textContent = "AI host unavailable; offline answers active";
+    $("modelText").textContent = "Offline safety net";
+    $("composerModeLabel").innerHTML = '<i data-lucide="shield-check" aria-hidden="true"></i> Safe offline fallback';
+  }
+  window.lucide?.createIcons();
 }
 
 function scheduleBackendRetry(delay = 30000) {
-  if (!apiBase || sameOriginBackend || backendRetryTimer) return;
+  if (state.runtime !== "live" || !apiBase || sameOriginBackend || backendRetryTimer) return;
   backendRetryTimer = setTimeout(async () => {
     backendRetryTimer = null;
     const controller = new AbortController();
@@ -219,6 +282,30 @@ function scheduleBackendRetry(delay = 30000) {
       clearTimeout(timeout);
     }
   }, delay);
+}
+
+async function setRuntime(runtime, announce = true) {
+  state.runtime = runtime === "live" ? "live" : "offline";
+  localStorage.setItem("roadlegal_runtime", state.runtime);
+  if (state.runtime === "offline") {
+    state.backendState = "offline";
+    const health = await staticApi("/api/health");
+    renderHealth(health);
+    if (announce) addMessage("bot", "Offline Demo is active. Prepared answers, calculator, quiz, directory, geofencing, and feedback now run without the AI server.");
+    return;
+  }
+
+  backendAvailable = true;
+  state.backendState = "warming";
+  updateRuntimeUI();
+  const health = await api("/api/health");
+  renderHealth(health);
+  if (announce) {
+    const text = health.model.mode === "static-rag"
+      ? "The Live AI host is unavailable, so RoadLegal is using the complete offline answer pack until it reconnects."
+      : "Live AI mode is active. Qwen answers will be checked against retrieved legal evidence before they are shown.";
+    addMessage("bot", text);
+  }
 }
 
 async function getStaticData() {
@@ -265,11 +352,16 @@ async function staticApi(path, options = {}) {
 
 function staticOffences(data, jurisdiction) {
   const record = staticJurisdictionData(data, jurisdiction);
-  return Object.entries(record.offences || {}).map(([id, value]) => ({
+  const configured = Object.entries(record.offences || {}).map(([id, value]) => ({
     id,
     label: value.label || id,
     vehicle_classes: Object.keys(value.vehicles || {})
   }));
+  const existing = new Set(configured.map((item) => item.id));
+  const prepared = standardOfflineOffences
+    .filter(([id]) => !existing.has(id))
+    .map(([id, label]) => ({ id, label, vehicle_classes: ["any"], prepared_only: true }));
+  return [...configured, ...prepared];
 }
 
 function staticJurisdictionData(data, jurisdiction) {
@@ -294,6 +386,20 @@ function staticCalculate(data, jurisdiction, offence, vehicleClass = "light_moto
   const vehicleKey = String(vehicleClass || "light_motor_vehicle").toLowerCase().replaceAll(" ", "_");
   const offenceData = jurisdictionData.offences?.[offenceKey];
   if (!offenceData) {
+    const prepared = data.offline_answers?.[jurisdictionKey]?.answers?.[offenceKey];
+    if (prepared) {
+      return {
+        jurisdiction: jurisdictionKey,
+        offence: offenceKey,
+        vehicle_class: vehicleKey,
+        status: "needs_review",
+        amount_display: "Exact amount not claimed until official schedule review.",
+        legal_basis: prepared.rules?.[0] || "Prepared legal guidance is available offline.",
+        consequences: [],
+        caveats: [prepared.summary],
+        source: prepared.citations?.[0]?.url || null
+      };
+    }
     return {
       jurisdiction: jurisdictionKey,
       offence: offenceKey,
@@ -418,7 +524,61 @@ function safetyTip(message) {
   return "";
 }
 
+function detectPreparedTopic(message) {
+  const lowered = String(message || "").toLocaleLowerCase();
+  const expanded = expandStaticQuery(message);
+  if (/\b(quiz|scenario|challenge|game)\b/.test(lowered)) return "scenario";
+  if (/\b(emergency|accident|crash|collision|ambulance|police help)\b/.test(lowered)) return "emergency";
+  if (/\b(cross[- ]?border|border|traveller|traveler|tourist|entering|road trip)\b/.test(lowered)) return "cross_border";
+  if (/\b(document|documents|carry|registration|insurance|permit|paperwork|checklist)\b/.test(lowered)) return "documents";
+  return expanded.concepts[0] || "";
+}
+
+function preparedAnswerText(prepared) {
+  const lines = [prepared.title, "", `Quick answer: ${prepared.summary}`, "", "Key rules:"];
+  prepared.rules?.forEach((item) => lines.push(`- ${item}`));
+  lines.push("", "What to do:");
+  prepared.actions?.forEach((item) => lines.push(`- ${item}`));
+  if (prepared.safety) lines.push("", `Safety note: ${prepared.safety}`);
+  lines.push("", `Source status: ${prepared.verification}`);
+  return lines.join("\n");
+}
+
+function relevantStaticSnippet(message, text, maxChars = 300) {
+  const clean = String(text || "").replace(/\s+/g, " ").trim();
+  if (clean.length <= maxChars) return clean;
+  const { terms } = expandStaticQuery(message);
+  const folded = clean.toLocaleLowerCase();
+  const positions = terms
+    .filter((term) => term.length >= 4)
+    .map((term) => folded.indexOf(term.toLocaleLowerCase()))
+    .filter((position) => position >= 0);
+  const focus = positions.length ? Math.min(...positions) : 0;
+  let start = Math.max(0, focus - Math.floor(maxChars / 3));
+  const boundary = Math.max(clean.lastIndexOf(". ", focus), clean.lastIndexOf(" -", focus));
+  if (boundary >= start) start = boundary + 2;
+  const end = Math.min(clean.length, start + maxChars);
+  return `${start > 0 ? "..." : ""}${clean.slice(start, end).trim()}${end < clean.length ? "..." : ""}`;
+}
+
 function staticChat(data, message, jurisdiction = "india_national", language = "English") {
+  const topic = detectPreparedTopic(message);
+  const entry = data.offline_answers?.[jurisdiction]?.answers?.[topic];
+  if (entry) {
+    const localized = entry.localizations?.[language] || {};
+    const prepared = { ...entry, ...localized, citations: entry.citations, fine: entry.fine };
+    return {
+      answer: preparedAnswerText(prepared),
+      prepared,
+      mode: "offline-prepared",
+      jurisdiction,
+      language,
+      citations: prepared.citations || [],
+      fine: prepared.fine || null,
+      model: data.health.model
+    };
+  }
+
   const retrieved = staticSearch(data, message, jurisdiction);
   const expanded = expandStaticQuery(message);
   const offenceInput = expanded.concepts[0] || message;
@@ -432,9 +592,9 @@ function staticChat(data, message, jurisdiction = "india_national", language = "
     if (fine.caveats?.length) lines.push(`Caveat: ${fine.caveats.join(" ")}`);
   }
   if (retrieved.length) {
-    lines.push("Grounded answer:");
+    lines.push("Grounded answer from the packaged knowledge base:");
     retrieved.slice(0, 3).forEach((item) => {
-      const snippet = item.text.length > 260 ? `${item.text.slice(0, 257).trim()}...` : item.text;
+      const snippet = relevantStaticSnippet(message, item.text);
       lines.push(`- ${snippet} [${item.source_title}]`);
     });
   } else {
@@ -442,7 +602,7 @@ function staticChat(data, message, jurisdiction = "india_national", language = "
   }
   const tip = safetyTip(message);
   if (tip) lines.push(`Safety coach: ${tip}`);
-  lines.push(`Mode: static GitHub Pages demo. Language selected: ${language}. Verify urgent or disputed matters with the local traffic authority.`);
+  lines.push(`Mode: offline local retrieval. Language selected: ${language}. Verify urgent or disputed matters with the local traffic authority.`);
   return {
     answer: lines.join("\n"),
     mode: "static-rag",
@@ -460,10 +620,61 @@ function staticChat(data, message, jurisdiction = "india_national", language = "
   };
 }
 
-function addMessage(role, text, citations = []) {
+function renderPreparedAnswer(prepared) {
+  const rules = (prepared.rules || []).map((item) => `<li>${escapeHtml(item)}</li>`).join("");
+  const actions = (prepared.actions || []).map((item) => `<li>${escapeHtml(item)}</li>`).join("");
+  const fine = prepared.fine;
+  const review = fine && fine.status !== "verified";
+  const fineChip = fine
+    ? `<span class="answer-chip ${review ? "review" : ""}">${escapeHtml(fine.amount_display)}</span>`
+    : "";
+  return `
+    <strong class="answer-title">${escapeHtml(prepared.title)}</strong>
+    <div class="answer-meta">
+      <span class="answer-chip ${String(prepared.verification).toLowerCase().includes("review") ? "review" : ""}">${escapeHtml(prepared.verification)}</span>
+      ${fineChip}
+    </div>
+    <div class="answer-section"><strong>Quick answer</strong><p>${escapeHtml(prepared.summary)}</p></div>
+    ${rules ? `<div class="answer-section"><strong>Key rules</strong><ul>${rules}</ul></div>` : ""}
+    ${actions ? `<div class="answer-section"><strong>What to do</strong><ul>${actions}</ul></div>` : ""}
+    ${prepared.safety ? `<div class="answer-section"><strong>Safety note</strong><p>${escapeHtml(prepared.safety)}</p></div>` : ""}
+  `;
+}
+
+function renderPlainAnswer(text) {
+  const lines = String(text || "").split("\n").filter((line) => line.trim());
+  const items = [];
+  const blocks = [];
+  const flushItems = () => {
+    if (items.length) {
+      blocks.push(`<div class="answer-section"><ul>${items.splice(0).map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul></div>`);
+    }
+  };
+  lines.forEach((line) => {
+    if (line.trim().startsWith("- ")) {
+      items.push(line.trim().slice(2));
+      return;
+    }
+    flushItems();
+    const match = line.match(/^([^:]{2,34}):\s*(.+)$/);
+    if (match) {
+      blocks.push(`<div class="answer-section"><strong>${escapeHtml(match[1])}</strong><p>${escapeHtml(match[2])}</p></div>`);
+    } else {
+      blocks.push(`<div class="answer-section"><p>${escapeHtml(line)}</p></div>`);
+    }
+  });
+  flushItems();
+  return blocks.join("");
+}
+
+function addMessage(role, text, citations = [], prepared = null) {
   const node = document.createElement("div");
   node.className = `message ${role}`;
-  node.textContent = text;
+  if (role === "bot") {
+    node.innerHTML = prepared ? renderPreparedAnswer(prepared) : renderPlainAnswer(text);
+  } else {
+    node.textContent = text;
+  }
   if (citations.length) {
     const box = document.createElement("div");
     box.className = "citations";
@@ -471,13 +682,15 @@ function addMessage(role, text, citations = []) {
       const line = document.createElement("div");
       line.className = "citation";
       const verified = citation.verified ? "verified" : "review";
-      line.innerHTML = `<span>${verified}</span><a target="_blank" rel="noreferrer" href="${escapeHtml(citation.url)}">${escapeHtml(citation.title)}</a>`;
+      line.innerHTML = `<span class="${verified === "review" ? "review" : ""}">${verified}</span><a target="_blank" rel="noreferrer" href="${escapeHtml(citation.url)}">${escapeHtml(citation.title)}</a>`;
       box.appendChild(line);
     });
     node.appendChild(box);
   }
   $("messages").appendChild(node);
-  $("messages").scrollTop = $("messages").scrollHeight;
+  $("messages").scrollTop = role === "bot"
+    ? Math.max(0, node.offsetTop - $("messages").offsetTop - 12)
+    : $("messages").scrollHeight;
 }
 
 async function loadHealth() {
@@ -569,12 +782,14 @@ function updateQuickPrompts() {
     [`${country} speed`, `What should I know about overspeeding in ${country}?`],
     [`${country} helmet`, `What are the helmet rules in ${country}?`],
     [`${country} documents`, `What driving documents should I carry in ${country}?`],
-    [`${country} quiz`, `Give me a ${country} road safety scenario.`]
+    [`${country} border`, `Give me a cross-border checklist for ${country}.`],
+    [`${country} scenario`, `Give me a ${country} road safety scenario.`]
   ];
   document.querySelectorAll("[data-prompt]").forEach((button, index) => {
     const item = prompts[index];
     if (!item) return;
-    button.textContent = item[0];
+    const label = button.querySelector("span");
+    if (label) label.textContent = item[0];
     button.dataset.prompt = item[1];
   });
 }
@@ -593,7 +808,7 @@ async function ask(message) {
         language: $("languageSelect").value
       })
     });
-    addMessage("bot", data.answer, data.citations);
+    addMessage("bot", data.answer, data.citations, data.prepared);
   } catch (error) {
     addMessage("bot", `RoadLegal could not answer: ${error.message}`);
   } finally {
@@ -618,6 +833,19 @@ async function calculateFine() {
     ${consequences}
     ${caveats}
   `;
+  $("fineResult").className = `result-box ${data.status === "verified" ? "verified" : "review"}`;
+}
+
+function activateTool(name) {
+  state.activeTool = name;
+  document.querySelectorAll("[data-tool-tab]").forEach((button) => {
+    button.setAttribute("aria-selected", String(button.dataset.toolTab === name));
+  });
+  document.querySelectorAll("[data-tool-panel]").forEach((panel) => {
+    const active = panel.dataset.toolPanel === name;
+    panel.hidden = !active;
+    panel.classList.toggle("active", active);
+  });
 }
 
 async function loadQuiz() {
@@ -681,6 +909,30 @@ async function submitFeedback(event) {
   addMessage("bot", "Feedback saved locally for legal-data review.");
 }
 
+async function runJudgeDemo() {
+  $("demoButton").disabled = true;
+  try {
+    await setRuntime("offline", false);
+    state.jurisdiction = "thailand_national";
+    localStorage.setItem("roadlegal_jurisdiction", state.jurisdiction);
+    $("jurisdictionSelect").value = state.jurisdiction;
+    $("languageSelect").value = "English";
+    await loadOffences();
+    await loadQuiz();
+    renderCountryProfile();
+    updateQuickPrompts();
+    renderDirectory();
+    activateTool("calculator");
+    $("offenceSelect").value = "no_helmet";
+    $("vehicleSelect").value = "two_wheeler";
+    await calculateFine();
+    $("messages").innerHTML = "";
+    await ask("What is the motorcycle helmet rule and fine in Thailand?");
+  } finally {
+    $("demoButton").disabled = false;
+  }
+}
+
 function useLocation() {
   if (!navigator.geolocation) {
     addMessage("bot", "Geolocation is not available in this browser.");
@@ -715,6 +967,12 @@ function bindEvents() {
   document.querySelectorAll("[data-prompt]").forEach((button) => {
     button.addEventListener("click", () => ask(button.dataset.prompt));
   });
+  document.querySelectorAll("[data-runtime]").forEach((button) => {
+    button.addEventListener("click", () => setRuntime(button.dataset.runtime));
+  });
+  document.querySelectorAll("[data-tool-tab]").forEach((button) => {
+    button.addEventListener("click", () => activateTool(button.dataset.toolTab));
+  });
   $("jurisdictionSelect").addEventListener("change", async (event) => {
     state.jurisdiction = event.target.value;
     localStorage.setItem("roadlegal_jurisdiction", state.jurisdiction);
@@ -729,10 +987,32 @@ function bindEvents() {
   $("calculateButton").addEventListener("click", calculateFine);
   $("feedbackForm").addEventListener("submit", submitFeedback);
   $("geoButton").addEventListener("click", useLocation);
+  $("demoButton").addEventListener("click", runJudgeDemo);
+  $("languageSelect").addEventListener("change", (event) => {
+    localStorage.setItem("roadlegal_language", event.target.value);
+  });
+}
+
+async function registerOfflineCache() {
+  if (!("serviceWorker" in navigator)) {
+    $("offlineCacheText").textContent = "Offline cache unavailable in this browser";
+    return;
+  }
+  try {
+    await navigator.serviceWorker.register("sw.js");
+    await navigator.serviceWorker.ready;
+    $("offlineCacheText").innerHTML = '<i data-lucide="badge-check" aria-hidden="true"></i> Offline cache ready';
+  } catch (error) {
+    console.info("Offline cache registration failed.", error);
+    $("offlineCacheText").textContent = "Offline data remains available while this page is open";
+  }
+  window.lucide?.createIcons();
 }
 
 async function init() {
   bindEvents();
+  $("languageSelect").value = localStorage.getItem("roadlegal_language") || "English";
+  updateRuntimeUI();
   await loadHealth();
   await loadJurisdictions();
   await loadOffences();
@@ -740,7 +1020,12 @@ async function init() {
   renderCountryProfile();
   updateQuickPrompts();
   renderDirectory();
-  addMessage("bot", "Ready. Ask about fines, enforcement, documents, or safer driving choices.");
+  activateTool(state.activeTool);
+  addMessage("bot", state.runtime === "offline"
+    ? "Offline Demo is ready. Ask a prepared law question or choose a demonstration case above."
+    : "Live AI mode is ready. Answers fall back to the offline pack if the model host is unavailable.");
+  await registerOfflineCache();
+  window.lucide?.createIcons();
 }
 
 init().catch((error) => {

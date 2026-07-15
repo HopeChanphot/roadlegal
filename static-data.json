@@ -1,6 +1,8 @@
 {
   "health": {
     "passages": 909,
+    "answer_topics": 80,
+    "offline_ready": true,
     "index_file": "static-data.json",
     "jurisdictions": [
       "bangladesh_national",
@@ -480,6 +482,2834 @@
               }
             }
           }
+        }
+      }
+    }
+  },
+  "offline_answers": {
+    "india_national": {
+      "profile": {
+        "country": "India",
+        "traffic_side": "Left-hand traffic",
+        "framework": "Motor Vehicles Act, 1988, as amended, together with central rules and state or local enforcement schedules.",
+        "source_title": "India Motor Vehicles Act, 1988",
+        "source_url": "https://www.indiacode.nic.in/bitstream/123456789/9460/1/a1988-59.pdf",
+        "source_status": "Official national law",
+        "documents": [
+          "valid driving licence",
+          "vehicle registration",
+          "insurance evidence",
+          "pollution-control certificate where required",
+          "permit or fitness documents for applicable vehicles"
+        ],
+        "emergency": [
+          "National emergency: 112",
+          "Official e-Challan: echallan.parivahan.gov.in"
+        ],
+        "traveller_note": "State compounding schedules, local speed notifications, permits, and document rules can vary, so cross-state travellers should check the destination state before departure."
+      },
+      "answers": {
+        "overspeeding": {
+          "topic": "overspeeding",
+          "title": "Speed limits and overspeeding in India",
+          "summary": "The packaged verified schedule for India reports Rs 1,000 - Rs 2,000 for this demo case.",
+          "rules": [
+            "Motor Vehicles Act, 1988, section 183 as amended; state compounding rules may vary.",
+            "Motor Vehicles Act, 1988, as amended, together with central rules and state or local enforcement schedules.",
+            "The posted limit, road class, vehicle class, location, measured speed, and repeat history can change the applicable offence or outcome."
+          ],
+          "actions": [
+            "Treat a posted limit as a maximum, not a target.",
+            "Reduce speed for rain, darkness, pedestrians, schools, work zones, and poor road conditions.",
+            "For a disputed ticket, check the vehicle, location, time, measured speed, posted limit, and official payment or review channel."
+          ],
+          "safety": "Higher speed raises both crash probability and the severity of injury.",
+          "verification": "Official national law",
+          "citations": [
+            {
+              "title": "India Motor Vehicles Act, 1988",
+              "url": "https://www.indiacode.nic.in/bitstream/123456789/9460/1/a1988-59.pdf",
+              "verified": true,
+              "status": "Official national law"
+            },
+            {
+              "title": "WHO Road traffic injuries fact sheet",
+              "url": "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries",
+              "verified": true
+            }
+          ],
+          "fine": {
+            "jurisdiction": "india_national",
+            "offence": "overspeeding",
+            "vehicle_class": "light_motor_vehicle",
+            "status": "verified",
+            "amount_display": "Rs 1,000 - Rs 2,000",
+            "legal_basis": "Motor Vehicles Act, 1988, section 183 as amended; state compounding rules may vary.",
+            "consequences": [],
+            "caveats": [
+              "The final challan can depend on measured speed, road class, state rules, and repeat-offence history."
+            ],
+            "source": "https://www.indiacode.nic.in/bitstream/123456789/9460/1/a1988-59.pdf"
+          }
+        },
+        "no_helmet": {
+          "topic": "no_helmet",
+          "title": "Motorcycle helmet rule in India",
+          "summary": "The packaged verified schedule for India reports Rs 1,000 for this demo case.",
+          "rules": [
+            "Motor Vehicles Act, 1988, sections 129 and 194D as amended.",
+            "Motor Vehicles Act, 1988, as amended, together with central rules and state or local enforcement schedules.",
+            "Riders and passengers should use a correctly fastened, standards-compliant helmet; exemptions and the exact penalty must come from current local law."
+          ],
+          "actions": [
+            "Do not begin the trip until the rider and passenger have fastened helmets.",
+            "Replace a helmet after a severe impact or when its shell, strap, or buckle is damaged.",
+            "Confirm that the licence, rental agreement, and insurance permit the motorcycle class being used."
+          ],
+          "safety": "A quality, correctly worn helmet materially reduces fatal and serious head-injury risk.",
+          "verification": "Official national law",
+          "citations": [
+            {
+              "title": "India Motor Vehicles Act, 1988",
+              "url": "https://www.indiacode.nic.in/bitstream/123456789/9460/1/a1988-59.pdf",
+              "verified": true,
+              "status": "Official national law"
+            },
+            {
+              "title": "WHO Road traffic injuries fact sheet",
+              "url": "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries",
+              "verified": true
+            }
+          ],
+          "fine": {
+            "jurisdiction": "india_national",
+            "offence": "no_helmet",
+            "vehicle_class": "two_wheeler",
+            "status": "verified",
+            "amount_display": "Rs 1,000",
+            "legal_basis": "Motor Vehicles Act, 1988, sections 129 and 194D as amended.",
+            "consequences": [
+              "Possible licence disqualification under the amended penalty provision."
+            ],
+            "caveats": [],
+            "source": "https://www.indiacode.nic.in/bitstream/123456789/9460/1/a1988-59.pdf"
+          }
+        },
+        "no_seatbelt": {
+          "topic": "no_seatbelt",
+          "title": "Seat-belt and occupant protection rule in India",
+          "summary": "The packaged verified schedule for India reports Rs 1,000 for this demo case.",
+          "rules": [
+            "Motor Vehicles Act, 1988, section 194B as amended; vehicle safety rules also apply.",
+            "Motor Vehicles Act, 1988, as amended, together with central rules and state or local enforcement schedules.",
+            "Every occupant should use an available seat belt; covered seats, child restraints, exemptions, and penalties depend on current local law and vehicle configuration."
+          ],
+          "actions": [
+            "Buckle every occupant before the vehicle moves, including on short trips.",
+            "Use an age- and size-appropriate child restraint where required and available.",
+            "Do not place a child in front of an active airbag unless the vehicle instructions and law allow it."
+          ],
+          "safety": "Seat belts reduce the risk of death and serious injury for vehicle occupants.",
+          "verification": "Official national law",
+          "citations": [
+            {
+              "title": "India Motor Vehicles Act, 1988",
+              "url": "https://www.indiacode.nic.in/bitstream/123456789/9460/1/a1988-59.pdf",
+              "verified": true,
+              "status": "Official national law"
+            },
+            {
+              "title": "WHO Road traffic injuries fact sheet",
+              "url": "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries",
+              "verified": true
+            }
+          ],
+          "fine": {
+            "jurisdiction": "india_national",
+            "offence": "no_seatbelt",
+            "vehicle_class": "light_motor_vehicle",
+            "status": "verified",
+            "amount_display": "Rs 1,000",
+            "legal_basis": "Motor Vehicles Act, 1988, section 194B as amended; vehicle safety rules also apply.",
+            "consequences": [],
+            "caveats": [],
+            "source": "https://www.indiacode.nic.in/bitstream/123456789/9460/1/a1988-59.pdf"
+          }
+        },
+        "drink_driving": {
+          "topic": "drink_driving",
+          "title": "Drink-driving and impairment in India",
+          "summary": "The packaged verified schedule for India reports Rs 10,000 for this demo case.",
+          "rules": [
+            "Motor Vehicles Act, 1988, section 185 as amended.",
+            "Motor Vehicles Act, 1988, as amended, together with central rules and state or local enforcement schedules.",
+            "Do not drive after alcohol or impairing drugs. Testing thresholds, court referral, imprisonment, licence action, and repeat-offence consequences vary by jurisdiction and facts."
+          ],
+          "actions": [
+            "Use a sober driver, taxi, or public transport.",
+            "Plan the trip home before drinking begins.",
+            "Do not rely on coffee, food, or a short wait to remove impairment."
+          ],
+          "safety": "Impairment begins before a driver necessarily feels drunk and reduces judgment, reaction, and hazard perception.",
+          "verification": "Official national law",
+          "citations": [
+            {
+              "title": "India Motor Vehicles Act, 1988",
+              "url": "https://www.indiacode.nic.in/bitstream/123456789/9460/1/a1988-59.pdf",
+              "verified": true,
+              "status": "Official national law"
+            },
+            {
+              "title": "WHO Road traffic injuries fact sheet",
+              "url": "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries",
+              "verified": true
+            }
+          ],
+          "fine": {
+            "jurisdiction": "india_national",
+            "offence": "drink_driving",
+            "vehicle_class": "any",
+            "status": "verified",
+            "amount_display": "Rs 10,000",
+            "legal_basis": "Motor Vehicles Act, 1988, section 185 as amended.",
+            "consequences": [
+              "Possible imprisonment",
+              "Repeat offence can attract higher punishment",
+              "Court appearance may be required"
+            ],
+            "caveats": [],
+            "source": "https://www.indiacode.nic.in/bitstream/123456789/9460/1/a1988-59.pdf"
+          }
+        },
+        "mobile_phone": {
+          "topic": "mobile_phone",
+          "title": "Mobile phone and distracted driving in India",
+          "summary": "The packaged verified schedule for India reports Rs 1,000 - Rs 5,000 for this demo case.",
+          "rules": [
+            "Motor Vehicles Act, 1988, section 184 as amended; local enforcement notices may specify phone-use challans.",
+            "Motor Vehicles Act, 1988, as amended, together with central rules and state or local enforcement schedules.",
+            "Avoid handheld-phone use and any interaction that removes attention from driving; the exact offence definition and permitted hands-free use depend on current local law."
+          ],
+          "actions": [
+            "Set navigation and messages before moving.",
+            "Stop in a lawful safe place before handling the phone.",
+            "Keep attention on pedestrians, two-wheelers, junctions, and changing traffic signals."
+          ],
+          "safety": "Visual, manual, and cognitive distraction can each delay recognition and braking.",
+          "verification": "Official national law",
+          "citations": [
+            {
+              "title": "India Motor Vehicles Act, 1988",
+              "url": "https://www.indiacode.nic.in/bitstream/123456789/9460/1/a1988-59.pdf",
+              "verified": true,
+              "status": "Official national law"
+            },
+            {
+              "title": "WHO Road traffic injuries fact sheet",
+              "url": "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries",
+              "verified": true
+            }
+          ],
+          "fine": {
+            "jurisdiction": "india_national",
+            "offence": "mobile_phone",
+            "vehicle_class": "light_motor_vehicle",
+            "status": "verified",
+            "amount_display": "Rs 1,000 - Rs 5,000",
+            "legal_basis": "Motor Vehicles Act, 1988, section 184 as amended; local enforcement notices may specify phone-use challans.",
+            "consequences": [
+              "Repeat offence can increase penalties or lead to licence action."
+            ],
+            "caveats": [],
+            "source": "https://www.indiacode.nic.in/bitstream/123456789/9460/1/a1988-59.pdf"
+          }
+        },
+        "no_license": {
+          "topic": "no_license",
+          "title": "Driving-licence requirement in India",
+          "summary": "The packaged verified schedule for India reports Rs 5,000 for this demo case.",
+          "rules": [
+            "Motor Vehicles Act, 1988, section 181 as amended.",
+            "Motor Vehicles Act, 1988, as amended, together with central rules and state or local enforcement schedules.",
+            "The driver must hold a valid licence accepted for the jurisdiction and vehicle class; learner, visitor, commercial, and endorsement conditions can differ."
+          ],
+          "actions": [
+            "Confirm that the licence is valid, unexpired, and covers the vehicle class.",
+            "Travellers should verify whether an international permit, translation, endorsement, or local authorization is required.",
+            "Do not drive when a licence is suspended, disqualified, or otherwise invalid."
+          ],
+          "safety": "Licensing is intended to confirm minimum competence and accountability for the vehicle being driven.",
+          "verification": "Official national law",
+          "citations": [
+            {
+              "title": "India Motor Vehicles Act, 1988",
+              "url": "https://www.indiacode.nic.in/bitstream/123456789/9460/1/a1988-59.pdf",
+              "verified": true,
+              "status": "Official national law"
+            },
+            {
+              "title": "WHO Road traffic injuries fact sheet",
+              "url": "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries",
+              "verified": true
+            }
+          ],
+          "fine": {
+            "jurisdiction": "india_national",
+            "offence": "no_license",
+            "vehicle_class": "any",
+            "status": "verified",
+            "amount_display": "Rs 5,000",
+            "legal_basis": "Motor Vehicles Act, 1988, section 181 as amended.",
+            "consequences": [
+              "Vehicle owner may also face liability if they permitted unlicensed driving."
+            ],
+            "caveats": [],
+            "source": "https://www.indiacode.nic.in/bitstream/123456789/9460/1/a1988-59.pdf"
+          }
+        },
+        "documents": {
+          "topic": "documents",
+          "title": "Driving document checklist for India",
+          "summary": "Carry original or legally accepted digital evidence for the driver, vehicle, insurance, and the specific journey in India.",
+          "rules": [
+            "Motor Vehicles Act, 1988, as amended, together with central rules and state or local enforcement schedules.",
+            "State compounding schedules, local speed notifications, permits, and document rules can vary, so cross-state travellers should check the destination state before departure."
+          ],
+          "actions": [
+            "valid driving licence",
+            "vehicle registration",
+            "insurance evidence",
+            "pollution-control certificate where required",
+            "permit or fitness documents for applicable vehicles"
+          ],
+          "safety": "Confirm vehicle condition, insurance coverage, and emergency contacts before departure.",
+          "verification": "Official national law",
+          "citations": [
+            {
+              "title": "India Motor Vehicles Act, 1988",
+              "url": "https://www.indiacode.nic.in/bitstream/123456789/9460/1/a1988-59.pdf",
+              "verified": true,
+              "status": "Official national law"
+            }
+          ]
+        },
+        "cross_border": {
+          "topic": "cross_border",
+          "title": "Cross-border readiness for India",
+          "summary": "Prepare for left-hand traffic, local enforcement, document recognition, insurance, and road-specific restrictions before entering India.",
+          "rules": [
+            "Motor Vehicles Act, 1988, as amended, together with central rules and state or local enforcement schedules.",
+            "State compounding schedules, local speed notifications, permits, and document rules can vary, so cross-state travellers should check the destination state before departure."
+          ],
+          "actions": [
+            "Reset lane, turn, mirror, and overtaking habits for left-hand traffic.",
+            "valid driving licence",
+            "vehicle registration",
+            "insurance evidence",
+            "pollution-control certificate where required",
+            "permit or fitness documents for applicable vehicles",
+            "Download or save official contacts and route information before crossing the border."
+          ],
+          "safety": "Pause after crossing to re-check traffic side, signs, speed units, fuel, weather, and emergency plans.",
+          "verification": "Official national law",
+          "citations": [
+            {
+              "title": "India Motor Vehicles Act, 1988",
+              "url": "https://www.indiacode.nic.in/bitstream/123456789/9460/1/a1988-59.pdf",
+              "verified": true,
+              "status": "Official national law"
+            },
+            {
+              "title": "WHO Road traffic injuries fact sheet",
+              "url": "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries",
+              "verified": true
+            }
+          ]
+        },
+        "emergency": {
+          "topic": "emergency",
+          "title": "Road emergency contacts for India",
+          "summary": "Move out of live traffic if it is safe, protect the scene, call the appropriate emergency service, and document essential facts without obstructing responders.",
+          "rules": [
+            "Motor Vehicles Act, 1988, as amended, together with central rules and state or local enforcement schedules."
+          ],
+          "actions": [
+            "National emergency: 112",
+            "Official e-Challan: echallan.parivahan.gov.in",
+            "Share the road, direction, landmark, injuries, hazards, and number of vehicles.",
+            "Do not move an injured person unless immediate danger makes it necessary."
+          ],
+          "safety": "Use hazard lights and warning devices only when it is safe to do so.",
+          "verification": "Prepared emergency directory; confirm locally when connectivity is available",
+          "citations": [
+            {
+              "title": "India Motor Vehicles Act, 1988",
+              "url": "https://www.indiacode.nic.in/bitstream/123456789/9460/1/a1988-59.pdf",
+              "verified": true,
+              "status": "Official national law"
+            }
+          ]
+        },
+        "scenario": {
+          "topic": "scenario",
+          "title": "India safety scenario",
+          "summary": "In India, why does the challan calculator ask for vehicle class on overspeeding?",
+          "rules": [
+            "Best choice: Fines can differ by light and heavy vehicle class",
+            "The structured calculator separates light, two-wheeler, and heavy vehicle cases where the law or compounding schedule differs."
+          ],
+          "actions": [
+            "Identify the legal duty.",
+            "Choose the lowest-risk action.",
+            "Check how weather, road users, and enforcement change the decision."
+          ],
+          "safety": "The full offline quiz keeps score and provides immediate explanations.",
+          "verification": "Prepared RoadLegal learning scenario",
+          "citations": [
+            {
+              "title": "WHO Road traffic injuries fact sheet",
+              "url": "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries",
+              "verified": true
+            }
+          ]
+        }
+      }
+    },
+    "delhi": {
+      "profile": {
+        "country": "Delhi, India",
+        "traffic_side": "Left-hand traffic",
+        "framework": "India's Motor Vehicles Act and central rules, applied with Delhi traffic notifications and compounding practice.",
+        "source_title": "Delhi Traffic Police and India Motor Vehicles Act",
+        "source_url": "https://traffic.delhipolice.gov.in/",
+        "source_status": "National law with local enforcement layer",
+        "documents": [
+          "valid driving licence",
+          "vehicle registration",
+          "insurance evidence",
+          "pollution-control certificate",
+          "permit or fitness documents where applicable"
+        ],
+        "emergency": [
+          "National emergency: 112",
+          "Delhi Traffic Police: traffic.delhipolice.gov.in"
+        ],
+        "traveller_note": "Check Delhi's posted limits, camera-enforcement details, restricted corridors, and current compounding schedule before relying on a national baseline."
+      },
+      "answers": {
+        "overspeeding": {
+          "topic": "overspeeding",
+          "title": "Speed limits and overspeeding in Delhi, India",
+          "summary": "The packaged verified schedule for Delhi, India reports Rs 2,000 for this demo case.",
+          "rules": [
+            "Motor Vehicles Act national baseline plus Delhi traffic police compounding/enforcement practice.",
+            "India's Motor Vehicles Act and central rules, applied with Delhi traffic notifications and compounding practice.",
+            "The posted limit, road class, vehicle class, location, measured speed, and repeat history can change the applicable offence or outcome."
+          ],
+          "actions": [
+            "Treat a posted limit as a maximum, not a target.",
+            "Reduce speed for rain, darkness, pedestrians, schools, work zones, and poor road conditions.",
+            "For a disputed ticket, check the vehicle, location, time, measured speed, posted limit, and official payment or review channel."
+          ],
+          "safety": "Higher speed raises both crash probability and the severity of injury.",
+          "verification": "National law with local enforcement layer",
+          "citations": [
+            {
+              "title": "Delhi Traffic Police and India Motor Vehicles Act",
+              "url": "https://traffic.delhipolice.gov.in/",
+              "verified": false,
+              "status": "National law with local enforcement layer"
+            },
+            {
+              "title": "WHO Road traffic injuries fact sheet",
+              "url": "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries",
+              "verified": true
+            }
+          ],
+          "fine": {
+            "jurisdiction": "delhi",
+            "offence": "overspeeding",
+            "vehicle_class": "light_motor_vehicle",
+            "status": "verified",
+            "amount_display": "Rs 2,000",
+            "legal_basis": "Motor Vehicles Act national baseline plus Delhi traffic police compounding/enforcement practice.",
+            "consequences": [],
+            "caveats": [
+              "Use the current Delhi Traffic Police notice or e-challan portal for the final collected amount."
+            ],
+            "source": "https://traffic.delhipolice.gov.in/"
+          }
+        },
+        "no_helmet": {
+          "topic": "no_helmet",
+          "title": "Motorcycle helmet rule in Delhi, India",
+          "summary": "The packaged verified schedule for Delhi, India reports Rs 1,000 for this demo case.",
+          "rules": [
+            "Motor Vehicles Act, sections 129 and 194D; Delhi local enforcement.",
+            "India's Motor Vehicles Act and central rules, applied with Delhi traffic notifications and compounding practice.",
+            "Riders and passengers should use a correctly fastened, standards-compliant helmet; exemptions and the exact penalty must come from current local law."
+          ],
+          "actions": [
+            "Do not begin the trip until the rider and passenger have fastened helmets.",
+            "Replace a helmet after a severe impact or when its shell, strap, or buckle is damaged.",
+            "Confirm that the licence, rental agreement, and insurance permit the motorcycle class being used."
+          ],
+          "safety": "A quality, correctly worn helmet materially reduces fatal and serious head-injury risk.",
+          "verification": "National law with local enforcement layer",
+          "citations": [
+            {
+              "title": "Delhi Traffic Police and India Motor Vehicles Act",
+              "url": "https://traffic.delhipolice.gov.in/",
+              "verified": false,
+              "status": "National law with local enforcement layer"
+            },
+            {
+              "title": "WHO Road traffic injuries fact sheet",
+              "url": "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries",
+              "verified": true
+            }
+          ],
+          "fine": {
+            "jurisdiction": "delhi",
+            "offence": "no_helmet",
+            "vehicle_class": "two_wheeler",
+            "status": "verified",
+            "amount_display": "Rs 1,000",
+            "legal_basis": "Motor Vehicles Act, sections 129 and 194D; Delhi local enforcement.",
+            "consequences": [
+              "Possible licence disqualification."
+            ],
+            "caveats": [],
+            "source": "https://traffic.delhipolice.gov.in/"
+          }
+        },
+        "no_seatbelt": {
+          "topic": "no_seatbelt",
+          "title": "Seat-belt and occupant protection rule in Delhi, India",
+          "summary": "RoadLegal has prepared guidance for Delhi, India, but it does not claim an exact fine until a current official schedule has completed legal review.",
+          "rules": [
+            "India's Motor Vehicles Act and central rules, applied with Delhi traffic notifications and compounding practice.",
+            "Every occupant should use an available seat belt; covered seats, child restraints, exemptions, and penalties depend on current local law and vehicle configuration."
+          ],
+          "actions": [
+            "Buckle every occupant before the vehicle moves, including on short trips.",
+            "Use an age- and size-appropriate child restraint where required and available.",
+            "Do not place a child in front of an active airbag unless the vehicle instructions and law allow it."
+          ],
+          "safety": "Seat belts reduce the risk of death and serious injury for vehicle occupants.",
+          "verification": "National law with local enforcement layer",
+          "citations": [
+            {
+              "title": "Delhi Traffic Police and India Motor Vehicles Act",
+              "url": "https://traffic.delhipolice.gov.in/",
+              "verified": false,
+              "status": "National law with local enforcement layer"
+            },
+            {
+              "title": "WHO Road traffic injuries fact sheet",
+              "url": "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries",
+              "verified": true
+            }
+          ],
+          "fine": null
+        },
+        "drink_driving": {
+          "topic": "drink_driving",
+          "title": "Drink-driving and impairment in Delhi, India",
+          "summary": "RoadLegal has prepared guidance for Delhi, India, but it does not claim an exact fine until a current official schedule has completed legal review.",
+          "rules": [
+            "India's Motor Vehicles Act and central rules, applied with Delhi traffic notifications and compounding practice.",
+            "Do not drive after alcohol or impairing drugs. Testing thresholds, court referral, imprisonment, licence action, and repeat-offence consequences vary by jurisdiction and facts."
+          ],
+          "actions": [
+            "Use a sober driver, taxi, or public transport.",
+            "Plan the trip home before drinking begins.",
+            "Do not rely on coffee, food, or a short wait to remove impairment."
+          ],
+          "safety": "Impairment begins before a driver necessarily feels drunk and reduces judgment, reaction, and hazard perception.",
+          "verification": "National law with local enforcement layer",
+          "citations": [
+            {
+              "title": "Delhi Traffic Police and India Motor Vehicles Act",
+              "url": "https://traffic.delhipolice.gov.in/",
+              "verified": false,
+              "status": "National law with local enforcement layer"
+            },
+            {
+              "title": "WHO Road traffic injuries fact sheet",
+              "url": "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries",
+              "verified": true
+            }
+          ],
+          "fine": null
+        },
+        "mobile_phone": {
+          "topic": "mobile_phone",
+          "title": "Mobile phone and distracted driving in Delhi, India",
+          "summary": "RoadLegal has prepared guidance for Delhi, India, but it does not claim an exact fine until a current official schedule has completed legal review.",
+          "rules": [
+            "India's Motor Vehicles Act and central rules, applied with Delhi traffic notifications and compounding practice.",
+            "Avoid handheld-phone use and any interaction that removes attention from driving; the exact offence definition and permitted hands-free use depend on current local law."
+          ],
+          "actions": [
+            "Set navigation and messages before moving.",
+            "Stop in a lawful safe place before handling the phone.",
+            "Keep attention on pedestrians, two-wheelers, junctions, and changing traffic signals."
+          ],
+          "safety": "Visual, manual, and cognitive distraction can each delay recognition and braking.",
+          "verification": "National law with local enforcement layer",
+          "citations": [
+            {
+              "title": "Delhi Traffic Police and India Motor Vehicles Act",
+              "url": "https://traffic.delhipolice.gov.in/",
+              "verified": false,
+              "status": "National law with local enforcement layer"
+            },
+            {
+              "title": "WHO Road traffic injuries fact sheet",
+              "url": "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries",
+              "verified": true
+            }
+          ],
+          "fine": null
+        },
+        "no_license": {
+          "topic": "no_license",
+          "title": "Driving-licence requirement in Delhi, India",
+          "summary": "RoadLegal has prepared guidance for Delhi, India, but it does not claim an exact fine until a current official schedule has completed legal review.",
+          "rules": [
+            "India's Motor Vehicles Act and central rules, applied with Delhi traffic notifications and compounding practice.",
+            "The driver must hold a valid licence accepted for the jurisdiction and vehicle class; learner, visitor, commercial, and endorsement conditions can differ."
+          ],
+          "actions": [
+            "Confirm that the licence is valid, unexpired, and covers the vehicle class.",
+            "Travellers should verify whether an international permit, translation, endorsement, or local authorization is required.",
+            "Do not drive when a licence is suspended, disqualified, or otherwise invalid."
+          ],
+          "safety": "Licensing is intended to confirm minimum competence and accountability for the vehicle being driven.",
+          "verification": "National law with local enforcement layer",
+          "citations": [
+            {
+              "title": "Delhi Traffic Police and India Motor Vehicles Act",
+              "url": "https://traffic.delhipolice.gov.in/",
+              "verified": false,
+              "status": "National law with local enforcement layer"
+            },
+            {
+              "title": "WHO Road traffic injuries fact sheet",
+              "url": "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries",
+              "verified": true
+            }
+          ],
+          "fine": null
+        },
+        "documents": {
+          "topic": "documents",
+          "title": "Driving document checklist for Delhi, India",
+          "summary": "Carry original or legally accepted digital evidence for the driver, vehicle, insurance, and the specific journey in Delhi, India.",
+          "rules": [
+            "India's Motor Vehicles Act and central rules, applied with Delhi traffic notifications and compounding practice.",
+            "Check Delhi's posted limits, camera-enforcement details, restricted corridors, and current compounding schedule before relying on a national baseline."
+          ],
+          "actions": [
+            "valid driving licence",
+            "vehicle registration",
+            "insurance evidence",
+            "pollution-control certificate",
+            "permit or fitness documents where applicable"
+          ],
+          "safety": "Confirm vehicle condition, insurance coverage, and emergency contacts before departure.",
+          "verification": "National law with local enforcement layer",
+          "citations": [
+            {
+              "title": "Delhi Traffic Police and India Motor Vehicles Act",
+              "url": "https://traffic.delhipolice.gov.in/",
+              "verified": false,
+              "status": "National law with local enforcement layer"
+            }
+          ]
+        },
+        "cross_border": {
+          "topic": "cross_border",
+          "title": "Cross-border readiness for Delhi, India",
+          "summary": "Prepare for left-hand traffic, local enforcement, document recognition, insurance, and road-specific restrictions before entering Delhi, India.",
+          "rules": [
+            "India's Motor Vehicles Act and central rules, applied with Delhi traffic notifications and compounding practice.",
+            "Check Delhi's posted limits, camera-enforcement details, restricted corridors, and current compounding schedule before relying on a national baseline."
+          ],
+          "actions": [
+            "Reset lane, turn, mirror, and overtaking habits for left-hand traffic.",
+            "valid driving licence",
+            "vehicle registration",
+            "insurance evidence",
+            "pollution-control certificate",
+            "permit or fitness documents where applicable",
+            "Download or save official contacts and route information before crossing the border."
+          ],
+          "safety": "Pause after crossing to re-check traffic side, signs, speed units, fuel, weather, and emergency plans.",
+          "verification": "National law with local enforcement layer",
+          "citations": [
+            {
+              "title": "Delhi Traffic Police and India Motor Vehicles Act",
+              "url": "https://traffic.delhipolice.gov.in/",
+              "verified": false,
+              "status": "National law with local enforcement layer"
+            },
+            {
+              "title": "WHO Road traffic injuries fact sheet",
+              "url": "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries",
+              "verified": true
+            }
+          ]
+        },
+        "emergency": {
+          "topic": "emergency",
+          "title": "Road emergency contacts for Delhi, India",
+          "summary": "Move out of live traffic if it is safe, protect the scene, call the appropriate emergency service, and document essential facts without obstructing responders.",
+          "rules": [
+            "India's Motor Vehicles Act and central rules, applied with Delhi traffic notifications and compounding practice."
+          ],
+          "actions": [
+            "National emergency: 112",
+            "Delhi Traffic Police: traffic.delhipolice.gov.in",
+            "Share the road, direction, landmark, injuries, hazards, and number of vehicles.",
+            "Do not move an injured person unless immediate danger makes it necessary."
+          ],
+          "safety": "Use hazard lights and warning devices only when it is safe to do so.",
+          "verification": "Prepared emergency directory; confirm locally when connectivity is available",
+          "citations": [
+            {
+              "title": "Delhi Traffic Police and India Motor Vehicles Act",
+              "url": "https://traffic.delhipolice.gov.in/",
+              "verified": false,
+              "status": "National law with local enforcement layer"
+            }
+          ]
+        },
+        "scenario": {
+          "topic": "scenario",
+          "title": "Delhi, India safety scenario",
+          "summary": "Delhi scenario: a camera challan claims overspeeding. What should you check?",
+          "rules": [
+            "Best choice: Vehicle number, location, measured speed, road limit, and e-challan portal status",
+            "Camera/enforcement records should be checked against the official e-challan details and local speed limit."
+          ],
+          "actions": [
+            "Identify the legal duty.",
+            "Choose the lowest-risk action.",
+            "Check how weather, road users, and enforcement change the decision."
+          ],
+          "safety": "The full offline quiz keeps score and provides immediate explanations.",
+          "verification": "Prepared RoadLegal learning scenario",
+          "citations": [
+            {
+              "title": "WHO Road traffic injuries fact sheet",
+              "url": "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries",
+              "verified": true
+            }
+          ]
+        }
+      }
+    },
+    "bangladesh_national": {
+      "profile": {
+        "country": "Bangladesh",
+        "traffic_side": "Left-hand traffic",
+        "framework": "Road Transport Act, 2018, related rules, and current BRTA or traffic-police enforcement schedules.",
+        "source_title": "Bangladesh Road Transport Act, 2018",
+        "source_url": "http://bdlaws.minlaw.gov.bd/act-1262.html",
+        "source_status": "Official law; exact current fine schedule needs legal review",
+        "documents": [
+          "valid driving licence",
+          "vehicle registration",
+          "insurance or required financial-responsibility evidence",
+          "fitness and route-permit documents where applicable",
+          "traveller identity and vehicle authority documents"
+        ],
+        "emergency": [
+          "National emergency service: 999",
+          "BRTA: brta.gov.bd"
+        ],
+        "traveller_note": "Confirm that the licence and vehicle documents are accepted in Bangladesh and verify current BRTA requirements before a cross-border journey."
+      },
+      "answers": {
+        "overspeeding": {
+          "topic": "overspeeding",
+          "title": "Speed limits and overspeeding in Bangladesh",
+          "summary": "RoadLegal can explain the Bangladesh rule, but the exact current amount is deliberately marked for official review: Amount requires latest official BRTA schedule verification.",
+          "rules": [
+            "Road Transport Act, 2018; exact schedule must be verified from the latest BRTA/legal text.",
+            "Road Transport Act, 2018, related rules, and current BRTA or traffic-police enforcement schedules.",
+            "The posted limit, road class, vehicle class, location, measured speed, and repeat history can change the applicable offence or outcome."
+          ],
+          "actions": [
+            "Treat a posted limit as a maximum, not a target.",
+            "Reduce speed for rain, darkness, pedestrians, schools, work zones, and poor road conditions.",
+            "For a disputed ticket, check the vehicle, location, time, measured speed, posted limit, and official payment or review channel."
+          ],
+          "safety": "Higher speed raises both crash probability and the severity of injury.",
+          "verification": "Official law; exact current fine schedule needs legal review",
+          "citations": [
+            {
+              "title": "Bangladesh Road Transport Act, 2018",
+              "url": "http://bdlaws.minlaw.gov.bd/act-1262.html",
+              "verified": true,
+              "status": "Official law; exact current fine schedule needs legal review"
+            },
+            {
+              "title": "WHO Road traffic injuries fact sheet",
+              "url": "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries",
+              "verified": true
+            }
+          ],
+          "fine": {
+            "jurisdiction": "bangladesh_national",
+            "offence": "overspeeding",
+            "vehicle_class": "light_motor_vehicle",
+            "status": "needs_review",
+            "amount_display": "Amount requires latest official BRTA schedule verification.",
+            "legal_basis": "Road Transport Act, 2018; exact schedule must be verified from the latest BRTA/legal text.",
+            "consequences": [],
+            "caveats": [
+              "Starter record included for coverage; do not treat as a final challan amount until reviewed."
+            ],
+            "source": "http://bdlaws.minlaw.gov.bd/act-1262.html"
+          }
+        },
+        "no_helmet": {
+          "topic": "no_helmet",
+          "title": "Motorcycle helmet rule in Bangladesh",
+          "summary": "RoadLegal has prepared guidance for Bangladesh, but it does not claim an exact fine until a current official schedule has completed legal review.",
+          "rules": [
+            "Road Transport Act, 2018, related rules, and current BRTA or traffic-police enforcement schedules.",
+            "Riders and passengers should use a correctly fastened, standards-compliant helmet; exemptions and the exact penalty must come from current local law."
+          ],
+          "actions": [
+            "Do not begin the trip until the rider and passenger have fastened helmets.",
+            "Replace a helmet after a severe impact or when its shell, strap, or buckle is damaged.",
+            "Confirm that the licence, rental agreement, and insurance permit the motorcycle class being used."
+          ],
+          "safety": "A quality, correctly worn helmet materially reduces fatal and serious head-injury risk.",
+          "verification": "Official law; exact current fine schedule needs legal review",
+          "citations": [
+            {
+              "title": "Bangladesh Road Transport Act, 2018",
+              "url": "http://bdlaws.minlaw.gov.bd/act-1262.html",
+              "verified": true,
+              "status": "Official law; exact current fine schedule needs legal review"
+            },
+            {
+              "title": "WHO Road traffic injuries fact sheet",
+              "url": "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries",
+              "verified": true
+            }
+          ],
+          "fine": null
+        },
+        "no_seatbelt": {
+          "topic": "no_seatbelt",
+          "title": "Seat-belt and occupant protection rule in Bangladesh",
+          "summary": "RoadLegal has prepared guidance for Bangladesh, but it does not claim an exact fine until a current official schedule has completed legal review.",
+          "rules": [
+            "Road Transport Act, 2018, related rules, and current BRTA or traffic-police enforcement schedules.",
+            "Every occupant should use an available seat belt; covered seats, child restraints, exemptions, and penalties depend on current local law and vehicle configuration."
+          ],
+          "actions": [
+            "Buckle every occupant before the vehicle moves, including on short trips.",
+            "Use an age- and size-appropriate child restraint where required and available.",
+            "Do not place a child in front of an active airbag unless the vehicle instructions and law allow it."
+          ],
+          "safety": "Seat belts reduce the risk of death and serious injury for vehicle occupants.",
+          "verification": "Official law; exact current fine schedule needs legal review",
+          "citations": [
+            {
+              "title": "Bangladesh Road Transport Act, 2018",
+              "url": "http://bdlaws.minlaw.gov.bd/act-1262.html",
+              "verified": true,
+              "status": "Official law; exact current fine schedule needs legal review"
+            },
+            {
+              "title": "WHO Road traffic injuries fact sheet",
+              "url": "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries",
+              "verified": true
+            }
+          ],
+          "fine": null
+        },
+        "drink_driving": {
+          "topic": "drink_driving",
+          "title": "Drink-driving and impairment in Bangladesh",
+          "summary": "RoadLegal has prepared guidance for Bangladesh, but it does not claim an exact fine until a current official schedule has completed legal review.",
+          "rules": [
+            "Road Transport Act, 2018, related rules, and current BRTA or traffic-police enforcement schedules.",
+            "Do not drive after alcohol or impairing drugs. Testing thresholds, court referral, imprisonment, licence action, and repeat-offence consequences vary by jurisdiction and facts."
+          ],
+          "actions": [
+            "Use a sober driver, taxi, or public transport.",
+            "Plan the trip home before drinking begins.",
+            "Do not rely on coffee, food, or a short wait to remove impairment."
+          ],
+          "safety": "Impairment begins before a driver necessarily feels drunk and reduces judgment, reaction, and hazard perception.",
+          "verification": "Official law; exact current fine schedule needs legal review",
+          "citations": [
+            {
+              "title": "Bangladesh Road Transport Act, 2018",
+              "url": "http://bdlaws.minlaw.gov.bd/act-1262.html",
+              "verified": true,
+              "status": "Official law; exact current fine schedule needs legal review"
+            },
+            {
+              "title": "WHO Road traffic injuries fact sheet",
+              "url": "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries",
+              "verified": true
+            }
+          ],
+          "fine": null
+        },
+        "mobile_phone": {
+          "topic": "mobile_phone",
+          "title": "Mobile phone and distracted driving in Bangladesh",
+          "summary": "RoadLegal has prepared guidance for Bangladesh, but it does not claim an exact fine until a current official schedule has completed legal review.",
+          "rules": [
+            "Road Transport Act, 2018, related rules, and current BRTA or traffic-police enforcement schedules.",
+            "Avoid handheld-phone use and any interaction that removes attention from driving; the exact offence definition and permitted hands-free use depend on current local law."
+          ],
+          "actions": [
+            "Set navigation and messages before moving.",
+            "Stop in a lawful safe place before handling the phone.",
+            "Keep attention on pedestrians, two-wheelers, junctions, and changing traffic signals."
+          ],
+          "safety": "Visual, manual, and cognitive distraction can each delay recognition and braking.",
+          "verification": "Official law; exact current fine schedule needs legal review",
+          "citations": [
+            {
+              "title": "Bangladesh Road Transport Act, 2018",
+              "url": "http://bdlaws.minlaw.gov.bd/act-1262.html",
+              "verified": true,
+              "status": "Official law; exact current fine schedule needs legal review"
+            },
+            {
+              "title": "WHO Road traffic injuries fact sheet",
+              "url": "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries",
+              "verified": true
+            }
+          ],
+          "fine": null
+        },
+        "no_license": {
+          "topic": "no_license",
+          "title": "Driving-licence requirement in Bangladesh",
+          "summary": "RoadLegal can explain the Bangladesh rule, but the exact current amount is deliberately marked for official review: Penalty depends on the current Act/rules and offence facts.",
+          "rules": [
+            "Road Transport Act, 2018; driver licensing provisions.",
+            "Road Transport Act, 2018, related rules, and current BRTA or traffic-police enforcement schedules.",
+            "The driver must hold a valid licence accepted for the jurisdiction and vehicle class; learner, visitor, commercial, and endorsement conditions can differ."
+          ],
+          "actions": [
+            "Confirm that the licence is valid, unexpired, and covers the vehicle class.",
+            "Travellers should verify whether an international permit, translation, endorsement, or local authorization is required.",
+            "Do not drive when a licence is suspended, disqualified, or otherwise invalid."
+          ],
+          "safety": "Licensing is intended to confirm minimum competence and accountability for the vehicle being driven.",
+          "verification": "Official law; exact current fine schedule needs legal review",
+          "citations": [
+            {
+              "title": "Bangladesh Road Transport Act, 2018",
+              "url": "http://bdlaws.minlaw.gov.bd/act-1262.html",
+              "verified": true,
+              "status": "Official law; exact current fine schedule needs legal review"
+            },
+            {
+              "title": "WHO Road traffic injuries fact sheet",
+              "url": "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries",
+              "verified": true
+            }
+          ],
+          "fine": {
+            "jurisdiction": "bangladesh_national",
+            "offence": "no_license",
+            "vehicle_class": "any",
+            "status": "needs_review",
+            "amount_display": "Penalty depends on the current Act/rules and offence facts.",
+            "legal_basis": "Road Transport Act, 2018; driver licensing provisions.",
+            "consequences": [],
+            "caveats": [],
+            "source": "http://bdlaws.minlaw.gov.bd/act-1262.html"
+          }
+        },
+        "documents": {
+          "topic": "documents",
+          "title": "Driving document checklist for Bangladesh",
+          "summary": "Carry original or legally accepted digital evidence for the driver, vehicle, insurance, and the specific journey in Bangladesh.",
+          "rules": [
+            "Road Transport Act, 2018, related rules, and current BRTA or traffic-police enforcement schedules.",
+            "Confirm that the licence and vehicle documents are accepted in Bangladesh and verify current BRTA requirements before a cross-border journey."
+          ],
+          "actions": [
+            "valid driving licence",
+            "vehicle registration",
+            "insurance or required financial-responsibility evidence",
+            "fitness and route-permit documents where applicable",
+            "traveller identity and vehicle authority documents"
+          ],
+          "safety": "Confirm vehicle condition, insurance coverage, and emergency contacts before departure.",
+          "verification": "Official law; exact current fine schedule needs legal review",
+          "citations": [
+            {
+              "title": "Bangladesh Road Transport Act, 2018",
+              "url": "http://bdlaws.minlaw.gov.bd/act-1262.html",
+              "verified": true,
+              "status": "Official law; exact current fine schedule needs legal review"
+            }
+          ]
+        },
+        "cross_border": {
+          "topic": "cross_border",
+          "title": "Cross-border readiness for Bangladesh",
+          "summary": "Prepare for left-hand traffic, local enforcement, document recognition, insurance, and road-specific restrictions before entering Bangladesh.",
+          "rules": [
+            "Road Transport Act, 2018, related rules, and current BRTA or traffic-police enforcement schedules.",
+            "Confirm that the licence and vehicle documents are accepted in Bangladesh and verify current BRTA requirements before a cross-border journey."
+          ],
+          "actions": [
+            "Reset lane, turn, mirror, and overtaking habits for left-hand traffic.",
+            "valid driving licence",
+            "vehicle registration",
+            "insurance or required financial-responsibility evidence",
+            "fitness and route-permit documents where applicable",
+            "traveller identity and vehicle authority documents",
+            "Download or save official contacts and route information before crossing the border."
+          ],
+          "safety": "Pause after crossing to re-check traffic side, signs, speed units, fuel, weather, and emergency plans.",
+          "verification": "Official law; exact current fine schedule needs legal review",
+          "citations": [
+            {
+              "title": "Bangladesh Road Transport Act, 2018",
+              "url": "http://bdlaws.minlaw.gov.bd/act-1262.html",
+              "verified": true,
+              "status": "Official law; exact current fine schedule needs legal review"
+            },
+            {
+              "title": "WHO Road traffic injuries fact sheet",
+              "url": "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries",
+              "verified": true
+            }
+          ]
+        },
+        "emergency": {
+          "topic": "emergency",
+          "title": "Road emergency contacts for Bangladesh",
+          "summary": "Move out of live traffic if it is safe, protect the scene, call the appropriate emergency service, and document essential facts without obstructing responders.",
+          "rules": [
+            "Road Transport Act, 2018, related rules, and current BRTA or traffic-police enforcement schedules."
+          ],
+          "actions": [
+            "National emergency service: 999",
+            "BRTA: brta.gov.bd",
+            "Share the road, direction, landmark, injuries, hazards, and number of vehicles.",
+            "Do not move an injured person unless immediate danger makes it necessary."
+          ],
+          "safety": "Use hazard lights and warning devices only when it is safe to do so.",
+          "verification": "Prepared emergency directory; confirm locally when connectivity is available",
+          "citations": [
+            {
+              "title": "Bangladesh Road Transport Act, 2018",
+              "url": "http://bdlaws.minlaw.gov.bd/act-1262.html",
+              "verified": true,
+              "status": "Official law; exact current fine schedule needs legal review"
+            }
+          ]
+        },
+        "scenario": {
+          "topic": "scenario",
+          "title": "Bangladesh safety scenario",
+          "summary": "Bangladesh fine data is marked review-needed. What should RoadLegal do?",
+          "rules": [
+            "Best choice: Cite the source and avoid inventing a final amount",
+            "Legal accuracy beats false certainty. RoadLegal should flag schedules that still need BRTA/legal review."
+          ],
+          "actions": [
+            "Identify the legal duty.",
+            "Choose the lowest-risk action.",
+            "Check how weather, road users, and enforcement change the decision."
+          ],
+          "safety": "The full offline quiz keeps score and provides immediate explanations.",
+          "verification": "Prepared RoadLegal learning scenario",
+          "citations": [
+            {
+              "title": "WHO Road traffic injuries fact sheet",
+              "url": "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries",
+              "verified": true
+            }
+          ]
+        }
+      }
+    },
+    "bhutan_national": {
+      "profile": {
+        "country": "Bhutan",
+        "traffic_side": "Left-hand traffic",
+        "framework": "Road Safety and Transport Act, 1999 and Road Safety and Transport Regulations 2021.",
+        "source_title": "Bhutan Road Safety and Transport Regulations 2021",
+        "source_url": "https://bcta.gov.bt/road-safety-and-transport-regulations-2021/",
+        "source_status": "Official law and regulations; current penalty amount needs schedule review",
+        "documents": [
+          "valid driving licence",
+          "vehicle registration",
+          "insurance evidence",
+          "route permit or entry authorization where applicable",
+          "fitness and commercial-vehicle documents where applicable"
+        ],
+        "emergency": [
+          "Police emergency: 113",
+          "Bhutan Construction and Transport Authority: bcta.gov.bt"
+        ],
+        "traveller_note": "Mountain roads, local permits, vehicle entry conditions, and weather can materially change a safe travel plan; verify them before departure."
+      },
+      "answers": {
+        "overspeeding": {
+          "topic": "overspeeding",
+          "title": "Speed limits and overspeeding in Bhutan",
+          "summary": "RoadLegal can explain the Bhutan rule, but the exact current amount is deliberately marked for official review: Amount requires latest RSTA schedule verification.",
+          "rules": [
+            "Road Safety and Transport Act, 1999 and current RSTA rules.",
+            "Road Safety and Transport Act, 1999 and Road Safety and Transport Regulations 2021.",
+            "The posted limit, road class, vehicle class, location, measured speed, and repeat history can change the applicable offence or outcome."
+          ],
+          "actions": [
+            "Treat a posted limit as a maximum, not a target.",
+            "Reduce speed for rain, darkness, pedestrians, schools, work zones, and poor road conditions.",
+            "For a disputed ticket, check the vehicle, location, time, measured speed, posted limit, and official payment or review channel."
+          ],
+          "safety": "Higher speed raises both crash probability and the severity of injury.",
+          "verification": "Official law and regulations; current penalty amount needs schedule review",
+          "citations": [
+            {
+              "title": "Bhutan Road Safety and Transport Regulations 2021",
+              "url": "https://www.rsta.gov.bt/",
+              "verified": true,
+              "status": "Official law and regulations; current penalty amount needs schedule review"
+            },
+            {
+              "title": "WHO Road traffic injuries fact sheet",
+              "url": "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries",
+              "verified": true
+            }
+          ],
+          "fine": {
+            "jurisdiction": "bhutan_national",
+            "offence": "overspeeding",
+            "vehicle_class": "light_motor_vehicle",
+            "status": "needs_review",
+            "amount_display": "Amount requires latest RSTA schedule verification.",
+            "legal_basis": "Road Safety and Transport Act, 1999 and current RSTA rules.",
+            "consequences": [],
+            "caveats": [],
+            "source": "https://www.rsta.gov.bt/"
+          }
+        },
+        "no_helmet": {
+          "topic": "no_helmet",
+          "title": "Motorcycle helmet rule in Bhutan",
+          "summary": "RoadLegal has prepared guidance for Bhutan, but it does not claim an exact fine until a current official schedule has completed legal review.",
+          "rules": [
+            "Road Safety and Transport Act, 1999 and Road Safety and Transport Regulations 2021.",
+            "Riders and passengers should use a correctly fastened, standards-compliant helmet; exemptions and the exact penalty must come from current local law."
+          ],
+          "actions": [
+            "Do not begin the trip until the rider and passenger have fastened helmets.",
+            "Replace a helmet after a severe impact or when its shell, strap, or buckle is damaged.",
+            "Confirm that the licence, rental agreement, and insurance permit the motorcycle class being used."
+          ],
+          "safety": "A quality, correctly worn helmet materially reduces fatal and serious head-injury risk.",
+          "verification": "Official law and regulations; current penalty amount needs schedule review",
+          "citations": [
+            {
+              "title": "Bhutan Road Safety and Transport Regulations 2021",
+              "url": "https://bcta.gov.bt/road-safety-and-transport-regulations-2021/",
+              "verified": true,
+              "status": "Official law and regulations; current penalty amount needs schedule review"
+            },
+            {
+              "title": "WHO Road traffic injuries fact sheet",
+              "url": "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries",
+              "verified": true
+            }
+          ],
+          "fine": null
+        },
+        "no_seatbelt": {
+          "topic": "no_seatbelt",
+          "title": "Seat-belt and occupant protection rule in Bhutan",
+          "summary": "RoadLegal has prepared guidance for Bhutan, but it does not claim an exact fine until a current official schedule has completed legal review.",
+          "rules": [
+            "Road Safety and Transport Act, 1999 and Road Safety and Transport Regulations 2021.",
+            "Every occupant should use an available seat belt; covered seats, child restraints, exemptions, and penalties depend on current local law and vehicle configuration."
+          ],
+          "actions": [
+            "Buckle every occupant before the vehicle moves, including on short trips.",
+            "Use an age- and size-appropriate child restraint where required and available.",
+            "Do not place a child in front of an active airbag unless the vehicle instructions and law allow it."
+          ],
+          "safety": "Seat belts reduce the risk of death and serious injury for vehicle occupants.",
+          "verification": "Official law and regulations; current penalty amount needs schedule review",
+          "citations": [
+            {
+              "title": "Bhutan Road Safety and Transport Regulations 2021",
+              "url": "https://bcta.gov.bt/road-safety-and-transport-regulations-2021/",
+              "verified": true,
+              "status": "Official law and regulations; current penalty amount needs schedule review"
+            },
+            {
+              "title": "WHO Road traffic injuries fact sheet",
+              "url": "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries",
+              "verified": true
+            }
+          ],
+          "fine": null
+        },
+        "drink_driving": {
+          "topic": "drink_driving",
+          "title": "Drink-driving and impairment in Bhutan",
+          "summary": "RoadLegal has prepared guidance for Bhutan, but it does not claim an exact fine until a current official schedule has completed legal review.",
+          "rules": [
+            "Road Safety and Transport Act, 1999 and Road Safety and Transport Regulations 2021.",
+            "Do not drive after alcohol or impairing drugs. Testing thresholds, court referral, imprisonment, licence action, and repeat-offence consequences vary by jurisdiction and facts."
+          ],
+          "actions": [
+            "Use a sober driver, taxi, or public transport.",
+            "Plan the trip home before drinking begins.",
+            "Do not rely on coffee, food, or a short wait to remove impairment."
+          ],
+          "safety": "Impairment begins before a driver necessarily feels drunk and reduces judgment, reaction, and hazard perception.",
+          "verification": "Official law and regulations; current penalty amount needs schedule review",
+          "citations": [
+            {
+              "title": "Bhutan Road Safety and Transport Regulations 2021",
+              "url": "https://bcta.gov.bt/road-safety-and-transport-regulations-2021/",
+              "verified": true,
+              "status": "Official law and regulations; current penalty amount needs schedule review"
+            },
+            {
+              "title": "WHO Road traffic injuries fact sheet",
+              "url": "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries",
+              "verified": true
+            }
+          ],
+          "fine": null
+        },
+        "mobile_phone": {
+          "topic": "mobile_phone",
+          "title": "Mobile phone and distracted driving in Bhutan",
+          "summary": "RoadLegal has prepared guidance for Bhutan, but it does not claim an exact fine until a current official schedule has completed legal review.",
+          "rules": [
+            "Road Safety and Transport Act, 1999 and Road Safety and Transport Regulations 2021.",
+            "Avoid handheld-phone use and any interaction that removes attention from driving; the exact offence definition and permitted hands-free use depend on current local law."
+          ],
+          "actions": [
+            "Set navigation and messages before moving.",
+            "Stop in a lawful safe place before handling the phone.",
+            "Keep attention on pedestrians, two-wheelers, junctions, and changing traffic signals."
+          ],
+          "safety": "Visual, manual, and cognitive distraction can each delay recognition and braking.",
+          "verification": "Official law and regulations; current penalty amount needs schedule review",
+          "citations": [
+            {
+              "title": "Bhutan Road Safety and Transport Regulations 2021",
+              "url": "https://bcta.gov.bt/road-safety-and-transport-regulations-2021/",
+              "verified": true,
+              "status": "Official law and regulations; current penalty amount needs schedule review"
+            },
+            {
+              "title": "WHO Road traffic injuries fact sheet",
+              "url": "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries",
+              "verified": true
+            }
+          ],
+          "fine": null
+        },
+        "no_license": {
+          "topic": "no_license",
+          "title": "Driving-licence requirement in Bhutan",
+          "summary": "RoadLegal has prepared guidance for Bhutan, but it does not claim an exact fine until a current official schedule has completed legal review.",
+          "rules": [
+            "Road Safety and Transport Act, 1999 and Road Safety and Transport Regulations 2021.",
+            "The driver must hold a valid licence accepted for the jurisdiction and vehicle class; learner, visitor, commercial, and endorsement conditions can differ."
+          ],
+          "actions": [
+            "Confirm that the licence is valid, unexpired, and covers the vehicle class.",
+            "Travellers should verify whether an international permit, translation, endorsement, or local authorization is required.",
+            "Do not drive when a licence is suspended, disqualified, or otherwise invalid."
+          ],
+          "safety": "Licensing is intended to confirm minimum competence and accountability for the vehicle being driven.",
+          "verification": "Official law and regulations; current penalty amount needs schedule review",
+          "citations": [
+            {
+              "title": "Bhutan Road Safety and Transport Regulations 2021",
+              "url": "https://bcta.gov.bt/road-safety-and-transport-regulations-2021/",
+              "verified": true,
+              "status": "Official law and regulations; current penalty amount needs schedule review"
+            },
+            {
+              "title": "WHO Road traffic injuries fact sheet",
+              "url": "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries",
+              "verified": true
+            }
+          ],
+          "fine": null
+        },
+        "documents": {
+          "topic": "documents",
+          "title": "Driving document checklist for Bhutan",
+          "summary": "Carry original or legally accepted digital evidence for the driver, vehicle, insurance, and the specific journey in Bhutan.",
+          "rules": [
+            "Road Safety and Transport Act, 1999 and Road Safety and Transport Regulations 2021.",
+            "Mountain roads, local permits, vehicle entry conditions, and weather can materially change a safe travel plan; verify them before departure."
+          ],
+          "actions": [
+            "valid driving licence",
+            "vehicle registration",
+            "insurance evidence",
+            "route permit or entry authorization where applicable",
+            "fitness and commercial-vehicle documents where applicable"
+          ],
+          "safety": "Confirm vehicle condition, insurance coverage, and emergency contacts before departure.",
+          "verification": "Official law and regulations; current penalty amount needs schedule review",
+          "citations": [
+            {
+              "title": "Bhutan Road Safety and Transport Regulations 2021",
+              "url": "https://bcta.gov.bt/road-safety-and-transport-regulations-2021/",
+              "verified": true,
+              "status": "Official law and regulations; current penalty amount needs schedule review"
+            }
+          ]
+        },
+        "cross_border": {
+          "topic": "cross_border",
+          "title": "Cross-border readiness for Bhutan",
+          "summary": "Prepare for left-hand traffic, local enforcement, document recognition, insurance, and road-specific restrictions before entering Bhutan.",
+          "rules": [
+            "Road Safety and Transport Act, 1999 and Road Safety and Transport Regulations 2021.",
+            "Mountain roads, local permits, vehicle entry conditions, and weather can materially change a safe travel plan; verify them before departure."
+          ],
+          "actions": [
+            "Reset lane, turn, mirror, and overtaking habits for left-hand traffic.",
+            "valid driving licence",
+            "vehicle registration",
+            "insurance evidence",
+            "route permit or entry authorization where applicable",
+            "fitness and commercial-vehicle documents where applicable",
+            "Download or save official contacts and route information before crossing the border."
+          ],
+          "safety": "Pause after crossing to re-check traffic side, signs, speed units, fuel, weather, and emergency plans.",
+          "verification": "Official law and regulations; current penalty amount needs schedule review",
+          "citations": [
+            {
+              "title": "Bhutan Road Safety and Transport Regulations 2021",
+              "url": "https://bcta.gov.bt/road-safety-and-transport-regulations-2021/",
+              "verified": true,
+              "status": "Official law and regulations; current penalty amount needs schedule review"
+            },
+            {
+              "title": "WHO Road traffic injuries fact sheet",
+              "url": "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries",
+              "verified": true
+            }
+          ]
+        },
+        "emergency": {
+          "topic": "emergency",
+          "title": "Road emergency contacts for Bhutan",
+          "summary": "Move out of live traffic if it is safe, protect the scene, call the appropriate emergency service, and document essential facts without obstructing responders.",
+          "rules": [
+            "Road Safety and Transport Act, 1999 and Road Safety and Transport Regulations 2021."
+          ],
+          "actions": [
+            "Police emergency: 113",
+            "Bhutan Construction and Transport Authority: bcta.gov.bt",
+            "Share the road, direction, landmark, injuries, hazards, and number of vehicles.",
+            "Do not move an injured person unless immediate danger makes it necessary."
+          ],
+          "safety": "Use hazard lights and warning devices only when it is safe to do so.",
+          "verification": "Prepared emergency directory; confirm locally when connectivity is available",
+          "citations": [
+            {
+              "title": "Bhutan Road Safety and Transport Regulations 2021",
+              "url": "https://bcta.gov.bt/road-safety-and-transport-regulations-2021/",
+              "verified": true,
+              "status": "Official law and regulations; current penalty amount needs schedule review"
+            }
+          ]
+        },
+        "scenario": {
+          "topic": "scenario",
+          "title": "Bhutan safety scenario",
+          "summary": "Fog reduces visibility on a mountain road in Bhutan. What is the safest response?",
+          "rules": [
+            "Best choice: Slow down, increase distance, and stop safely if visibility collapses",
+            "Mountain geometry, weather, and limited sight distance require a speed well below the maximum when conditions deteriorate."
+          ],
+          "actions": [
+            "Identify the legal duty.",
+            "Choose the lowest-risk action.",
+            "Check how weather, road users, and enforcement change the decision."
+          ],
+          "safety": "The full offline quiz keeps score and provides immediate explanations.",
+          "verification": "Prepared RoadLegal learning scenario",
+          "citations": [
+            {
+              "title": "WHO Road traffic injuries fact sheet",
+              "url": "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries",
+              "verified": true
+            }
+          ]
+        }
+      }
+    },
+    "nepal_national": {
+      "profile": {
+        "country": "Nepal",
+        "traffic_side": "Left-hand traffic",
+        "framework": "Motor Vehicles and Transport Management Act, 2049, related rules, and current traffic-police schedules.",
+        "source_title": "WHO Road safety Nepal 2023 country profile",
+        "source_url": "https://cdn.who.int/media/docs/default-source/country-profiles/road-safety/road-safety-2023-npl.pdf",
+        "source_status": "Official safety profile; primary legal PDF link requires replacement",
+        "documents": [
+          "valid driving licence",
+          "vehicle registration",
+          "insurance evidence",
+          "route permit or entry documents where applicable",
+          "traveller identity and rental authority documents"
+        ],
+        "emergency": [
+          "Police emergency: 100",
+          "Department of Transport Management: dotm.gov.np"
+        ],
+        "traveller_note": "Confirm border entry permission, licence acceptance, insurance, route restrictions, and mountain-road conditions before driving in Nepal."
+      },
+      "answers": {
+        "overspeeding": {
+          "topic": "overspeeding",
+          "title": "Speed limits and overspeeding in Nepal",
+          "summary": "RoadLegal can explain the Nepal rule, but the exact current amount is deliberately marked for official review: Amount requires latest traffic police schedule verification.",
+          "rules": [
+            "Motor Vehicles and Transport Management Act, 2049 and traffic rules/notices.",
+            "Motor Vehicles and Transport Management Act, 2049, related rules, and current traffic-police schedules.",
+            "The posted limit, road class, vehicle class, location, measured speed, and repeat history can change the applicable offence or outcome."
+          ],
+          "actions": [
+            "Treat a posted limit as a maximum, not a target.",
+            "Reduce speed for rain, darkness, pedestrians, schools, work zones, and poor road conditions.",
+            "For a disputed ticket, check the vehicle, location, time, measured speed, posted limit, and official payment or review channel."
+          ],
+          "safety": "Higher speed raises both crash probability and the severity of injury.",
+          "verification": "Official safety profile; primary legal PDF link requires replacement",
+          "citations": [
+            {
+              "title": "WHO Road safety Nepal 2023 country profile",
+              "url": "https://lawcommission.gov.np/en/wp-content/uploads/2021/01/Motor-Vehicles-and-Transport-Management-Act-2049-1993.pdf",
+              "verified": true,
+              "status": "Official safety profile; primary legal PDF link requires replacement"
+            },
+            {
+              "title": "WHO Road traffic injuries fact sheet",
+              "url": "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries",
+              "verified": true
+            }
+          ],
+          "fine": {
+            "jurisdiction": "nepal_national",
+            "offence": "overspeeding",
+            "vehicle_class": "light_motor_vehicle",
+            "status": "needs_review",
+            "amount_display": "Amount requires latest traffic police schedule verification.",
+            "legal_basis": "Motor Vehicles and Transport Management Act, 2049 and traffic rules/notices.",
+            "consequences": [],
+            "caveats": [],
+            "source": "https://lawcommission.gov.np/en/wp-content/uploads/2021/01/Motor-Vehicles-and-Transport-Management-Act-2049-1993.pdf"
+          }
+        },
+        "no_helmet": {
+          "topic": "no_helmet",
+          "title": "Motorcycle helmet rule in Nepal",
+          "summary": "RoadLegal has prepared guidance for Nepal, but it does not claim an exact fine until a current official schedule has completed legal review.",
+          "rules": [
+            "Motor Vehicles and Transport Management Act, 2049, related rules, and current traffic-police schedules.",
+            "Riders and passengers should use a correctly fastened, standards-compliant helmet; exemptions and the exact penalty must come from current local law."
+          ],
+          "actions": [
+            "Do not begin the trip until the rider and passenger have fastened helmets.",
+            "Replace a helmet after a severe impact or when its shell, strap, or buckle is damaged.",
+            "Confirm that the licence, rental agreement, and insurance permit the motorcycle class being used."
+          ],
+          "safety": "A quality, correctly worn helmet materially reduces fatal and serious head-injury risk.",
+          "verification": "Official safety profile; primary legal PDF link requires replacement",
+          "citations": [
+            {
+              "title": "WHO Road safety Nepal 2023 country profile",
+              "url": "https://cdn.who.int/media/docs/default-source/country-profiles/road-safety/road-safety-2023-npl.pdf",
+              "verified": true,
+              "status": "Official safety profile; primary legal PDF link requires replacement"
+            },
+            {
+              "title": "WHO Road traffic injuries fact sheet",
+              "url": "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries",
+              "verified": true
+            }
+          ],
+          "fine": null
+        },
+        "no_seatbelt": {
+          "topic": "no_seatbelt",
+          "title": "Seat-belt and occupant protection rule in Nepal",
+          "summary": "RoadLegal has prepared guidance for Nepal, but it does not claim an exact fine until a current official schedule has completed legal review.",
+          "rules": [
+            "Motor Vehicles and Transport Management Act, 2049, related rules, and current traffic-police schedules.",
+            "Every occupant should use an available seat belt; covered seats, child restraints, exemptions, and penalties depend on current local law and vehicle configuration."
+          ],
+          "actions": [
+            "Buckle every occupant before the vehicle moves, including on short trips.",
+            "Use an age- and size-appropriate child restraint where required and available.",
+            "Do not place a child in front of an active airbag unless the vehicle instructions and law allow it."
+          ],
+          "safety": "Seat belts reduce the risk of death and serious injury for vehicle occupants.",
+          "verification": "Official safety profile; primary legal PDF link requires replacement",
+          "citations": [
+            {
+              "title": "WHO Road safety Nepal 2023 country profile",
+              "url": "https://cdn.who.int/media/docs/default-source/country-profiles/road-safety/road-safety-2023-npl.pdf",
+              "verified": true,
+              "status": "Official safety profile; primary legal PDF link requires replacement"
+            },
+            {
+              "title": "WHO Road traffic injuries fact sheet",
+              "url": "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries",
+              "verified": true
+            }
+          ],
+          "fine": null
+        },
+        "drink_driving": {
+          "topic": "drink_driving",
+          "title": "Drink-driving and impairment in Nepal",
+          "summary": "RoadLegal has prepared guidance for Nepal, but it does not claim an exact fine until a current official schedule has completed legal review.",
+          "rules": [
+            "Motor Vehicles and Transport Management Act, 2049, related rules, and current traffic-police schedules.",
+            "Do not drive after alcohol or impairing drugs. Testing thresholds, court referral, imprisonment, licence action, and repeat-offence consequences vary by jurisdiction and facts."
+          ],
+          "actions": [
+            "Use a sober driver, taxi, or public transport.",
+            "Plan the trip home before drinking begins.",
+            "Do not rely on coffee, food, or a short wait to remove impairment."
+          ],
+          "safety": "Impairment begins before a driver necessarily feels drunk and reduces judgment, reaction, and hazard perception.",
+          "verification": "Official safety profile; primary legal PDF link requires replacement",
+          "citations": [
+            {
+              "title": "WHO Road safety Nepal 2023 country profile",
+              "url": "https://cdn.who.int/media/docs/default-source/country-profiles/road-safety/road-safety-2023-npl.pdf",
+              "verified": true,
+              "status": "Official safety profile; primary legal PDF link requires replacement"
+            },
+            {
+              "title": "WHO Road traffic injuries fact sheet",
+              "url": "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries",
+              "verified": true
+            }
+          ],
+          "fine": null
+        },
+        "mobile_phone": {
+          "topic": "mobile_phone",
+          "title": "Mobile phone and distracted driving in Nepal",
+          "summary": "RoadLegal has prepared guidance for Nepal, but it does not claim an exact fine until a current official schedule has completed legal review.",
+          "rules": [
+            "Motor Vehicles and Transport Management Act, 2049, related rules, and current traffic-police schedules.",
+            "Avoid handheld-phone use and any interaction that removes attention from driving; the exact offence definition and permitted hands-free use depend on current local law."
+          ],
+          "actions": [
+            "Set navigation and messages before moving.",
+            "Stop in a lawful safe place before handling the phone.",
+            "Keep attention on pedestrians, two-wheelers, junctions, and changing traffic signals."
+          ],
+          "safety": "Visual, manual, and cognitive distraction can each delay recognition and braking.",
+          "verification": "Official safety profile; primary legal PDF link requires replacement",
+          "citations": [
+            {
+              "title": "WHO Road safety Nepal 2023 country profile",
+              "url": "https://cdn.who.int/media/docs/default-source/country-profiles/road-safety/road-safety-2023-npl.pdf",
+              "verified": true,
+              "status": "Official safety profile; primary legal PDF link requires replacement"
+            },
+            {
+              "title": "WHO Road traffic injuries fact sheet",
+              "url": "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries",
+              "verified": true
+            }
+          ],
+          "fine": null
+        },
+        "no_license": {
+          "topic": "no_license",
+          "title": "Driving-licence requirement in Nepal",
+          "summary": "RoadLegal has prepared guidance for Nepal, but it does not claim an exact fine until a current official schedule has completed legal review.",
+          "rules": [
+            "Motor Vehicles and Transport Management Act, 2049, related rules, and current traffic-police schedules.",
+            "The driver must hold a valid licence accepted for the jurisdiction and vehicle class; learner, visitor, commercial, and endorsement conditions can differ."
+          ],
+          "actions": [
+            "Confirm that the licence is valid, unexpired, and covers the vehicle class.",
+            "Travellers should verify whether an international permit, translation, endorsement, or local authorization is required.",
+            "Do not drive when a licence is suspended, disqualified, or otherwise invalid."
+          ],
+          "safety": "Licensing is intended to confirm minimum competence and accountability for the vehicle being driven.",
+          "verification": "Official safety profile; primary legal PDF link requires replacement",
+          "citations": [
+            {
+              "title": "WHO Road safety Nepal 2023 country profile",
+              "url": "https://cdn.who.int/media/docs/default-source/country-profiles/road-safety/road-safety-2023-npl.pdf",
+              "verified": true,
+              "status": "Official safety profile; primary legal PDF link requires replacement"
+            },
+            {
+              "title": "WHO Road traffic injuries fact sheet",
+              "url": "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries",
+              "verified": true
+            }
+          ],
+          "fine": null
+        },
+        "documents": {
+          "topic": "documents",
+          "title": "Driving document checklist for Nepal",
+          "summary": "Carry original or legally accepted digital evidence for the driver, vehicle, insurance, and the specific journey in Nepal.",
+          "rules": [
+            "Motor Vehicles and Transport Management Act, 2049, related rules, and current traffic-police schedules.",
+            "Confirm border entry permission, licence acceptance, insurance, route restrictions, and mountain-road conditions before driving in Nepal."
+          ],
+          "actions": [
+            "valid driving licence",
+            "vehicle registration",
+            "insurance evidence",
+            "route permit or entry documents where applicable",
+            "traveller identity and rental authority documents"
+          ],
+          "safety": "Confirm vehicle condition, insurance coverage, and emergency contacts before departure.",
+          "verification": "Official safety profile; primary legal PDF link requires replacement",
+          "citations": [
+            {
+              "title": "WHO Road safety Nepal 2023 country profile",
+              "url": "https://cdn.who.int/media/docs/default-source/country-profiles/road-safety/road-safety-2023-npl.pdf",
+              "verified": true,
+              "status": "Official safety profile; primary legal PDF link requires replacement"
+            }
+          ]
+        },
+        "cross_border": {
+          "topic": "cross_border",
+          "title": "Cross-border readiness for Nepal",
+          "summary": "Prepare for left-hand traffic, local enforcement, document recognition, insurance, and road-specific restrictions before entering Nepal.",
+          "rules": [
+            "Motor Vehicles and Transport Management Act, 2049, related rules, and current traffic-police schedules.",
+            "Confirm border entry permission, licence acceptance, insurance, route restrictions, and mountain-road conditions before driving in Nepal."
+          ],
+          "actions": [
+            "Reset lane, turn, mirror, and overtaking habits for left-hand traffic.",
+            "valid driving licence",
+            "vehicle registration",
+            "insurance evidence",
+            "route permit or entry documents where applicable",
+            "traveller identity and rental authority documents",
+            "Download or save official contacts and route information before crossing the border."
+          ],
+          "safety": "Pause after crossing to re-check traffic side, signs, speed units, fuel, weather, and emergency plans.",
+          "verification": "Official safety profile; primary legal PDF link requires replacement",
+          "citations": [
+            {
+              "title": "WHO Road safety Nepal 2023 country profile",
+              "url": "https://cdn.who.int/media/docs/default-source/country-profiles/road-safety/road-safety-2023-npl.pdf",
+              "verified": true,
+              "status": "Official safety profile; primary legal PDF link requires replacement"
+            },
+            {
+              "title": "WHO Road traffic injuries fact sheet",
+              "url": "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries",
+              "verified": true
+            }
+          ]
+        },
+        "emergency": {
+          "topic": "emergency",
+          "title": "Road emergency contacts for Nepal",
+          "summary": "Move out of live traffic if it is safe, protect the scene, call the appropriate emergency service, and document essential facts without obstructing responders.",
+          "rules": [
+            "Motor Vehicles and Transport Management Act, 2049, related rules, and current traffic-police schedules."
+          ],
+          "actions": [
+            "Police emergency: 100",
+            "Department of Transport Management: dotm.gov.np",
+            "Share the road, direction, landmark, injuries, hazards, and number of vehicles.",
+            "Do not move an injured person unless immediate danger makes it necessary."
+          ],
+          "safety": "Use hazard lights and warning devices only when it is safe to do so.",
+          "verification": "Prepared emergency directory; confirm locally when connectivity is available",
+          "citations": [
+            {
+              "title": "WHO Road safety Nepal 2023 country profile",
+              "url": "https://cdn.who.int/media/docs/default-source/country-profiles/road-safety/road-safety-2023-npl.pdf",
+              "verified": true,
+              "status": "Official safety profile; primary legal PDF link requires replacement"
+            }
+          ]
+        },
+        "scenario": {
+          "topic": "scenario",
+          "title": "Nepal safety scenario",
+          "summary": "A driver begins a long steep descent in Nepal. Which technique is safest?",
+          "rules": [
+            "Best choice: Use an appropriate lower gear and preserve braking capacity",
+            "Controlled gearing and speed help prevent brake overheating on long descents."
+          ],
+          "actions": [
+            "Identify the legal duty.",
+            "Choose the lowest-risk action.",
+            "Check how weather, road users, and enforcement change the decision."
+          ],
+          "safety": "The full offline quiz keeps score and provides immediate explanations.",
+          "verification": "Prepared RoadLegal learning scenario",
+          "citations": [
+            {
+              "title": "WHO Road traffic injuries fact sheet",
+              "url": "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries",
+              "verified": true
+            }
+          ]
+        }
+      }
+    },
+    "sri_lanka_national": {
+      "profile": {
+        "country": "Sri Lanka",
+        "traffic_side": "Left-hand traffic",
+        "framework": "Motor Traffic Act and current police, spot-fine, court, and licensing regulations.",
+        "source_title": "WHO Road safety Sri Lanka 2023 country profile",
+        "source_url": "https://cdn.who.int/media/docs/default-source/country-profiles/road-safety/road-safety-2023-lka.pdf",
+        "source_status": "Official safety profile; LawNet source currently has a certificate fault",
+        "documents": [
+          "valid driving licence accepted in Sri Lanka",
+          "vehicle registration",
+          "insurance evidence",
+          "rental or vehicle-authority documents",
+          "passport or identity evidence for travellers"
+        ],
+        "emergency": [
+          "Police emergency: 119",
+          "Sri Lanka Police: police.lk"
+        ],
+        "traveller_note": "Travellers should confirm licence recognition or local endorsement, rental authorization, insurance, and current police requirements before driving."
+      },
+      "answers": {
+        "overspeeding": {
+          "topic": "overspeeding",
+          "title": "Speed limits and overspeeding in Sri Lanka",
+          "summary": "RoadLegal can explain the Sri Lanka rule, but the exact current amount is deliberately marked for official review: Amount requires latest police/court fine schedule verification.",
+          "rules": [
+            "Motor Traffic Act and current penalty regulations.",
+            "Motor Traffic Act and current police, spot-fine, court, and licensing regulations.",
+            "The posted limit, road class, vehicle class, location, measured speed, and repeat history can change the applicable offence or outcome."
+          ],
+          "actions": [
+            "Treat a posted limit as a maximum, not a target.",
+            "Reduce speed for rain, darkness, pedestrians, schools, work zones, and poor road conditions.",
+            "For a disputed ticket, check the vehicle, location, time, measured speed, posted limit, and official payment or review channel."
+          ],
+          "safety": "Higher speed raises both crash probability and the severity of injury.",
+          "verification": "Official safety profile; LawNet source currently has a certificate fault",
+          "citations": [
+            {
+              "title": "WHO Road safety Sri Lanka 2023 country profile",
+              "url": "https://www.lawnet.gov.lk/motor-traffic-2/",
+              "verified": true,
+              "status": "Official safety profile; LawNet source currently has a certificate fault"
+            },
+            {
+              "title": "WHO Road traffic injuries fact sheet",
+              "url": "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries",
+              "verified": true
+            }
+          ],
+          "fine": {
+            "jurisdiction": "sri_lanka_national",
+            "offence": "overspeeding",
+            "vehicle_class": "light_motor_vehicle",
+            "status": "needs_review",
+            "amount_display": "Amount requires latest police/court fine schedule verification.",
+            "legal_basis": "Motor Traffic Act and current penalty regulations.",
+            "consequences": [],
+            "caveats": [],
+            "source": "https://www.lawnet.gov.lk/motor-traffic-2/"
+          }
+        },
+        "no_helmet": {
+          "topic": "no_helmet",
+          "title": "Motorcycle helmet rule in Sri Lanka",
+          "summary": "RoadLegal has prepared guidance for Sri Lanka, but it does not claim an exact fine until a current official schedule has completed legal review.",
+          "rules": [
+            "Motor Traffic Act and current police, spot-fine, court, and licensing regulations.",
+            "Riders and passengers should use a correctly fastened, standards-compliant helmet; exemptions and the exact penalty must come from current local law."
+          ],
+          "actions": [
+            "Do not begin the trip until the rider and passenger have fastened helmets.",
+            "Replace a helmet after a severe impact or when its shell, strap, or buckle is damaged.",
+            "Confirm that the licence, rental agreement, and insurance permit the motorcycle class being used."
+          ],
+          "safety": "A quality, correctly worn helmet materially reduces fatal and serious head-injury risk.",
+          "verification": "Official safety profile; LawNet source currently has a certificate fault",
+          "citations": [
+            {
+              "title": "WHO Road safety Sri Lanka 2023 country profile",
+              "url": "https://cdn.who.int/media/docs/default-source/country-profiles/road-safety/road-safety-2023-lka.pdf",
+              "verified": true,
+              "status": "Official safety profile; LawNet source currently has a certificate fault"
+            },
+            {
+              "title": "WHO Road traffic injuries fact sheet",
+              "url": "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries",
+              "verified": true
+            }
+          ],
+          "fine": null
+        },
+        "no_seatbelt": {
+          "topic": "no_seatbelt",
+          "title": "Seat-belt and occupant protection rule in Sri Lanka",
+          "summary": "RoadLegal has prepared guidance for Sri Lanka, but it does not claim an exact fine until a current official schedule has completed legal review.",
+          "rules": [
+            "Motor Traffic Act and current police, spot-fine, court, and licensing regulations.",
+            "Every occupant should use an available seat belt; covered seats, child restraints, exemptions, and penalties depend on current local law and vehicle configuration."
+          ],
+          "actions": [
+            "Buckle every occupant before the vehicle moves, including on short trips.",
+            "Use an age- and size-appropriate child restraint where required and available.",
+            "Do not place a child in front of an active airbag unless the vehicle instructions and law allow it."
+          ],
+          "safety": "Seat belts reduce the risk of death and serious injury for vehicle occupants.",
+          "verification": "Official safety profile; LawNet source currently has a certificate fault",
+          "citations": [
+            {
+              "title": "WHO Road safety Sri Lanka 2023 country profile",
+              "url": "https://cdn.who.int/media/docs/default-source/country-profiles/road-safety/road-safety-2023-lka.pdf",
+              "verified": true,
+              "status": "Official safety profile; LawNet source currently has a certificate fault"
+            },
+            {
+              "title": "WHO Road traffic injuries fact sheet",
+              "url": "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries",
+              "verified": true
+            }
+          ],
+          "fine": null
+        },
+        "drink_driving": {
+          "topic": "drink_driving",
+          "title": "Drink-driving and impairment in Sri Lanka",
+          "summary": "RoadLegal has prepared guidance for Sri Lanka, but it does not claim an exact fine until a current official schedule has completed legal review.",
+          "rules": [
+            "Motor Traffic Act and current police, spot-fine, court, and licensing regulations.",
+            "Do not drive after alcohol or impairing drugs. Testing thresholds, court referral, imprisonment, licence action, and repeat-offence consequences vary by jurisdiction and facts."
+          ],
+          "actions": [
+            "Use a sober driver, taxi, or public transport.",
+            "Plan the trip home before drinking begins.",
+            "Do not rely on coffee, food, or a short wait to remove impairment."
+          ],
+          "safety": "Impairment begins before a driver necessarily feels drunk and reduces judgment, reaction, and hazard perception.",
+          "verification": "Official safety profile; LawNet source currently has a certificate fault",
+          "citations": [
+            {
+              "title": "WHO Road safety Sri Lanka 2023 country profile",
+              "url": "https://cdn.who.int/media/docs/default-source/country-profiles/road-safety/road-safety-2023-lka.pdf",
+              "verified": true,
+              "status": "Official safety profile; LawNet source currently has a certificate fault"
+            },
+            {
+              "title": "WHO Road traffic injuries fact sheet",
+              "url": "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries",
+              "verified": true
+            }
+          ],
+          "fine": null
+        },
+        "mobile_phone": {
+          "topic": "mobile_phone",
+          "title": "Mobile phone and distracted driving in Sri Lanka",
+          "summary": "RoadLegal has prepared guidance for Sri Lanka, but it does not claim an exact fine until a current official schedule has completed legal review.",
+          "rules": [
+            "Motor Traffic Act and current police, spot-fine, court, and licensing regulations.",
+            "Avoid handheld-phone use and any interaction that removes attention from driving; the exact offence definition and permitted hands-free use depend on current local law."
+          ],
+          "actions": [
+            "Set navigation and messages before moving.",
+            "Stop in a lawful safe place before handling the phone.",
+            "Keep attention on pedestrians, two-wheelers, junctions, and changing traffic signals."
+          ],
+          "safety": "Visual, manual, and cognitive distraction can each delay recognition and braking.",
+          "verification": "Official safety profile; LawNet source currently has a certificate fault",
+          "citations": [
+            {
+              "title": "WHO Road safety Sri Lanka 2023 country profile",
+              "url": "https://cdn.who.int/media/docs/default-source/country-profiles/road-safety/road-safety-2023-lka.pdf",
+              "verified": true,
+              "status": "Official safety profile; LawNet source currently has a certificate fault"
+            },
+            {
+              "title": "WHO Road traffic injuries fact sheet",
+              "url": "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries",
+              "verified": true
+            }
+          ],
+          "fine": null
+        },
+        "no_license": {
+          "topic": "no_license",
+          "title": "Driving-licence requirement in Sri Lanka",
+          "summary": "RoadLegal has prepared guidance for Sri Lanka, but it does not claim an exact fine until a current official schedule has completed legal review.",
+          "rules": [
+            "Motor Traffic Act and current police, spot-fine, court, and licensing regulations.",
+            "The driver must hold a valid licence accepted for the jurisdiction and vehicle class; learner, visitor, commercial, and endorsement conditions can differ."
+          ],
+          "actions": [
+            "Confirm that the licence is valid, unexpired, and covers the vehicle class.",
+            "Travellers should verify whether an international permit, translation, endorsement, or local authorization is required.",
+            "Do not drive when a licence is suspended, disqualified, or otherwise invalid."
+          ],
+          "safety": "Licensing is intended to confirm minimum competence and accountability for the vehicle being driven.",
+          "verification": "Official safety profile; LawNet source currently has a certificate fault",
+          "citations": [
+            {
+              "title": "WHO Road safety Sri Lanka 2023 country profile",
+              "url": "https://cdn.who.int/media/docs/default-source/country-profiles/road-safety/road-safety-2023-lka.pdf",
+              "verified": true,
+              "status": "Official safety profile; LawNet source currently has a certificate fault"
+            },
+            {
+              "title": "WHO Road traffic injuries fact sheet",
+              "url": "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries",
+              "verified": true
+            }
+          ],
+          "fine": null
+        },
+        "documents": {
+          "topic": "documents",
+          "title": "Driving document checklist for Sri Lanka",
+          "summary": "Carry original or legally accepted digital evidence for the driver, vehicle, insurance, and the specific journey in Sri Lanka.",
+          "rules": [
+            "Motor Traffic Act and current police, spot-fine, court, and licensing regulations.",
+            "Travellers should confirm licence recognition or local endorsement, rental authorization, insurance, and current police requirements before driving."
+          ],
+          "actions": [
+            "valid driving licence accepted in Sri Lanka",
+            "vehicle registration",
+            "insurance evidence",
+            "rental or vehicle-authority documents",
+            "passport or identity evidence for travellers"
+          ],
+          "safety": "Confirm vehicle condition, insurance coverage, and emergency contacts before departure.",
+          "verification": "Official safety profile; LawNet source currently has a certificate fault",
+          "citations": [
+            {
+              "title": "WHO Road safety Sri Lanka 2023 country profile",
+              "url": "https://cdn.who.int/media/docs/default-source/country-profiles/road-safety/road-safety-2023-lka.pdf",
+              "verified": true,
+              "status": "Official safety profile; LawNet source currently has a certificate fault"
+            }
+          ]
+        },
+        "cross_border": {
+          "topic": "cross_border",
+          "title": "Cross-border readiness for Sri Lanka",
+          "summary": "Prepare for left-hand traffic, local enforcement, document recognition, insurance, and road-specific restrictions before entering Sri Lanka.",
+          "rules": [
+            "Motor Traffic Act and current police, spot-fine, court, and licensing regulations.",
+            "Travellers should confirm licence recognition or local endorsement, rental authorization, insurance, and current police requirements before driving."
+          ],
+          "actions": [
+            "Reset lane, turn, mirror, and overtaking habits for left-hand traffic.",
+            "valid driving licence accepted in Sri Lanka",
+            "vehicle registration",
+            "insurance evidence",
+            "rental or vehicle-authority documents",
+            "passport or identity evidence for travellers",
+            "Download or save official contacts and route information before crossing the border."
+          ],
+          "safety": "Pause after crossing to re-check traffic side, signs, speed units, fuel, weather, and emergency plans.",
+          "verification": "Official safety profile; LawNet source currently has a certificate fault",
+          "citations": [
+            {
+              "title": "WHO Road safety Sri Lanka 2023 country profile",
+              "url": "https://cdn.who.int/media/docs/default-source/country-profiles/road-safety/road-safety-2023-lka.pdf",
+              "verified": true,
+              "status": "Official safety profile; LawNet source currently has a certificate fault"
+            },
+            {
+              "title": "WHO Road traffic injuries fact sheet",
+              "url": "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries",
+              "verified": true
+            }
+          ]
+        },
+        "emergency": {
+          "topic": "emergency",
+          "title": "Road emergency contacts for Sri Lanka",
+          "summary": "Move out of live traffic if it is safe, protect the scene, call the appropriate emergency service, and document essential facts without obstructing responders.",
+          "rules": [
+            "Motor Traffic Act and current police, spot-fine, court, and licensing regulations."
+          ],
+          "actions": [
+            "Police emergency: 119",
+            "Sri Lanka Police: police.lk",
+            "Share the road, direction, landmark, injuries, hazards, and number of vehicles.",
+            "Do not move an injured person unless immediate danger makes it necessary."
+          ],
+          "safety": "Use hazard lights and warning devices only when it is safe to do so.",
+          "verification": "Prepared emergency directory; confirm locally when connectivity is available",
+          "citations": [
+            {
+              "title": "WHO Road safety Sri Lanka 2023 country profile",
+              "url": "https://cdn.who.int/media/docs/default-source/country-profiles/road-safety/road-safety-2023-lka.pdf",
+              "verified": true,
+              "status": "Official safety profile; LawNet source currently has a certificate fault"
+            }
+          ]
+        },
+        "scenario": {
+          "topic": "scenario",
+          "title": "Sri Lanka safety scenario",
+          "summary": "A visitor plans to drive in Sri Lanka. What should be confirmed before collecting the rental car?",
+          "rules": [
+            "Best choice: Licence recognition or endorsement, rental authority, and insurance",
+            "Visitors should confirm that their driving credential is accepted and that the rental and insurance cover them."
+          ],
+          "actions": [
+            "Identify the legal duty.",
+            "Choose the lowest-risk action.",
+            "Check how weather, road users, and enforcement change the decision."
+          ],
+          "safety": "The full offline quiz keeps score and provides immediate explanations.",
+          "verification": "Prepared RoadLegal learning scenario",
+          "citations": [
+            {
+              "title": "WHO Road traffic injuries fact sheet",
+              "url": "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries",
+              "verified": true
+            }
+          ]
+        }
+      }
+    },
+    "thailand_national": {
+      "profile": {
+        "country": "Thailand",
+        "traffic_side": "Left-hand traffic",
+        "framework": "Land Traffic Act and amendments, Royal Thai Police enforcement notices, and Department of Land Transport requirements.",
+        "source_title": "Thailand PRD traffic penalties effective September 2022",
+        "source_url": "https://region2.prd.go.th/th/content/category/detail/id/1169/iid/118650",
+        "source_status": "Official Government Public Relations Department notice",
+        "documents": [
+          "driving licence accepted in Thailand",
+          "passport or identity evidence",
+          "vehicle registration or rental agreement",
+          "insurance evidence",
+          "vehicle inspection or permit documents where applicable"
+        ],
+        "emergency": [
+          "Police emergency: 191",
+          "Medical emergency: 1669",
+          "Tourist Police: 1155"
+        ],
+        "traveller_note": "Check licence acceptance, rental restrictions, insurance, motorcycle eligibility, road class, posted limits, and left-side traffic habits before driving.",
+        "thai_localizations": {
+          "overspeeding": {
+            "title": "กฎหมายขับรถเร็วในประเทศไทย",
+            "summary": "ประกาศของกรมประชาสัมพันธ์ระบุว่าโทษปรับสูงสุดสำหรับการขับรถเร็วเกินกำหนดคือ 4,000 บาท โดยความเร็วที่ใช้จริงขึ้นอยู่กับป้าย ประเภทรถ ประเภทถนน และข้อเท็จจริงของเหตุการณ์",
+            "actions": [
+              "ตรวจป้ายจำกัดความเร็วทุกครั้ง",
+              "ลดความเร็วเมื่อฝนตก ทัศนวิสัยต่ำ หรือมีคนเดินเท้า",
+              "ตรวจข้อมูลใบสั่งกับหน่วยงานตำรวจหากมีข้อโต้แย้ง"
+            ]
+          },
+          "no_helmet": {
+            "title": "กฎหมายหมวกนิรภัยในประเทศไทย",
+            "summary": "ผู้ขับขี่และผู้ซ้อนรถจักรยานยนต์ควรสวมหมวกนิรภัยและรัดสายให้แน่น ประกาศของกรมประชาสัมพันธ์ระบุโทษปรับสูงสุด 2,000 บาทสำหรับการไม่สวมหมวกนิรภัย",
+            "actions": [
+              "สวมหมวกนิรภัยมาตรฐานทั้งผู้ขับขี่และผู้ซ้อน",
+              "รัดสายคางก่อนออกรถ",
+              "เปลี่ยนหมวกที่แตกร้าวหรือผ่านการกระแทกรุนแรง"
+            ]
+          },
+          "drink_driving": {
+            "title": "เมาแล้วขับในประเทศไทย",
+            "summary": "อย่าขับรถหลังดื่มแอลกอฮอล์ โทษอาจรวมถึงค่าปรับ จำคุก การพักใช้ใบอนุญาต และโทษที่สูงขึ้นเมื่อกระทำผิดซ้ำหรือเกิดอุบัติเหตุ",
+            "actions": [
+              "ใช้คนขับที่ไม่ดื่ม รถแท็กซี่ หรือขนส่งสาธารณะ",
+              "อย่าพึ่งกาแฟหรือการรอเพียงไม่กี่นาที",
+              "เตรียมวิธีกลับบ้านก่อนเริ่มดื่ม"
+            ]
+          },
+          "documents": {
+            "title": "เอกสารที่ควรพกเมื่อขับรถในประเทศไทย",
+            "summary": "ควรพกใบขับขี่ที่ประเทศไทยยอมรับ เอกสารประจำตัว เอกสารทะเบียนรถหรือสัญญาเช่า และหลักฐานประกันภัย",
+            "actions": [
+              "ตรวจว่าใบขับขี่ใช้ได้กับประเภทรถ",
+              "อ่านข้อจำกัดของบริษัทเช่ารถ",
+              "เก็บเบอร์ฉุกเฉิน 191, 1669 และตำรวจท่องเที่ยว 1155"
+            ]
+          }
+        }
+      },
+      "answers": {
+        "overspeeding": {
+          "topic": "overspeeding",
+          "title": "Speed limits and overspeeding in Thailand",
+          "summary": "The packaged verified schedule for Thailand reports Up to THB 4,000 for this demo case.",
+          "rules": [
+            "Land Traffic Act B.E. 2522 and current Royal Thai Police/regulatory fine schedule. Posted signs and road class control the legal speed.",
+            "Land Traffic Act and amendments, Royal Thai Police enforcement notices, and Department of Land Transport requirements.",
+            "The posted limit, road class, vehicle class, location, measured speed, and repeat history can change the applicable offence or outcome."
+          ],
+          "actions": [
+            "Treat a posted limit as a maximum, not a target.",
+            "Reduce speed for rain, darkness, pedestrians, schools, work zones, and poor road conditions.",
+            "For a disputed ticket, check the vehicle, location, time, measured speed, posted limit, and official payment or review channel."
+          ],
+          "safety": "Higher speed raises both crash probability and the severity of injury.",
+          "verification": "Official Government Public Relations Department notice",
+          "citations": [
+            {
+              "title": "Thailand PRD traffic penalties effective September 2022",
+              "url": "https://region2.prd.go.th/th/content/category/detail/id/1169/iid/118650",
+              "verified": true,
+              "status": "Official Government Public Relations Department notice"
+            },
+            {
+              "title": "WHO Road traffic injuries fact sheet",
+              "url": "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries",
+              "verified": true
+            }
+          ],
+          "fine": {
+            "jurisdiction": "thailand_national",
+            "offence": "overspeeding",
+            "vehicle_class": "light_motor_vehicle",
+            "status": "verified",
+            "amount_display": "Up to THB 4,000",
+            "legal_basis": "Land Traffic Act B.E. 2522 and current Royal Thai Police/regulatory fine schedule. Posted signs and road class control the legal speed.",
+            "consequences": [],
+            "caveats": [
+              "This is the statutory maximum reported by Thailand's Government Public Relations Department for the amendment effective 5 September 2022; the issued amount can depend on the facts and current police schedule."
+            ],
+            "source": "https://region2.prd.go.th/th/content/category/detail/id/1169/iid/118650"
+          },
+          "localizations": {
+            "Thai": {
+              "title": "กฎหมายขับรถเร็วในประเทศไทย",
+              "summary": "ประกาศของกรมประชาสัมพันธ์ระบุว่าโทษปรับสูงสุดสำหรับการขับรถเร็วเกินกำหนดคือ 4,000 บาท โดยความเร็วที่ใช้จริงขึ้นอยู่กับป้าย ประเภทรถ ประเภทถนน และข้อเท็จจริงของเหตุการณ์",
+              "actions": [
+                "ตรวจป้ายจำกัดความเร็วทุกครั้ง",
+                "ลดความเร็วเมื่อฝนตก ทัศนวิสัยต่ำ หรือมีคนเดินเท้า",
+                "ตรวจข้อมูลใบสั่งกับหน่วยงานตำรวจหากมีข้อโต้แย้ง"
+              ],
+              "rules": [
+                "Land Traffic Act and amendments, Royal Thai Police enforcement notices, and Department of Land Transport requirements.",
+                "The posted limit, road class, vehicle class, location, measured speed, and repeat history can change the applicable offence or outcome."
+              ],
+              "safety": "Higher speed raises both crash probability and the severity of injury.",
+              "verification": "Official Government Public Relations Department notice"
+            }
+          }
+        },
+        "no_helmet": {
+          "topic": "no_helmet",
+          "title": "Motorcycle helmet rule in Thailand",
+          "summary": "The packaged verified schedule for Thailand reports Up to THB 2,000 for this demo case.",
+          "rules": [
+            "Thailand Land Traffic Act amendments effective 5 September 2022 require motorcycle helmet use and increased the maximum fine.",
+            "Land Traffic Act and amendments, Royal Thai Police enforcement notices, and Department of Land Transport requirements.",
+            "Riders and passengers should use a correctly fastened, standards-compliant helmet; exemptions and the exact penalty must come from current local law."
+          ],
+          "actions": [
+            "Do not begin the trip until the rider and passenger have fastened helmets.",
+            "Replace a helmet after a severe impact or when its shell, strap, or buckle is damaged.",
+            "Confirm that the licence, rental agreement, and insurance permit the motorcycle class being used."
+          ],
+          "safety": "A quality, correctly worn helmet materially reduces fatal and serious head-injury risk.",
+          "verification": "Official Government Public Relations Department notice",
+          "citations": [
+            {
+              "title": "Thailand PRD traffic penalties effective September 2022",
+              "url": "https://region2.prd.go.th/th/content/category/detail/id/1169/iid/118650",
+              "verified": true,
+              "status": "Official Government Public Relations Department notice"
+            },
+            {
+              "title": "WHO Road traffic injuries fact sheet",
+              "url": "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries",
+              "verified": true
+            }
+          ],
+          "fine": {
+            "jurisdiction": "thailand_national",
+            "offence": "no_helmet",
+            "vehicle_class": "two_wheeler",
+            "status": "verified",
+            "amount_display": "Up to THB 2,000",
+            "legal_basis": "Thailand Land Traffic Act amendments effective 5 September 2022 require motorcycle helmet use and increased the maximum fine.",
+            "consequences": [
+              "Police may stop the rider and issue a traffic ticket.",
+              "Passengers can also be part of helmet enforcement depending on the current rule and facts."
+            ],
+            "caveats": [],
+            "source": "https://region2.prd.go.th/th/content/category/detail/id/1169/iid/118650"
+          },
+          "localizations": {
+            "Thai": {
+              "title": "กฎหมายหมวกนิรภัยในประเทศไทย",
+              "summary": "ผู้ขับขี่และผู้ซ้อนรถจักรยานยนต์ควรสวมหมวกนิรภัยและรัดสายให้แน่น ประกาศของกรมประชาสัมพันธ์ระบุโทษปรับสูงสุด 2,000 บาทสำหรับการไม่สวมหมวกนิรภัย",
+              "actions": [
+                "สวมหมวกนิรภัยมาตรฐานทั้งผู้ขับขี่และผู้ซ้อน",
+                "รัดสายคางก่อนออกรถ",
+                "เปลี่ยนหมวกที่แตกร้าวหรือผ่านการกระแทกรุนแรง"
+              ],
+              "rules": [
+                "Land Traffic Act and amendments, Royal Thai Police enforcement notices, and Department of Land Transport requirements.",
+                "Riders and passengers should use a correctly fastened, standards-compliant helmet; exemptions and the exact penalty must come from current local law."
+              ],
+              "safety": "A quality, correctly worn helmet materially reduces fatal and serious head-injury risk.",
+              "verification": "Official Government Public Relations Department notice"
+            }
+          }
+        },
+        "no_seatbelt": {
+          "topic": "no_seatbelt",
+          "title": "Seat-belt and occupant protection rule in Thailand",
+          "summary": "The packaged verified schedule for Thailand reports Up to THB 2,000 for this demo case.",
+          "rules": [
+            "Thailand Land Traffic Act amendments effective 5 September 2022 require seat-belt use in covered seating positions and increased the maximum fine.",
+            "Land Traffic Act and amendments, Royal Thai Police enforcement notices, and Department of Land Transport requirements.",
+            "Every occupant should use an available seat belt; covered seats, child restraints, exemptions, and penalties depend on current local law and vehicle configuration."
+          ],
+          "actions": [
+            "Buckle every occupant before the vehicle moves, including on short trips.",
+            "Use an age- and size-appropriate child restraint where required and available.",
+            "Do not place a child in front of an active airbag unless the vehicle instructions and law allow it."
+          ],
+          "safety": "Seat belts reduce the risk of death and serious injury for vehicle occupants.",
+          "verification": "Official Government Public Relations Department notice",
+          "citations": [
+            {
+              "title": "Thailand PRD traffic penalties effective September 2022",
+              "url": "https://region2.prd.go.th/th/content/category/detail/id/1169/iid/118650",
+              "verified": true,
+              "status": "Official Government Public Relations Department notice"
+            },
+            {
+              "title": "WHO Road traffic injuries fact sheet",
+              "url": "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries",
+              "verified": true
+            }
+          ],
+          "fine": {
+            "jurisdiction": "thailand_national",
+            "offence": "no_seatbelt",
+            "vehicle_class": "light_motor_vehicle",
+            "status": "verified",
+            "amount_display": "Up to THB 2,000",
+            "legal_basis": "Thailand Land Traffic Act amendments effective 5 September 2022 require seat-belt use in covered seating positions and increased the maximum fine.",
+            "consequences": [],
+            "caveats": [
+              "Passenger and rear-seat rules may depend on the current amendment and vehicle configuration."
+            ],
+            "source": "https://region2.prd.go.th/th/content/category/detail/id/1169/iid/118650"
+          }
+        },
+        "drink_driving": {
+          "topic": "drink_driving",
+          "title": "Drink-driving and impairment in Thailand",
+          "summary": "The packaged verified schedule for Thailand reports First offence: THB 5,000 - 20,000; repeat within 2 years: THB 50,000 - 100,000 for this demo case.",
+          "rules": [
+            "Thailand Land Traffic Act and related regulations prohibit driving while intoxicated; enforcement may involve breath testing, court process, licence suspension, fine, or imprisonment.",
+            "Land Traffic Act and amendments, Royal Thai Police enforcement notices, and Department of Land Transport requirements.",
+            "Do not drive after alcohol or impairing drugs. Testing thresholds, court referral, imprisonment, licence action, and repeat-offence consequences vary by jurisdiction and facts."
+          ],
+          "actions": [
+            "Use a sober driver, taxi, or public transport.",
+            "Plan the trip home before drinking begins.",
+            "Do not rely on coffee, food, or a short wait to remove impairment."
+          ],
+          "safety": "Impairment begins before a driver necessarily feels drunk and reduces judgment, reaction, and hazard perception.",
+          "verification": "Official Government Public Relations Department notice",
+          "citations": [
+            {
+              "title": "Thailand PRD traffic penalties effective September 2022",
+              "url": "https://region2.prd.go.th/th/content/category/detail/id/1169/iid/118650",
+              "verified": true,
+              "status": "Official Government Public Relations Department notice"
+            },
+            {
+              "title": "WHO Road traffic injuries fact sheet",
+              "url": "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries",
+              "verified": true
+            }
+          ],
+          "fine": {
+            "jurisdiction": "thailand_national",
+            "offence": "drink_driving",
+            "vehicle_class": "any",
+            "status": "verified",
+            "amount_display": "First offence: THB 5,000 - 20,000; repeat within 2 years: THB 50,000 - 100,000",
+            "legal_basis": "Thailand Land Traffic Act and related regulations prohibit driving while intoxicated; enforcement may involve breath testing, court process, licence suspension, fine, or imprisonment.",
+            "consequences": [
+              "First offence can include imprisonment up to 1 year",
+              "Repeat within 2 years can include imprisonment up to 2 years",
+              "Drink-driving deducts 4 of the 12 driver points under the points system"
+            ],
+            "caveats": [
+              "BAC, driver category, crash involvement, injury, refusal, and later amendments can change the charge or court outcome."
+            ],
+            "source": "https://region2.prd.go.th/th/content/category/detail/id/1169/iid/118650"
+          },
+          "localizations": {
+            "Thai": {
+              "title": "เมาแล้วขับในประเทศไทย",
+              "summary": "อย่าขับรถหลังดื่มแอลกอฮอล์ โทษอาจรวมถึงค่าปรับ จำคุก การพักใช้ใบอนุญาต และโทษที่สูงขึ้นเมื่อกระทำผิดซ้ำหรือเกิดอุบัติเหตุ",
+              "actions": [
+                "ใช้คนขับที่ไม่ดื่ม รถแท็กซี่ หรือขนส่งสาธารณะ",
+                "อย่าพึ่งกาแฟหรือการรอเพียงไม่กี่นาที",
+                "เตรียมวิธีกลับบ้านก่อนเริ่มดื่ม"
+              ],
+              "rules": [
+                "Land Traffic Act and amendments, Royal Thai Police enforcement notices, and Department of Land Transport requirements.",
+                "Do not drive after alcohol or impairing drugs. Testing thresholds, court referral, imprisonment, licence action, and repeat-offence consequences vary by jurisdiction and facts."
+              ],
+              "safety": "Impairment begins before a driver necessarily feels drunk and reduces judgment, reaction, and hazard perception.",
+              "verification": "Official Government Public Relations Department notice"
+            }
+          }
+        },
+        "mobile_phone": {
+          "topic": "mobile_phone",
+          "title": "Mobile phone and distracted driving in Thailand",
+          "summary": "RoadLegal can explain the Thailand rule, but the exact current amount is deliberately marked for official review: Fine amount needs latest Royal Thai Police schedule verification.",
+          "rules": [
+            "Thailand traffic enforcement treats handheld phone use and distracted driving as safety risks; verify current police fine schedule.",
+            "Land Traffic Act and amendments, Royal Thai Police enforcement notices, and Department of Land Transport requirements.",
+            "Avoid handheld-phone use and any interaction that removes attention from driving; the exact offence definition and permitted hands-free use depend on current local law."
+          ],
+          "actions": [
+            "Set navigation and messages before moving.",
+            "Stop in a lawful safe place before handling the phone.",
+            "Keep attention on pedestrians, two-wheelers, junctions, and changing traffic signals."
+          ],
+          "safety": "Visual, manual, and cognitive distraction can each delay recognition and braking.",
+          "verification": "Official Government Public Relations Department notice",
+          "citations": [
+            {
+              "title": "Thailand PRD traffic penalties effective September 2022",
+              "url": "https://www.royalthaipolice.go.th/",
+              "verified": true,
+              "status": "Official Government Public Relations Department notice"
+            },
+            {
+              "title": "WHO Road traffic injuries fact sheet",
+              "url": "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries",
+              "verified": true
+            }
+          ],
+          "fine": {
+            "jurisdiction": "thailand_national",
+            "offence": "mobile_phone",
+            "vehicle_class": "light_motor_vehicle",
+            "status": "needs_review",
+            "amount_display": "Fine amount needs latest Royal Thai Police schedule verification.",
+            "legal_basis": "Thailand traffic enforcement treats handheld phone use and distracted driving as safety risks; verify current police fine schedule.",
+            "consequences": [
+              "Use hands-free only where lawful and safe; stop in a safe place for calls or navigation changes."
+            ],
+            "caveats": [],
+            "source": "https://www.royalthaipolice.go.th/"
+          }
+        },
+        "no_license": {
+          "topic": "no_license",
+          "title": "Driving-licence requirement in Thailand",
+          "summary": "RoadLegal can explain the Thailand rule, but the exact current amount is deliberately marked for official review: Fine amount needs latest Department of Land Transport / police schedule verification.",
+          "rules": [
+            "Thailand driver licensing requirements are enforced through traffic and vehicle laws; foreign drivers should confirm IDP/Thai licence validity before travel.",
+            "Land Traffic Act and amendments, Royal Thai Police enforcement notices, and Department of Land Transport requirements.",
+            "The driver must hold a valid licence accepted for the jurisdiction and vehicle class; learner, visitor, commercial, and endorsement conditions can differ."
+          ],
+          "actions": [
+            "Confirm that the licence is valid, unexpired, and covers the vehicle class.",
+            "Travellers should verify whether an international permit, translation, endorsement, or local authorization is required.",
+            "Do not drive when a licence is suspended, disqualified, or otherwise invalid."
+          ],
+          "safety": "Licensing is intended to confirm minimum competence and accountability for the vehicle being driven.",
+          "verification": "Official Government Public Relations Department notice",
+          "citations": [
+            {
+              "title": "Thailand PRD traffic penalties effective September 2022",
+              "url": "https://www.dlt.go.th/",
+              "verified": true,
+              "status": "Official Government Public Relations Department notice"
+            },
+            {
+              "title": "WHO Road traffic injuries fact sheet",
+              "url": "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries",
+              "verified": true
+            }
+          ],
+          "fine": {
+            "jurisdiction": "thailand_national",
+            "offence": "no_license",
+            "vehicle_class": "any",
+            "status": "needs_review",
+            "amount_display": "Fine amount needs latest Department of Land Transport / police schedule verification.",
+            "legal_basis": "Thailand driver licensing requirements are enforced through traffic and vehicle laws; foreign drivers should confirm IDP/Thai licence validity before travel.",
+            "consequences": [],
+            "caveats": [
+              "Tourists should carry a valid licence accepted in Thailand and passport/ID evidence."
+            ],
+            "source": "https://www.dlt.go.th/"
+          }
+        },
+        "documents": {
+          "topic": "documents",
+          "title": "Driving document checklist for Thailand",
+          "summary": "Carry original or legally accepted digital evidence for the driver, vehicle, insurance, and the specific journey in Thailand.",
+          "rules": [
+            "Land Traffic Act and amendments, Royal Thai Police enforcement notices, and Department of Land Transport requirements.",
+            "Check licence acceptance, rental restrictions, insurance, motorcycle eligibility, road class, posted limits, and left-side traffic habits before driving."
+          ],
+          "actions": [
+            "driving licence accepted in Thailand",
+            "passport or identity evidence",
+            "vehicle registration or rental agreement",
+            "insurance evidence",
+            "vehicle inspection or permit documents where applicable"
+          ],
+          "safety": "Confirm vehicle condition, insurance coverage, and emergency contacts before departure.",
+          "verification": "Official Government Public Relations Department notice",
+          "citations": [
+            {
+              "title": "Thailand PRD traffic penalties effective September 2022",
+              "url": "https://region2.prd.go.th/th/content/category/detail/id/1169/iid/118650",
+              "verified": true,
+              "status": "Official Government Public Relations Department notice"
+            }
+          ]
+        },
+        "cross_border": {
+          "topic": "cross_border",
+          "title": "Cross-border readiness for Thailand",
+          "summary": "Prepare for left-hand traffic, local enforcement, document recognition, insurance, and road-specific restrictions before entering Thailand.",
+          "rules": [
+            "Land Traffic Act and amendments, Royal Thai Police enforcement notices, and Department of Land Transport requirements.",
+            "Check licence acceptance, rental restrictions, insurance, motorcycle eligibility, road class, posted limits, and left-side traffic habits before driving."
+          ],
+          "actions": [
+            "Reset lane, turn, mirror, and overtaking habits for left-hand traffic.",
+            "driving licence accepted in Thailand",
+            "passport or identity evidence",
+            "vehicle registration or rental agreement",
+            "insurance evidence",
+            "vehicle inspection or permit documents where applicable",
+            "Download or save official contacts and route information before crossing the border."
+          ],
+          "safety": "Pause after crossing to re-check traffic side, signs, speed units, fuel, weather, and emergency plans.",
+          "verification": "Official Government Public Relations Department notice",
+          "citations": [
+            {
+              "title": "Thailand PRD traffic penalties effective September 2022",
+              "url": "https://region2.prd.go.th/th/content/category/detail/id/1169/iid/118650",
+              "verified": true,
+              "status": "Official Government Public Relations Department notice"
+            },
+            {
+              "title": "WHO Road traffic injuries fact sheet",
+              "url": "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries",
+              "verified": true
+            }
+          ]
+        },
+        "emergency": {
+          "topic": "emergency",
+          "title": "Road emergency contacts for Thailand",
+          "summary": "Move out of live traffic if it is safe, protect the scene, call the appropriate emergency service, and document essential facts without obstructing responders.",
+          "rules": [
+            "Land Traffic Act and amendments, Royal Thai Police enforcement notices, and Department of Land Transport requirements."
+          ],
+          "actions": [
+            "Police emergency: 191",
+            "Medical emergency: 1669",
+            "Tourist Police: 1155",
+            "Share the road, direction, landmark, injuries, hazards, and number of vehicles.",
+            "Do not move an injured person unless immediate danger makes it necessary."
+          ],
+          "safety": "Use hazard lights and warning devices only when it is safe to do so.",
+          "verification": "Prepared emergency directory; confirm locally when connectivity is available",
+          "citations": [
+            {
+              "title": "Thailand PRD traffic penalties effective September 2022",
+              "url": "https://region2.prd.go.th/th/content/category/detail/id/1169/iid/118650",
+              "verified": true,
+              "status": "Official Government Public Relations Department notice"
+            }
+          ]
+        },
+        "scenario": {
+          "topic": "scenario",
+          "title": "Thailand safety scenario",
+          "summary": "You enter Thailand from a country where traffic habits feel different. What should you check first?",
+          "rules": [
+            "Best choice: Drive on the left and scan carefully before turns",
+            "Thailand uses left-side traffic. Cross-border drivers should reset lane, turn, mirror, and pedestrian-scanning habits."
+          ],
+          "actions": [
+            "Identify the legal duty.",
+            "Choose the lowest-risk action.",
+            "Check how weather, road users, and enforcement change the decision."
+          ],
+          "safety": "The full offline quiz keeps score and provides immediate explanations.",
+          "verification": "Prepared RoadLegal learning scenario",
+          "citations": [
+            {
+              "title": "WHO Road traffic injuries fact sheet",
+              "url": "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries",
+              "verified": true
+            }
+          ]
+        }
+      }
+    },
+    "myanmar_national": {
+      "profile": {
+        "country": "Myanmar",
+        "traffic_side": "Right-hand traffic",
+        "framework": "Vehicle Safety and Motor Vehicle Management Law 2020 and current traffic rules and enforcement schedules.",
+        "source_title": "WHO Road safety Myanmar 2023 country profile",
+        "source_url": "https://cdn.who.int/media/docs/default-source/country-profiles/road-safety/road-safety-2023-mmr.pdf",
+        "source_status": "Official safety profile; MOTC legal download is currently unavailable",
+        "documents": [
+          "valid driving licence",
+          "vehicle registration",
+          "insurance or required financial-responsibility evidence",
+          "vehicle authorization or rental documents",
+          "local entry or permit documents where applicable"
+        ],
+        "emergency": [
+          "Police emergency: 199",
+          "Verify current local authority contacts before travel"
+        ],
+        "traveller_note": "Myanmar uses right-hand traffic despite many right-hand-drive vehicles; confirm current travel access, licence acceptance, insurance, and local restrictions before driving."
+      },
+      "answers": {
+        "overspeeding": {
+          "topic": "overspeeding",
+          "title": "Speed limits and overspeeding in Myanmar",
+          "summary": "RoadLegal can explain the Myanmar rule, but the exact current amount is deliberately marked for official review: Amount requires latest official schedule verification.",
+          "rules": [
+            "Vehicle law / traffic rules; current official English source pending legal review.",
+            "Vehicle Safety and Motor Vehicle Management Law 2020 and current traffic rules and enforcement schedules.",
+            "The posted limit, road class, vehicle class, location, measured speed, and repeat history can change the applicable offence or outcome."
+          ],
+          "actions": [
+            "Treat a posted limit as a maximum, not a target.",
+            "Reduce speed for rain, darkness, pedestrians, schools, work zones, and poor road conditions.",
+            "For a disputed ticket, check the vehicle, location, time, measured speed, posted limit, and official payment or review channel."
+          ],
+          "safety": "Higher speed raises both crash probability and the severity of injury.",
+          "verification": "Official safety profile; MOTC legal download is currently unavailable",
+          "citations": [
+            {
+              "title": "WHO Road safety Myanmar 2023 country profile",
+              "url": "https://www.myanmar-law-library.org/law-library/laws-and-regulations/laws/myanmar-laws-1988-until-now/union-solidarity-and-development-party-laws-2010-2016/myanmar-vehicle-law-2015.html",
+              "verified": true,
+              "status": "Official safety profile; MOTC legal download is currently unavailable"
+            },
+            {
+              "title": "WHO Road traffic injuries fact sheet",
+              "url": "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries",
+              "verified": true
+            }
+          ],
+          "fine": {
+            "jurisdiction": "myanmar_national",
+            "offence": "overspeeding",
+            "vehicle_class": "light_motor_vehicle",
+            "status": "needs_review",
+            "amount_display": "Amount requires latest official schedule verification.",
+            "legal_basis": "Vehicle law / traffic rules; current official English source pending legal review.",
+            "consequences": [],
+            "caveats": [],
+            "source": "https://www.myanmar-law-library.org/law-library/laws-and-regulations/laws/myanmar-laws-1988-until-now/union-solidarity-and-development-party-laws-2010-2016/myanmar-vehicle-law-2015.html"
+          }
+        },
+        "no_helmet": {
+          "topic": "no_helmet",
+          "title": "Motorcycle helmet rule in Myanmar",
+          "summary": "RoadLegal has prepared guidance for Myanmar, but it does not claim an exact fine until a current official schedule has completed legal review.",
+          "rules": [
+            "Vehicle Safety and Motor Vehicle Management Law 2020 and current traffic rules and enforcement schedules.",
+            "Riders and passengers should use a correctly fastened, standards-compliant helmet; exemptions and the exact penalty must come from current local law."
+          ],
+          "actions": [
+            "Do not begin the trip until the rider and passenger have fastened helmets.",
+            "Replace a helmet after a severe impact or when its shell, strap, or buckle is damaged.",
+            "Confirm that the licence, rental agreement, and insurance permit the motorcycle class being used."
+          ],
+          "safety": "A quality, correctly worn helmet materially reduces fatal and serious head-injury risk.",
+          "verification": "Official safety profile; MOTC legal download is currently unavailable",
+          "citations": [
+            {
+              "title": "WHO Road safety Myanmar 2023 country profile",
+              "url": "https://cdn.who.int/media/docs/default-source/country-profiles/road-safety/road-safety-2023-mmr.pdf",
+              "verified": true,
+              "status": "Official safety profile; MOTC legal download is currently unavailable"
+            },
+            {
+              "title": "WHO Road traffic injuries fact sheet",
+              "url": "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries",
+              "verified": true
+            }
+          ],
+          "fine": null
+        },
+        "no_seatbelt": {
+          "topic": "no_seatbelt",
+          "title": "Seat-belt and occupant protection rule in Myanmar",
+          "summary": "RoadLegal has prepared guidance for Myanmar, but it does not claim an exact fine until a current official schedule has completed legal review.",
+          "rules": [
+            "Vehicle Safety and Motor Vehicle Management Law 2020 and current traffic rules and enforcement schedules.",
+            "Every occupant should use an available seat belt; covered seats, child restraints, exemptions, and penalties depend on current local law and vehicle configuration."
+          ],
+          "actions": [
+            "Buckle every occupant before the vehicle moves, including on short trips.",
+            "Use an age- and size-appropriate child restraint where required and available.",
+            "Do not place a child in front of an active airbag unless the vehicle instructions and law allow it."
+          ],
+          "safety": "Seat belts reduce the risk of death and serious injury for vehicle occupants.",
+          "verification": "Official safety profile; MOTC legal download is currently unavailable",
+          "citations": [
+            {
+              "title": "WHO Road safety Myanmar 2023 country profile",
+              "url": "https://cdn.who.int/media/docs/default-source/country-profiles/road-safety/road-safety-2023-mmr.pdf",
+              "verified": true,
+              "status": "Official safety profile; MOTC legal download is currently unavailable"
+            },
+            {
+              "title": "WHO Road traffic injuries fact sheet",
+              "url": "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries",
+              "verified": true
+            }
+          ],
+          "fine": null
+        },
+        "drink_driving": {
+          "topic": "drink_driving",
+          "title": "Drink-driving and impairment in Myanmar",
+          "summary": "RoadLegal has prepared guidance for Myanmar, but it does not claim an exact fine until a current official schedule has completed legal review.",
+          "rules": [
+            "Vehicle Safety and Motor Vehicle Management Law 2020 and current traffic rules and enforcement schedules.",
+            "Do not drive after alcohol or impairing drugs. Testing thresholds, court referral, imprisonment, licence action, and repeat-offence consequences vary by jurisdiction and facts."
+          ],
+          "actions": [
+            "Use a sober driver, taxi, or public transport.",
+            "Plan the trip home before drinking begins.",
+            "Do not rely on coffee, food, or a short wait to remove impairment."
+          ],
+          "safety": "Impairment begins before a driver necessarily feels drunk and reduces judgment, reaction, and hazard perception.",
+          "verification": "Official safety profile; MOTC legal download is currently unavailable",
+          "citations": [
+            {
+              "title": "WHO Road safety Myanmar 2023 country profile",
+              "url": "https://cdn.who.int/media/docs/default-source/country-profiles/road-safety/road-safety-2023-mmr.pdf",
+              "verified": true,
+              "status": "Official safety profile; MOTC legal download is currently unavailable"
+            },
+            {
+              "title": "WHO Road traffic injuries fact sheet",
+              "url": "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries",
+              "verified": true
+            }
+          ],
+          "fine": null
+        },
+        "mobile_phone": {
+          "topic": "mobile_phone",
+          "title": "Mobile phone and distracted driving in Myanmar",
+          "summary": "RoadLegal has prepared guidance for Myanmar, but it does not claim an exact fine until a current official schedule has completed legal review.",
+          "rules": [
+            "Vehicle Safety and Motor Vehicle Management Law 2020 and current traffic rules and enforcement schedules.",
+            "Avoid handheld-phone use and any interaction that removes attention from driving; the exact offence definition and permitted hands-free use depend on current local law."
+          ],
+          "actions": [
+            "Set navigation and messages before moving.",
+            "Stop in a lawful safe place before handling the phone.",
+            "Keep attention on pedestrians, two-wheelers, junctions, and changing traffic signals."
+          ],
+          "safety": "Visual, manual, and cognitive distraction can each delay recognition and braking.",
+          "verification": "Official safety profile; MOTC legal download is currently unavailable",
+          "citations": [
+            {
+              "title": "WHO Road safety Myanmar 2023 country profile",
+              "url": "https://cdn.who.int/media/docs/default-source/country-profiles/road-safety/road-safety-2023-mmr.pdf",
+              "verified": true,
+              "status": "Official safety profile; MOTC legal download is currently unavailable"
+            },
+            {
+              "title": "WHO Road traffic injuries fact sheet",
+              "url": "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries",
+              "verified": true
+            }
+          ],
+          "fine": null
+        },
+        "no_license": {
+          "topic": "no_license",
+          "title": "Driving-licence requirement in Myanmar",
+          "summary": "RoadLegal has prepared guidance for Myanmar, but it does not claim an exact fine until a current official schedule has completed legal review.",
+          "rules": [
+            "Vehicle Safety and Motor Vehicle Management Law 2020 and current traffic rules and enforcement schedules.",
+            "The driver must hold a valid licence accepted for the jurisdiction and vehicle class; learner, visitor, commercial, and endorsement conditions can differ."
+          ],
+          "actions": [
+            "Confirm that the licence is valid, unexpired, and covers the vehicle class.",
+            "Travellers should verify whether an international permit, translation, endorsement, or local authorization is required.",
+            "Do not drive when a licence is suspended, disqualified, or otherwise invalid."
+          ],
+          "safety": "Licensing is intended to confirm minimum competence and accountability for the vehicle being driven.",
+          "verification": "Official safety profile; MOTC legal download is currently unavailable",
+          "citations": [
+            {
+              "title": "WHO Road safety Myanmar 2023 country profile",
+              "url": "https://cdn.who.int/media/docs/default-source/country-profiles/road-safety/road-safety-2023-mmr.pdf",
+              "verified": true,
+              "status": "Official safety profile; MOTC legal download is currently unavailable"
+            },
+            {
+              "title": "WHO Road traffic injuries fact sheet",
+              "url": "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries",
+              "verified": true
+            }
+          ],
+          "fine": null
+        },
+        "documents": {
+          "topic": "documents",
+          "title": "Driving document checklist for Myanmar",
+          "summary": "Carry original or legally accepted digital evidence for the driver, vehicle, insurance, and the specific journey in Myanmar.",
+          "rules": [
+            "Vehicle Safety and Motor Vehicle Management Law 2020 and current traffic rules and enforcement schedules.",
+            "Myanmar uses right-hand traffic despite many right-hand-drive vehicles; confirm current travel access, licence acceptance, insurance, and local restrictions before driving."
+          ],
+          "actions": [
+            "valid driving licence",
+            "vehicle registration",
+            "insurance or required financial-responsibility evidence",
+            "vehicle authorization or rental documents",
+            "local entry or permit documents where applicable"
+          ],
+          "safety": "Confirm vehicle condition, insurance coverage, and emergency contacts before departure.",
+          "verification": "Official safety profile; MOTC legal download is currently unavailable",
+          "citations": [
+            {
+              "title": "WHO Road safety Myanmar 2023 country profile",
+              "url": "https://cdn.who.int/media/docs/default-source/country-profiles/road-safety/road-safety-2023-mmr.pdf",
+              "verified": true,
+              "status": "Official safety profile; MOTC legal download is currently unavailable"
+            }
+          ]
+        },
+        "cross_border": {
+          "topic": "cross_border",
+          "title": "Cross-border readiness for Myanmar",
+          "summary": "Prepare for right-hand traffic, local enforcement, document recognition, insurance, and road-specific restrictions before entering Myanmar.",
+          "rules": [
+            "Vehicle Safety and Motor Vehicle Management Law 2020 and current traffic rules and enforcement schedules.",
+            "Myanmar uses right-hand traffic despite many right-hand-drive vehicles; confirm current travel access, licence acceptance, insurance, and local restrictions before driving."
+          ],
+          "actions": [
+            "Reset lane, turn, mirror, and overtaking habits for right-hand traffic.",
+            "valid driving licence",
+            "vehicle registration",
+            "insurance or required financial-responsibility evidence",
+            "vehicle authorization or rental documents",
+            "local entry or permit documents where applicable",
+            "Download or save official contacts and route information before crossing the border."
+          ],
+          "safety": "Pause after crossing to re-check traffic side, signs, speed units, fuel, weather, and emergency plans.",
+          "verification": "Official safety profile; MOTC legal download is currently unavailable",
+          "citations": [
+            {
+              "title": "WHO Road safety Myanmar 2023 country profile",
+              "url": "https://cdn.who.int/media/docs/default-source/country-profiles/road-safety/road-safety-2023-mmr.pdf",
+              "verified": true,
+              "status": "Official safety profile; MOTC legal download is currently unavailable"
+            },
+            {
+              "title": "WHO Road traffic injuries fact sheet",
+              "url": "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries",
+              "verified": true
+            }
+          ]
+        },
+        "emergency": {
+          "topic": "emergency",
+          "title": "Road emergency contacts for Myanmar",
+          "summary": "Move out of live traffic if it is safe, protect the scene, call the appropriate emergency service, and document essential facts without obstructing responders.",
+          "rules": [
+            "Vehicle Safety and Motor Vehicle Management Law 2020 and current traffic rules and enforcement schedules."
+          ],
+          "actions": [
+            "Police emergency: 199",
+            "Verify current local authority contacts before travel",
+            "Share the road, direction, landmark, injuries, hazards, and number of vehicles.",
+            "Do not move an injured person unless immediate danger makes it necessary."
+          ],
+          "safety": "Use hazard lights and warning devices only when it is safe to do so.",
+          "verification": "Prepared emergency directory; confirm locally when connectivity is available",
+          "citations": [
+            {
+              "title": "WHO Road safety Myanmar 2023 country profile",
+              "url": "https://cdn.who.int/media/docs/default-source/country-profiles/road-safety/road-safety-2023-mmr.pdf",
+              "verified": true,
+              "status": "Official safety profile; MOTC legal download is currently unavailable"
+            }
+          ]
+        },
+        "scenario": {
+          "topic": "scenario",
+          "title": "Myanmar safety scenario",
+          "summary": "What deserves special attention when beginning to drive in Myanmar?",
+          "rules": [
+            "Best choice: Right-hand traffic, vehicle blind spots, turns, and overtaking position",
+            "Myanmar uses right-hand traffic while vehicle layouts can vary, so sight lines and overtaking need deliberate adjustment."
+          ],
+          "actions": [
+            "Identify the legal duty.",
+            "Choose the lowest-risk action.",
+            "Check how weather, road users, and enforcement change the decision."
+          ],
+          "safety": "The full offline quiz keeps score and provides immediate explanations.",
+          "verification": "Prepared RoadLegal learning scenario",
+          "citations": [
+            {
+              "title": "WHO Road traffic injuries fact sheet",
+              "url": "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries",
+              "verified": true
+            }
+          ]
         }
       }
     }
@@ -22327,6 +25157,17 @@
           "explanation": "Legal accuracy beats false certainty. RoadLegal should flag schedules that still need BRTA/legal review."
         },
         {
+          "id": "bangladesh_documents_1",
+          "question": "Before a commercial road trip in Bangladesh, which check is most complete?",
+          "options": [
+            "Licence, registration, fitness, route permit, and required insurance evidence",
+            "Only the driver's phone",
+            "Only the number plate"
+          ],
+          "answer": 0,
+          "explanation": "Vehicle and trip type can require several driver, vehicle, fitness, and permit documents."
+        },
+        {
           "id": "common_helmet_1",
           "question": "A motorcycle passenger says the trip is short and refuses a helmet. What is the safest response?",
           "options": [
@@ -22364,6 +25205,28 @@
     "bhutan_national": {
       "jurisdiction": "bhutan_national",
       "questions": [
+        {
+          "id": "bhutan_mountain_1",
+          "question": "Fog reduces visibility on a mountain road in Bhutan. What is the safest response?",
+          "options": [
+            "Slow down, increase distance, and stop safely if visibility collapses",
+            "Follow the centre line at normal speed",
+            "Overtake before the next bend"
+          ],
+          "answer": 0,
+          "explanation": "Mountain geometry, weather, and limited sight distance require a speed well below the maximum when conditions deteriorate."
+        },
+        {
+          "id": "bhutan_documents_1",
+          "question": "A cross-border vehicle enters Bhutan. What should be checked before continuing?",
+          "options": [
+            "Entry authority, licence, registration, insurance, permits, and route conditions",
+            "Only fuel level",
+            "Only a hotel address"
+          ],
+          "answer": 0,
+          "explanation": "Cross-border driving can involve vehicle-entry and route requirements in addition to ordinary driver documents."
+        },
         {
           "id": "common_helmet_1",
           "question": "A motorcycle passenger says the trip is short and refuses a helmet. What is the safest response?",
@@ -22412,6 +25275,17 @@
           ],
           "answer": 0,
           "explanation": "Camera/enforcement records should be checked against the official e-challan details and local speed limit."
+        },
+        {
+          "id": "delhi_air_quality_1",
+          "question": "A Delhi traveller hears that temporary vehicle restrictions may be active. What should they do?",
+          "options": [
+            "Check current official traffic and transport notices before departure",
+            "Assume last year's rule is unchanged",
+            "Rely only on a social-media message"
+          ],
+          "answer": 0,
+          "explanation": "Temporary restrictions can change quickly; an official current notice is the proper source."
         },
         {
           "id": "common_helmet_1",
@@ -22463,6 +25337,28 @@
           "explanation": "The structured calculator separates light, two-wheeler, and heavy vehicle cases where the law or compounding schedule differs."
         },
         {
+          "id": "india_helmet_1",
+          "question": "An adult passenger joins a short two-wheeler trip in India without a helmet. What should the rider do?",
+          "options": [
+            "Wait until the passenger has a fastened helmet",
+            "Continue below 20 km/h",
+            "Use side streets to avoid enforcement"
+          ],
+          "answer": 0,
+          "explanation": "Protective-headgear duties and injury risk apply to short trips too; the safe choice is a correctly fastened helmet before moving."
+        },
+        {
+          "id": "india_challan_1",
+          "question": "An India e-challan looks unfamiliar. What is the strongest first check?",
+          "options": [
+            "Verify it on the official Parivahan or local police portal",
+            "Pay through a link in an unknown message",
+            "Ignore every camera challan"
+          ],
+          "answer": 0,
+          "explanation": "Use an official portal to verify vehicle, offence, location, amount, and payment status before acting."
+        },
+        {
           "id": "common_helmet_1",
           "question": "A motorcycle passenger says the trip is short and refuses a helmet. What is the safest response?",
           "options": [
@@ -22500,6 +25396,28 @@
     "myanmar_national": {
       "jurisdiction": "myanmar_national",
       "questions": [
+        {
+          "id": "myanmar_traffic_side_1",
+          "question": "What deserves special attention when beginning to drive in Myanmar?",
+          "options": [
+            "Right-hand traffic, vehicle blind spots, turns, and overtaking position",
+            "Assume all vehicles place the driver on the same side",
+            "Follow the largest vehicle closely"
+          ],
+          "answer": 0,
+          "explanation": "Myanmar uses right-hand traffic while vehicle layouts can vary, so sight lines and overtaking need deliberate adjustment."
+        },
+        {
+          "id": "myanmar_source_1",
+          "question": "A Myanmar fine amount cannot be verified from the packaged official material. What should RoadLegal display?",
+          "options": [
+            "The rule and source status, without inventing an amount",
+            "A neighbouring country's fine",
+            "A random estimate"
+          ],
+          "answer": 0,
+          "explanation": "A cautious, traceable answer is more legally useful than unsupported precision."
+        },
         {
           "id": "common_helmet_1",
           "question": "A motorcycle passenger says the trip is short and refuses a helmet. What is the safest response?",
@@ -22539,6 +25457,28 @@
       "jurisdiction": "nepal_national",
       "questions": [
         {
+          "id": "nepal_descent_1",
+          "question": "A driver begins a long steep descent in Nepal. Which technique is safest?",
+          "options": [
+            "Use an appropriate lower gear and preserve braking capacity",
+            "Coast in neutral",
+            "Hold the brakes continuously at high speed"
+          ],
+          "answer": 0,
+          "explanation": "Controlled gearing and speed help prevent brake overheating on long descents."
+        },
+        {
+          "id": "nepal_cross_border_1",
+          "question": "Before taking a rented vehicle across a Nepal border, what must be confirmed?",
+          "options": [
+            "Rental authority, border permission, licence acceptance, insurance, and vehicle documents",
+            "Only the rental price",
+            "A verbal promise from another traveller"
+          ],
+          "answer": 0,
+          "explanation": "Rental and insurance agreements may restrict border travel even when the driver holds a licence."
+        },
+        {
           "id": "common_helmet_1",
           "question": "A motorcycle passenger says the trip is short and refuses a helmet. What is the safest response?",
           "options": [
@@ -22576,6 +25516,28 @@
     "sri_lanka_national": {
       "jurisdiction": "sri_lanka_national",
       "questions": [
+        {
+          "id": "sri_lanka_licence_1",
+          "question": "A visitor plans to drive in Sri Lanka. What should be confirmed before collecting the rental car?",
+          "options": [
+            "Licence recognition or endorsement, rental authority, and insurance",
+            "Only passport expiry",
+            "Only the vehicle colour"
+          ],
+          "answer": 0,
+          "explanation": "Visitors should confirm that their driving credential is accepted and that the rental and insurance cover them."
+        },
+        {
+          "id": "sri_lanka_crossing_1",
+          "question": "Pedestrians are waiting near an uncontrolled crossing in Sri Lanka. What is the lowest-risk choice?",
+          "options": [
+            "Slow early, scan both sides, and be ready to stop",
+            "Accelerate before they step out",
+            "Sound the horn and keep speed"
+          ],
+          "answer": 0,
+          "explanation": "Early speed reduction creates time to detect and yield safely to vulnerable road users."
+        },
         {
           "id": "common_helmet_1",
           "question": "A motorcycle passenger says the trip is short and refuses a helmet. What is the safest response?",
