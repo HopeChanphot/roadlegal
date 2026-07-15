@@ -34,7 +34,7 @@ https://hopechanphot.github.io/roadlegal/
 
 1. Select Thailand in `Offline Demo`, use the helmet prompt, then open `Challan / Ticket` and calculate `Up to THB 2,000` for the prepared two-wheeler case.
 2. Change the country menu to Bhutan or Myanmar. Ask the helmet or document question to show that RoadLegal provides a useful complete answer while refusing to invent an exact unreviewed fine.
-3. Open `Quiz`, answer a country-specific scenario, and show the correct-answer teaching feedback, restart control, saved score, and badge progression every 50 points.
+3. Open `Quiz`, answer a country-specific scenario, and show the teaching feedback, badge progression every 50 points, and restart control resetting the score and level to zero.
 4. Open `Directory` and `Feedback` to demonstrate official contacts and the offline update loop.
 5. Disconnect the network and reload. The service worker restores the full interface and its 909-passage, 80-topic data bundle; repeat a prepared question and challan/ticket calculation.
 6. Reconnect, choose `Live AI`, and ask an open-form question. The Python API runs hybrid retrieval plus Qwen3-0.6B generation, checks citations and numeric claims, and falls back to the prepared pack if cloud compute is unavailable.

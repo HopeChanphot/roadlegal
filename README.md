@@ -16,7 +16,7 @@ The current build is a runnable MVP designed for demo and extension:
 
 - Professional responsive web app with chat, challan/ticket calculator, quiz/scenario game content, source citations, feedback, and country/jurisdiction switching.
 - Explicit `Offline Demo` and `Live AI` modes with the same country menu, prepared answers, calculator, quiz, directory, and citations in every country context.
-- Learning progression with immediate answer feedback, saved points, restartable country quizzes, and a new badge every 50 points.
+- Learning progression with immediate answer feedback, points saved between visits, a full progress reset button, and a new badge every 50 points.
 - Eight country packs with 80 prepared legal and safety topics. Every answer includes practical actions, source status, and citations; unverified exact fines remain clearly marked for review.
 - Installable service-worker cache for the complete browser demo, including the UI, icons, 909-passage knowledge base, country packs, calculator data, directory, and quizzes.
 - Hybrid BM25+ RAG over 909 local passages with Unicode query expansion, source-quality weighting, and strict country isolation.

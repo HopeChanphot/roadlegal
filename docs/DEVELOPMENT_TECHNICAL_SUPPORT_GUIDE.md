@@ -325,7 +325,7 @@ Main areas:
 - Chat panel.
 - Country mode card.
 - Tabbed challan/ticket, progressive quiz, directory, and feedback tools.
-- Quiz restart, correct-answer teaching feedback, persistent points, and learning badges every 50 points.
+- Quiz restart that resets score and level, correct-answer teaching feedback, points saved between visits, and learning badges every 50 points.
 
 Country switching updates:
 

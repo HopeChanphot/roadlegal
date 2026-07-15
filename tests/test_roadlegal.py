@@ -143,6 +143,9 @@ class RoadLegalTests(unittest.TestCase):
         self.assertIn("The correct answer is", script)
         self.assertIn("Badge unlocked: Learning Level", script)
         self.assertIn("Math.floor(score / 50)", script)
+        self.assertIn('state.score = 0', script)
+        self.assertIn('localStorage.setItem("roadlegal_score", "0")', script)
+        self.assertIn("Your score and learning level were reset", script)
 
     def test_service_worker_caches_the_complete_demo(self):
         worker = SERVICE_WORKER.read_text(encoding="utf-8")
