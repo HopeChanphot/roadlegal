@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#12372f" />
-    <meta name="description" content="Offline-first BIMSTEC traffic-law guidance, challan estimates, and road-safety learning." />
+    <meta name="description" content="Offline-first BIMSTEC traffic-law guidance, challan/ticket estimates, and road-safety learning." />
     <title>RoadLegal | BIMSTEC Road Safety</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
@@ -67,10 +67,6 @@
           <span><small>Knowledge</small><strong id="indexText">0 passages</strong></span>
           <span><small>Engine</small><strong id="modelText">Local only</strong></span>
         </div>
-        <button id="demoButton" class="demo-button" type="button">
-          <i data-lucide="play" aria-hidden="true"></i>
-          Run judge demo
-        </button>
       </section>
 
       <main class="workspace">
@@ -137,7 +133,7 @@
           <section class="tool-shell">
             <div class="tool-tabs" role="tablist" aria-label="RoadLegal tools">
               <button type="button" role="tab" data-tool-tab="calculator" aria-selected="true" aria-controls="calculatorPanel">
-                <i data-lucide="calculator" aria-hidden="true"></i><span>Challan</span>
+                <i data-lucide="calculator" aria-hidden="true"></i><span>Challan / Ticket</span>
               </button>
               <button type="button" role="tab" data-tool-tab="quiz" aria-selected="false" aria-controls="quizPanel">
                 <i data-lucide="gamepad-2" aria-hidden="true"></i><span>Quiz</span>
@@ -152,7 +148,7 @@
 
             <div id="calculatorPanel" class="tool-panel active" data-tool-panel="calculator" role="tabpanel">
               <div class="tool-panel-heading">
-                <div><span class="eyebrow">OFFLINE CALCULATOR</span><h2>Challan estimate</h2></div>
+                <div><span class="eyebrow">OFFLINE CALCULATOR</span><h2>Challan / ticket estimate</h2></div>
                 <span class="status-pill neutral"><i data-lucide="database" aria-hidden="true"></i> Local data</span>
               </div>
               <div class="form-grid">
@@ -173,7 +169,19 @@
             <div id="quizPanel" class="tool-panel" data-tool-panel="quiz" role="tabpanel" hidden>
               <div class="tool-panel-heading">
                 <div><span class="eyebrow">SAFETY CHALLENGE</span><h2>Country quiz</h2></div>
-                <span id="scorePill" class="status-pill score">0 pts</span>
+                <div class="quiz-heading-actions">
+                  <span id="scorePill" class="status-pill score">0 pts</span>
+                  <button id="restartQuizButton" class="icon-button quiet quiz-restart" type="button" title="Restart this country quiz and keep your score" aria-label="Restart quiz">
+                    <i data-lucide="rotate-ccw" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="learning-progress" aria-label="Quiz learning progress">
+                <div class="learning-progress-copy">
+                  <span id="levelBadge" class="learning-badge"><i data-lucide="badge" aria-hidden="true"></i> Starter</span>
+                  <span id="levelProgressText">0 / 50 to Learning Level 1</span>
+                </div>
+                <div class="learning-progress-track" aria-hidden="true"><span id="levelProgressFill"></span></div>
               </div>
               <div id="quizBox" class="quiz-box">Loading quiz...</div>
             </div>

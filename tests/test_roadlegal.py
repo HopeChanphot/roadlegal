@@ -11,6 +11,8 @@ from roadlegal.rag import RoadLegalRAG
 ROOT = Path(__file__).resolve().parents[1]
 STATIC_DATA = ROOT / "web" / "static-data.json"
 SERVICE_WORKER = ROOT / "web" / "sw.js"
+INDEX_HTML = ROOT / "web" / "index.html"
+WEB_APP = ROOT / "web" / "app.js"
 HF_SPACE_APP = ROOT / "hf_space" / "app.py"
 
 
@@ -120,7 +122,7 @@ class RoadLegalTests(unittest.TestCase):
                 self.assertTrue(answer["actions"], f"{jurisdiction}:{topic}")
                 self.assertTrue(answer["citations"], f"{jurisdiction}:{topic}")
 
-    def test_every_country_has_a_judge_ready_quiz(self):
+    def test_every_country_has_a_complete_learning_quiz(self):
         payload = json.loads(STATIC_DATA.read_text(encoding="utf-8"))
         self.assertEqual(set(payload["quizzes"]), set(payload["offline_answers"]))
         for jurisdiction, quiz in payload["quizzes"].items():
@@ -128,6 +130,19 @@ class RoadLegalTests(unittest.TestCase):
             for question in quiz["questions"]:
                 self.assertIn(question["answer"], range(len(question["options"])))
                 self.assertTrue(question["explanation"])
+
+    def test_progressive_quiz_controls_and_feedback_are_packaged(self):
+        html = INDEX_HTML.read_text(encoding="utf-8")
+        script = WEB_APP.read_text(encoding="utf-8")
+        self.assertNotIn("demoButton", html)
+        self.assertNotIn("Run judge demo", html)
+        self.assertIn('id="restartQuizButton"', html)
+        self.assertIn('id="levelBadge"', html)
+        self.assertIn("Challan / Ticket", html)
+        self.assertIn("You are learning very well", script)
+        self.assertIn("The correct answer is", script)
+        self.assertIn("Badge unlocked: Learning Level", script)
+        self.assertIn("Math.floor(score / 50)", script)
 
     def test_service_worker_caches_the_complete_demo(self):
         worker = SERVICE_WORKER.read_text(encoding="utf-8")

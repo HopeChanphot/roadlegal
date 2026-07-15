@@ -117,7 +117,7 @@ def build_offline_answers(calculator: ChallanCalculator, profiles: dict, quizzes
             fine = asdict(calculator.calculate(jurisdiction, topic, config["vehicle"]))
             has_amount = fine["status"] not in {"unknown_offence", "unknown_vehicle_class", "not_applicable"}
             if has_amount and fine["status"] == "verified":
-                summary = f"The packaged verified schedule for {country} reports {fine['amount_display']} for this demo case."
+                summary = f"The packaged verified schedule for {country} reports {fine['amount_display']} for this selected case."
             elif has_amount:
                 summary = (
                     f"RoadLegal can explain the {country} rule, but the exact current amount is deliberately marked for official review: "

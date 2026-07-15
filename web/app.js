@@ -12,7 +12,7 @@ const state = {
       title: "India",
       side: "Left-hand traffic",
       coverage: "verified law",
-      focus: "Motor Vehicles Act, challan calculator, helmets, speed, drink driving",
+      focus: "Motor Vehicles Act, challan / ticket calculator, helmets, speed, drink driving",
       note: "Prepared answers combine the national Act, structured fines, and official-source retrieval."
     },
     delhi: {
@@ -631,7 +631,7 @@ function staticChat(data, message, jurisdiction = "india_national", language = "
   const fine = staticCalculate(data, jurisdiction, offenceInput, twoWheeler ? "two_wheeler" : "light_motor_vehicle");
   const lines = [];
   if (fine.status !== "unknown_offence") {
-    lines.push(`Challan estimate for ${fine.jurisdiction.replaceAll("_", " ")}: ${fine.amount_display}.`);
+    lines.push(`Challan / ticket estimate for ${fine.jurisdiction.replaceAll("_", " ")}: ${fine.amount_display}.`);
     if (fine.legal_basis) lines.push(`Legal basis: ${fine.legal_basis}.`);
     if (fine.consequences?.length) lines.push(`Possible consequences: ${fine.consequences.join("; ")}.`);
     if (fine.caveats?.length) lines.push(`Caveat: ${fine.caveats.join(" ")}`);
@@ -901,41 +901,89 @@ async function loadQuiz() {
 }
 
 function renderQuiz() {
-  $("scorePill").textContent = `${state.score} pts`;
+  updateQuizProgress();
   const question = state.quiz[state.quizIndex % Math.max(1, state.quiz.length)];
   if (!question) {
     $("quizBox").textContent = "No quiz questions available.";
     return;
   }
+  const questionNumber = (state.quizIndex % state.quiz.length) + 1;
   $("quizBox").innerHTML = `
+    <span class="quiz-round">Question ${questionNumber} of ${state.quiz.length}</span>
     <strong>${escapeHtml(question.question)}</strong>
     <div class="quiz-options">
-      ${question.options.map((option, index) => `<button data-answer="${index}">${escapeHtml(option)}</button>`).join("")}
+      ${question.options.map((option, index) => `<button type="button" data-answer="${index}">${escapeHtml(option)}</button>`).join("")}
     </div>
-    <p id="quizExplanation"></p>
+    <div id="quizFeedback" class="quiz-feedback" aria-live="polite"></div>
   `;
   document.querySelectorAll("[data-answer]").forEach((button) => {
     button.addEventListener("click", () => answerQuiz(Number(button.dataset.answer), question));
   });
 }
 
+function quizLevel(score = state.score) {
+  return Math.floor(score / 50);
+}
+
+function updateQuizProgress() {
+  const level = quizLevel();
+  const pointsInLevel = state.score % 50;
+  const nextLevel = level + 1;
+  $("scorePill").textContent = `${state.score} pts`;
+  $("levelBadge").innerHTML = level > 0
+    ? `<i data-lucide="award" aria-hidden="true"></i> Learning Level ${level}`
+    : '<i data-lucide="badge" aria-hidden="true"></i> Starter';
+  $("levelProgressText").textContent = `${pointsInLevel} / 50 to Learning Level ${nextLevel}`;
+  $("levelProgressFill").style.width = `${(pointsInLevel / 50) * 100}%`;
+  window.lucide?.createIcons();
+}
+
 function answerQuiz(index, question) {
   const buttons = [...document.querySelectorAll("[data-answer]")];
+  const previousLevel = quizLevel();
+  const correct = index === question.answer;
   buttons.forEach((button, idx) => {
     button.disabled = true;
     if (idx === question.answer) button.classList.add("correct");
     if (idx === index && idx !== question.answer) button.classList.add("incorrect");
   });
-  if (index === question.answer) {
+  if (correct) {
     state.score += 10;
     localStorage.setItem("roadlegal_score", String(state.score));
   }
-  $("scorePill").textContent = `${state.score} pts`;
-  $("quizExplanation").textContent = question.explanation;
-  setTimeout(() => {
+  const currentLevel = quizLevel();
+  const unlocked = currentLevel > previousLevel
+    ? `<div class="level-unlocked"><i data-lucide="award" aria-hidden="true"></i><strong>Badge unlocked: Learning Level ${currentLevel}</strong></div>`
+    : "";
+  const feedback = correct
+    ? `<strong><i data-lucide="badge-check" aria-hidden="true"></i> You are learning very well</strong>
+       <p>You are a good learner. ${escapeHtml(question.explanation)}</p>`
+    : `<strong><i data-lucide="book-open-check" aria-hidden="true"></i> Keep learning</strong>
+       <p>You have to learn more. The correct answer is <b>${escapeHtml(question.options[question.answer])}</b>.</p>
+       <p>${escapeHtml(question.explanation)}</p>`;
+  $("quizFeedback").innerHTML = `
+    <div class="quiz-feedback-message ${correct ? "success" : "review"}">${feedback}</div>
+    ${unlocked}
+    <button id="nextQuizButton" class="secondary-button" type="button">Next question <i data-lucide="arrow-right" aria-hidden="true"></i></button>
+  `;
+  updateQuizProgress();
+  $("nextQuizButton").addEventListener("click", () => {
     state.quizIndex += 1;
     renderQuiz();
-  }, 2400);
+  });
+  window.lucide?.createIcons();
+}
+
+function restartQuiz() {
+  state.quizIndex = 0;
+  renderQuiz();
+  $("quizFeedback").innerHTML = `
+    <div class="quiz-feedback-message neutral">
+      <strong><i data-lucide="rotate-ccw" aria-hidden="true"></i> Quiz restarted</strong>
+      <p>Your score and learning badge are saved. Start again from question 1.</p>
+    </div>
+  `;
+  window.lucide?.createIcons();
 }
 
 async function submitFeedback(event) {
@@ -952,30 +1000,6 @@ async function submitFeedback(event) {
   });
   $("feedbackInput").value = "";
   addMessage("bot", "Feedback saved locally for legal-data review.");
-}
-
-async function runJudgeDemo() {
-  $("demoButton").disabled = true;
-  try {
-    await setRuntime("offline", false);
-    state.jurisdiction = "thailand_national";
-    localStorage.setItem("roadlegal_jurisdiction", state.jurisdiction);
-    $("jurisdictionSelect").value = state.jurisdiction;
-    $("languageSelect").value = "English";
-    await loadOffences();
-    await loadQuiz();
-    renderCountryProfile();
-    updateQuickPrompts();
-    renderDirectory();
-    activateTool("calculator");
-    $("offenceSelect").value = "no_helmet";
-    $("vehicleSelect").value = "two_wheeler";
-    await calculateFine();
-    $("messages").innerHTML = "";
-    await ask("What is the motorcycle helmet rule and fine in Thailand?");
-  } finally {
-    $("demoButton").disabled = false;
-  }
 }
 
 function useLocation() {
@@ -1032,7 +1056,7 @@ function bindEvents() {
   $("calculateButton").addEventListener("click", calculateFine);
   $("feedbackForm").addEventListener("submit", submitFeedback);
   $("geoButton").addEventListener("click", useLocation);
-  $("demoButton").addEventListener("click", runJudgeDemo);
+  $("restartQuizButton").addEventListener("click", restartQuiz);
   $("languageSelect").addEventListener("change", (event) => {
     localStorage.setItem("roadlegal_language", event.target.value);
   });

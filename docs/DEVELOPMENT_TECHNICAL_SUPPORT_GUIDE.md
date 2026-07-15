@@ -321,10 +321,11 @@ Main areas:
 - Top country/language toolbar.
 - Offline/Live segmented mode control.
 - Runtime status strip.
-- One-click judge demonstration.
+- Country-by-country prepared demonstration prompts.
 - Chat panel.
 - Country mode card.
-- Tabbed challan, quiz, directory, and feedback tools.
+- Tabbed challan/ticket, progressive quiz, directory, and feedback tools.
+- Quiz restart, correct-answer teaching feedback, persistent points, and learning badges every 50 points.
 
 Country switching updates:
 

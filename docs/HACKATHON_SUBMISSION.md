@@ -5,7 +5,7 @@
 RoadLegal targets the DriveLegal problem statement for the BIMSTEC Road Safety Hackathon 2026:
 
 - Location-specific legal guidance through jurisdiction selection and starter geofencing.
-- Challan calculator using structured fine data by offence, jurisdiction, and vehicle class.
+- Challan / ticket calculator using structured fine data by offence, jurisdiction, and vehicle class.
 - Offline robustness through local seed data, downloaded source ingestion, and deterministic extractive RAG.
 - Legal accuracy through citations, review flags, source manifests, and cautious answers when fine data is incomplete.
 - Behaviour change through safety coaching and gamified quizzes, including Thailand-specific scooter, monsoon, tourist-document, and drink-driving scenarios.
@@ -32,11 +32,11 @@ https://hopechanphot.github.io/roadlegal/
 
 ### Recommended Three-Minute Judge Flow
 
-1. Click `Run judge demo`. The app switches to the prepared offline engine, selects Thailand, opens the calculator, answers the motorcycle-helmet question with official-source status, and calculates `Up to THB 2,000` for the prepared two-wheeler case.
+1. Select Thailand in `Offline Demo`, use the helmet prompt, then open `Challan / Ticket` and calculate `Up to THB 2,000` for the prepared two-wheeler case.
 2. Change the country menu to Bhutan or Myanmar. Ask the helmet or document question to show that RoadLegal provides a useful complete answer while refusing to invent an exact unreviewed fine.
-3. Open `Quiz`, answer a country-specific scenario, and show the instant explanation and locally saved score.
+3. Open `Quiz`, answer a country-specific scenario, and show the correct-answer teaching feedback, restart control, saved score, and badge progression every 50 points.
 4. Open `Directory` and `Feedback` to demonstrate official contacts and the offline update loop.
-5. Disconnect the network and reload. The service worker restores the full interface and its 909-passage, 80-topic data bundle; repeat a prepared question and challan calculation.
+5. Disconnect the network and reload. The service worker restores the full interface and its 909-passage, 80-topic data bundle; repeat a prepared question and challan/ticket calculation.
 6. Reconnect, choose `Live AI`, and ask an open-form question. The Python API runs hybrid retrieval plus Qwen3-0.6B generation, checks citations and numeric claims, and falls back to the prepared pack if cloud compute is unavailable.
 
 The mode switch is deliberately visible. It lets judges distinguish deterministic offline readiness from model-generated live RAG instead of treating an unavailable cloud endpoint as an application failure.

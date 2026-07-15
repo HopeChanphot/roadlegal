@@ -14,8 +14,9 @@ RoadLegal is an offline-first road-safety and traffic-law chatbot for the BIMSTE
 
 The current build is a runnable MVP designed for demo and extension:
 
-- Professional responsive web app with chat, challan calculator, quiz/scenario game content, source citations, feedback, and country/jurisdiction switching.
-- Explicit `Offline Demo` and `Live AI` modes, plus a one-click judge demonstration that proves the prepared Thailand law answer, verified helmet fine, and offline calculator together.
+- Professional responsive web app with chat, challan/ticket calculator, quiz/scenario game content, source citations, feedback, and country/jurisdiction switching.
+- Explicit `Offline Demo` and `Live AI` modes with the same country menu, prepared answers, calculator, quiz, directory, and citations in every country context.
+- Learning progression with immediate answer feedback, saved points, restartable country quizzes, and a new badge every 50 points.
 - Eight country packs with 80 prepared legal and safety topics. Every answer includes practical actions, source status, and citations; unverified exact fines remain clearly marked for review.
 - Installable service-worker cache for the complete browser demo, including the UI, icons, 909-passage knowledge base, country packs, calculator data, directory, and quizzes.
 - Hybrid BM25+ RAG over 909 local passages with Unicode query expansion, source-quality weighting, and strict country isolation.
@@ -49,12 +50,14 @@ Public demo:
 https://hopechanphot.github.io/roadlegal/
 ```
 
-### Judge Demo
+### Demonstration Flow
 
 1. Open the app once with connectivity so its service worker can cache the release.
-2. Click `Run judge demo`. RoadLegal selects Thailand, enters `Offline Demo`, answers the helmet question, and calculates the verified `Up to THB 2,000` demo case.
-3. Disconnect the network or stop the local server, reload, and repeat a prepared prompt. The UI and complete prepared answer still work from the browser cache.
-4. Reconnect and choose `Live AI` to demonstrate the Qwen3-0.6B RAG backend. If the cloud service is unavailable, the app says so and retains the complete prepared-answer fallback.
+2. Choose any country, select `Offline Demo`, and use its speed, helmet, documents, border, or scenario prompt.
+3. Open `Challan / Ticket` and calculate a supported local estimate. Thailand's prepared helmet case reports `Up to THB 2,000`.
+4. Open `Quiz`, answer a country scenario, review the correct answer and teaching feedback, and show the saved learning-level progress.
+5. Disconnect the network or stop the local server, reload, and repeat the same workflow from the browser cache.
+6. Reconnect and choose `Live AI` to demonstrate the Qwen3-0.6B RAG backend. If the cloud service is unavailable, the app says so and retains the complete prepared-answer fallback.
 
 `Offline Demo` is deterministic and presentation-safe. `Live AI` sends the question to the Python hybrid-RAG API and Qwen model, validates the generated claims, and uses the same local evidence pack as its resilient fallback.
 
@@ -70,7 +73,7 @@ This is the fastest way for other users to try RoadLegal. It runs fully in the b
 4. Set `Source` to `GitHub Actions`.
 5. Push to `main` or `master`.
 
-The workflow in `.github/workflows/pages.yml` deploys the `web/` folder. The static demo supports complete prepared answers, country switching, challan calculation, quizzes, citations, Thailand-specific content, and offline reload after the first visit.
+The workflow in `.github/workflows/pages.yml` deploys the `web/` folder. The static demo supports complete prepared answers, country switching, challan/ticket calculation, progressive quizzes, citations, Thailand-specific content, and offline reload after the first visit.
 
 ### Option B: Cloud AI Backend
 

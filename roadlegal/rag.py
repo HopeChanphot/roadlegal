@@ -213,7 +213,7 @@ class RoadLegalRAG:
     ) -> str:
         lines = []
         if fine:
-            lines.append(f"Challan estimate for {fine['jurisdiction'].replace('_', ' ')}: {fine['amount_display']}.")
+            lines.append(f"Challan / ticket estimate for {fine['jurisdiction'].replace('_', ' ')}: {fine['amount_display']}.")
             if fine.get("legal_basis"):
                 lines.append(f"Legal basis: {fine['legal_basis'].rstrip('.')}.")
             if fine.get("consequences"):

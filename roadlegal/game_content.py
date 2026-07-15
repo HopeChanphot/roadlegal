@@ -67,7 +67,7 @@ COUNTRY_QUESTIONS = {
     "india_national": [
         {
             "id": "india_speed_1",
-            "question": "In India, why does the challan calculator ask for vehicle class on overspeeding?",
+            "question": "In India, why does the challan / ticket calculator ask for vehicle class on overspeeding?",
             "options": ["Fines can differ by light and heavy vehicle class", "Vehicle class never matters", "Only vehicle colour matters"],
             "answer": 0,
             "explanation": "The structured calculator separates light, two-wheeler, and heavy vehicle cases where the law or compounding schedule differs.",
